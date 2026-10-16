@@ -2,6 +2,10 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.1.1, 2026-10-16
+
+- Added the `go-revolut-business` agent skill. It installs with `claude plugin install go-revolut-business@psyb0t` in Claude Code, `codex plugin add go-revolut-business@psyb0t` in Codex and `openclaw skills install @psyb0t/go-revolut-business` from ClawHub.
+
 ## v0.1.0, 2026-10-16
 
 - Added `revolut`, a REST client generated with oapi-codegen from Revolut's Business API OpenAPI document (spec version 1.0, OpenAPI 3.0.1, revolut-openapi commit 6f0da32 of 2026-09-29).

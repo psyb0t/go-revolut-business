@@ -58,6 +58,8 @@ func main() {
 
 The same code lives in `example_test.go`, so it has to compile.
 
+The full API is in the [Go reference](https://pkg.go.dev/github.com/psyb0t/go-revolut-business); from inside your module, `go doc github.com/psyb0t/go-revolut-business` prints the same.
+
 ## Auth
 
 Every request carries `Authorization: Bearer <access_token>`. Revolut issues the access token through OAuth2: you sign a JWT client assertion with the private key whose certificate you uploaded in the Business API settings, and exchange it together with an authorisation code or refresh token at `/auth/token`. Access tokens expire after 40 minutes. See [Revolut's Business API guides](https://developer.revolut.com/docs/guides/manage-accounts/introduction) for the details.

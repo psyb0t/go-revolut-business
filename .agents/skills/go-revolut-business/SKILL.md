@@ -1,6 +1,7 @@
 ---
 name: go-revolut-business
-description: Unofficial Go client for the Revolut Business REST API, generated with oapi-codegen. `revolut.NewClientWithResponses(baseURL, opts...)` from `github.com/psyb0t/go-revolut-business` returns a `*revolut.ClientWithResponses` with one typed `<Operation>WithResponse` method per endpoint (accounts, transactions, counterparties, payments, transfers and more). Auth is a bearer access token set through `revolut.WithRequestEditorFn`; responses decode into `JSON200`, `JSON201` and `JSONDefault` fields. Use when Go code needs to call the Revolut Business API or already imports go-revolut-business.
+description: Unofficial Go client for the Revolut Business REST API, generated with oapi-codegen. Package revolut (github.com/psyb0t/go-revolut-business) has revolut.NewClientWithResponses, which returns a client with one typed method per endpoint (accounts, transactions, counterparties, payments, transfers and more). Auth is a bearer access token set through revolut.WithRequestEditorFn, and responses decode into JSON200, JSON201 and JSONDefault fields. Use when Go code needs to call the Revolut Business API or already imports go-revolut-business.
+license: MIT
 homepage: https://github.com/psyb0t/go-revolut-business
 user-invocable: true
 metadata:
@@ -9,8 +10,6 @@ metadata:
     requires:
       bins:
         - go
-      env:
-        - REVOLUT_ACCESS_TOKEN
 permissions:
   filesystem: "Guides edits to the Go source of the current project. The library reads and writes no files."
   shell: "The Go toolchain (`go get`, `go build`, `go test`) to add and compile the dependency."
@@ -39,6 +38,20 @@ For install, auth details, environments and more operations, see [references/set
 - You need the OAuth2 token flow (JWT client assertion, `/auth/token`). This module does not implement it; get a token some other way and pass it in.
 - You need Revolut Merchant or Open Banking APIs. This client covers only the Business API.
 - The code is not Go.
+
+## Finding endpoints and types
+
+The examples below cover a few calls. Every operation in the spec has a generated method, and the spec's descriptions are on them as Go doc comments. Look names and fields up instead of guessing. After `go get github.com/psyb0t/go-revolut-business`, from inside your module:
+
+```bash
+go doc github.com/psyb0t/go-revolut-business ClientWithResponsesInterface  # every endpoint method
+go doc github.com/psyb0t/go-revolut-business GetTransactionsParams         # one method, params type or model
+go doc -all github.com/psyb0t/go-revolut-business                          # the whole package
+```
+
+The same documentation is at https://pkg.go.dev/github.com/psyb0t/go-revolut-business.
+
+Method names come from the spec's operation IDs. `<OperationId>WithResponse` takes the context, then the path parameters in order, then `*<OperationId>Params` when the operation has query or header parameters, then the request body when it has one. The `JSON200` field (or `JSON201` and so on, per declared status) holds the decoded body; it is nil for any other status. The package name is `revolut` while the module path ends in `go-revolut-business`, so import it as `revolut "github.com/psyb0t/go-revolut-business"`. Most operations declare only a `default` error response, so errors decode into `JSONDefault`.
 
 ## Usage
 

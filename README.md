@@ -113,6 +113,8 @@ make generate
 - `scripts/patch-spec.sh` writes `api/business.patched.yaml`, which oapi-codegen can load. It drops numeric keywords that hold prose instead of numbers (`maximum: P7D`), rewrites camelCase path placeholders to the snake_case parameter names the operations declare, and gives inline property schemas that collide with a component schema of the same Go name an `x-go-type-name` ending in `Value` (`ExchangeReasonCodeValue`, `TransferReasonCodeValue`).
 - oapi-codegen runs with `config.yaml`.
 
+`.github/workflows/regen.yml` does the same every day in CI. When the new spec changes the client, it runs `make lint`, `make test` and `make sec`. If a check fails, Claude edits the code and the checks run again, up to three times, and a review step reads the result. A passing change is committed with a CHANGELOG entry and tagged as the next release: a patch version for fixes and additions, a minor version for breaking changes.
+
 ## Development
 
 Every command runs in the `Dockerfile.dev` image. The host needs only Docker and Make.

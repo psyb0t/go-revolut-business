@@ -1,6 +1,6 @@
 {
   "name": "go-revolut-business",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Unofficial Go client for the Revolut Business REST API, generated with oapi-codegen, with one typed method per endpoint.",
   "author": { "name": "psyb0t", "url": "https://github.com/psyb0t" },
   "homepage": "https://github.com/psyb0t/go-revolut-business",

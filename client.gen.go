@@ -6240,6 +6240,15 @@ type ClientInterface interface {
 	// - For examples, refer to the request body samples.
 	// - For more information, see the guides: [Validate an account name (CoP/VoP)](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/confirmation-of-payee).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Write | `counterparties:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /account-name-validation (the `ValidateAccountName` operationId).
@@ -6268,6 +6277,15 @@ type ClientInterface interface {
 	// - For examples, refer to the request body samples.
 	// - For more information, see the guides: [Validate an account name (CoP/VoP)](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/confirmation-of-payee).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Write | `counterparties:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /account-name-validation (the `ValidateAccountName` operationId).
@@ -6290,6 +6308,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Accounting categories | Read | `accounting-categories:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /accounting-categories (the `GetAccountingCategories` operationId).
 	GetAccountingCategories(ctx context.Context, params *GetAccountingCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6302,6 +6329,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -6317,6 +6353,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -6340,6 +6385,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with DELETE /accounting-categories/{accounting_category_id} (the `DeleteAccountingCategory` operationId).
 	DeleteAccountingCategory(ctx context.Context, accountingCategoryId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6350,6 +6404,15 @@ type ClientInterface interface {
 	// The details include the accounting category name, code, and default tax rate, as well as when the accounting category was added to your settings, and when it was last updated.
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Accounting categories | Read | `accounting-categories:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with GET /accounting-categories/{accounting_category_id} (the `GetAccountingCategory` operationId).
 	GetAccountingCategory(ctx context.Context, accountingCategoryId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -6363,6 +6426,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -6379,6 +6451,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with PATCH /accounting-categories/{accounting_category_id} (the `UpdateAccountingCategory` operationId).
@@ -6390,6 +6471,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Get your account details](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/manage-your-accounts).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounts** | Accounts | Read | `accounts:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /accounts (the `GetAccounts` operationId).
 	GetAccounts(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6400,6 +6490,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Get your account details](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/manage-your-accounts).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounts** | Accounts | Read | `accounts:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /accounts/{account_id} (the `GetAccount` operationId).
 	GetAccount(ctx context.Context, accountId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6409,6 +6508,15 @@ type ClientInterface interface {
 	// Specify the account by its ID.
 	//
 	// For more information, see the guides: [Get your account details](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/manage-your-accounts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounts** | Accounts | Read | `accounts:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with GET /accounts/{account_id}/bank-details (the `GetAccountDetails` operationId).
 	GetAccountDetails(ctx context.Context, accountId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -6425,6 +6533,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card invitations | Read | `card-invitations:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /card-invitations (the `GetCardInvitations` operationId).
 	GetCardInvitations(ctx context.Context, params *GetCardInvitationsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6438,6 +6555,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card invitations | Write | `card-invitations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -6455,6 +6581,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card invitations | Write | `card-invitations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /card-invitations (the `CreateCardInvitation` operationId).
@@ -6470,6 +6605,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card invitations | Read | `card-invitations:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /card-invitations/{card_invitation_id} (the `GetCardInvitation` operationId).
 	GetCardInvitation(ctx context.Context, cardInvitationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6483,6 +6627,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card invitations | Write | `card-invitations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -6499,6 +6652,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card invitations | Write | `card-invitations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -6521,6 +6683,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card invitations | Write | `card-invitations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with POST /card-invitations/{card_invitation_id}/cancel (the `CancelCardInvitation` operationId).
 	CancelCardInvitation(ctx context.Context, cardInvitationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6538,6 +6709,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Read | `cards:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /cards (the `GetCards` operationId).
 	GetCards(ctx context.Context, params *GetCardsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6553,6 +6733,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -6571,6 +6760,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -6592,6 +6790,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with DELETE /cards/{card_id} (the `DeleteCard` operationId).
 	DeleteCard(ctx context.Context, cardId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6605,6 +6812,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Read | `cards:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /cards/{card_id} (the `GetCard` operationId).
 	GetCard(ctx context.Context, cardId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6617,6 +6833,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -6632,6 +6857,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -6660,6 +6894,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with PUT /cards/{card_id}/contacts (the `UpdateCardContacts` operationId).
@@ -6687,6 +6930,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with PUT /cards/{card_id}/contacts (the `UpdateCardContacts` operationId).
@@ -6705,6 +6957,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with POST /cards/{card_id}/freeze (the `FreezeCard` operationId).
 	FreezeCard(ctx context.Context, cardId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6719,6 +6980,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with POST /cards/{card_id}/lock (the `LockCard` operationId).
 	LockCard(ctx context.Context, cardId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -6753,6 +7023,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -6790,6 +7069,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with PUT /cards/{card_id}/references (the `UpdateCardReferences` operationId).
@@ -6807,6 +7095,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card sensitive details | Read | `card-sensitive-details:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /cards/{card_id}/sensitive-details (the `GetSensitiveCardDetails` operationId).
 	GetSensitiveCardDetails(ctx context.Context, cardId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6822,6 +7119,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with POST /cards/{card_id}/unfreeze (the `UnfreezeCard` operationId).
 	UnfreezeCard(ctx context.Context, cardId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -6851,6 +7157,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with POST /cards/{card_id}/unlock (the `UnlockCard` operationId).
 	UnlockCard(ctx context.Context, cardId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6866,6 +7181,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Retrieve counterparties](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/retrieve-counterparties).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Read | `counterparties:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /counterparties (the `GetCounterparties` operationId).
 	GetCounterparties(ctx context.Context, params *GetCounterpartiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6880,6 +7204,15 @@ type ClientInterface interface {
 	// Use this endpoint to discover which country and currency combinations are supported before checking field requirements with the [Check counterparty field requirements endpoint](https://developer.revolut.com/docs/api/business#get-counterparty-requirements).
 	//
 	// For more details, see the guide: **Check supported counterparty countries and currencies** section in [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty#check-supported-counterparty-countries-and-currencies).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Read | `counterparties:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with GET /counterparties/countries (the `GetCounterpartyCountries` operationId).
 	GetCounterpartyCountries(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -6900,6 +7233,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guide: **Check counterparty field requirements** section in [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty#check-counterparty-field-requirements).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Read | `counterparties:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /counterparties/fields (the `GetCounterpartyRequirements` operationId).
 	GetCounterpartyRequirements(ctx context.Context, params *GetCounterpartyRequirementsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -6919,6 +7261,15 @@ type ClientInterface interface {
 	// Omitted optional fields will retain their existing values.
 	//
 	// For more information, see the guide: [Update a counterparty's payment method](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/update-counterparty-payment-method).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Write | `counterparties:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -6941,6 +7292,15 @@ type ClientInterface interface {
 	// Omitted optional fields will retain their existing values.
 	//
 	// For more information, see the guide: [Update a counterparty's payment method](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/update-counterparty-payment-method).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Write | `counterparties:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -7018,6 +7378,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Write | `counterparties:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /counterparty (the `AddCounterparty` operationId).
@@ -7094,6 +7463,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Write | `counterparties:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /counterparty (the `AddCounterparty` operationId).
@@ -7103,12 +7481,30 @@ type ClientInterface interface {
 	//
 	// Delete a counterparty with the given ID. When a counterparty is deleted, you cannot make any payments to the counterparty.
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Write | `counterparties:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with DELETE /counterparty/{counterparty_id} (the `DeleteCounterparty` operationId).
 	DeleteCounterparty(ctx context.Context, counterpartyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetCounterparty Retrieve a counterparty
 	//
 	// Get the information about a specific counterparty by ID.
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Read | `counterparties:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with GET /counterparty/{counterparty_id} (the `GetCounterparty` operationId).
 	GetCounterparty(ctx context.Context, counterpartyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -7119,6 +7515,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Departments | Read | `departments:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /departments (the `GetDepartments` operationId).
 	GetDepartments(ctx context.Context, params *GetDepartmentsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7127,6 +7532,15 @@ type ClientInterface interface {
 	// Create a new department in your business.
 	//
 	// For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Departments | Write | `departments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -7138,6 +7552,15 @@ type ClientInterface interface {
 	// Create a new department in your business.
 	//
 	// For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Departments | Write | `departments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -7155,6 +7578,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Departments | Write | `departments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with DELETE /departments/{department_id} (the `DeleteDepartment` operationId).
 	DeleteDepartment(ctx context.Context, departmentId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7164,6 +7596,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Departments | Read | `departments:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /departments/{department_id} (the `GetDepartment` operationId).
 	GetDepartment(ctx context.Context, departmentId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7172,6 +7613,15 @@ type ClientInterface interface {
 	// Update the name of a specific department.
 	//
 	// For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Departments | Write | `departments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -7183,6 +7633,15 @@ type ClientInterface interface {
 	// Update the name of a specific department.
 	//
 	// For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Departments | Write | `departments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -7211,6 +7670,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Exchange money](https://developer.revolut.com/docs/guides/manage-accounts/exchange-money).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Foreign exchange** | Exchange | Write | `exchange:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /exchange (the `ExchangeMoney` operationId).
@@ -7238,6 +7706,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Exchange money](https://developer.revolut.com/docs/guides/manage-accounts/exchange-money).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Foreign exchange** | Exchange | Write | `exchange:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /exchange (the `ExchangeMoney` operationId).
@@ -7249,6 +7726,15 @@ type ClientInterface interface {
 	// With this endpoint, you can retrieve all exchange reasons available to your business account.
 	//
 	// After you retrieve the results, use the appropriate reason code in the `exchange_reason_code` field when [exchanging money](https://developer.revolut.com/docs/api/business#exchange-money) or [making a payment](https://developer.revolut.com/docs/api/business#create-payment) that involves foreign currency exchange.
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Foreign exchange** | Exchange reasons | Read | `exchange-reasons:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with GET /exchange-reasons (the `GetExchangeReasons` operationId).
 	GetExchangeReasons(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -7270,6 +7756,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Retrieve expenses and receipts](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-expenses).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Expenses** | Expenses | Read | `expenses:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /expenses (the `GetExpenses` operationId).
 	GetExpenses(ctx context.Context, params *GetExpensesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7285,6 +7780,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Retrieve expenses and receipts](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-expenses).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Expenses** | Expenses | Read | `expenses:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /expenses/{expense_id} (the `GetExpense` operationId).
 	GetExpense(ctx context.Context, expenseId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7298,6 +7802,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Retrieve expenses and receipts](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-expenses).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Expenses** | Expenses | Read | `expenses:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /expenses/{expense_id}/receipts/{receipt_id}/content (the `GetExpenseReceipt` operationId).
 	GetExpenseReceipt(ctx context.Context, expenseId openapi_types.UUID, receiptId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7308,6 +7821,15 @@ type ClientInterface interface {
 	// The label groups are sorted by the `created_at` date in reverse chronological order, and they're **paginated**.
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Read | `labels:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with GET /label-groups (the `GetLabelGroups` operationId).
 	GetLabelGroups(ctx context.Context, params *GetLabelGroupsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -7322,6 +7844,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -7338,6 +7869,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -7361,6 +7901,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with DELETE /label-groups/{group_id} (the `DeleteLabelGroup` operationId).
 	DeleteLabelGroup(ctx context.Context, groupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7371,6 +7920,15 @@ type ClientInterface interface {
 	// The details include the label group name, as well as when the label group was added to your settings, and when it was last updated.
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Read | `labels:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with GET /label-groups/{group_id} (the `GetLabelGroup` operationId).
 	GetLabelGroup(ctx context.Context, groupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -7384,6 +7942,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -7399,6 +7966,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -7422,6 +7998,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Read | `labels:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /label-groups/{group_id}/labels (the `GetLabels` operationId).
 	GetLabels(ctx context.Context, groupId openapi_types.UUID, params *GetLabelsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7436,6 +8021,15 @@ type ClientInterface interface {
 	// The labels are used for accounting and can be applied to your financial records, such as expenses.
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -7453,6 +8047,15 @@ type ClientInterface interface {
 	// The labels are used for accounting and can be applied to your financial records, such as expenses.
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -7476,6 +8079,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with DELETE /label-groups/{group_id}/labels/{label_id} (the `DeleteLabel` operationId).
 	DeleteLabel(ctx context.Context, groupId openapi_types.UUID, labelId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7488,6 +8100,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -7504,6 +8125,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with PATCH /label-groups/{group_id}/labels/{label_id} (the `UpdateLabel` operationId).
@@ -7519,6 +8149,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: [Send money via bank transfer](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers) and [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payments | Write | `payments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /pay (the `CreatePayment` operationId).
@@ -7533,6 +8172,15 @@ type ClientInterface interface {
 	// If the counterparty has multiple payment methods available, for example, 2 accounts, or 1 account and 1 card, you **must specify the account or card** to which you want to transfer the money (`receiver.account_id` or `receiver.card_id` respectively).
 	//
 	// For more details, see the guides: [Send money via bank transfer](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers) and [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payments | Write | `payments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -7559,6 +8207,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: **Check transfer field requirements** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-transfer-field-requirements) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-transfer-field-requirements).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payments | Write | `payments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /pay/fields (the `GetPaymentRequirements` operationId).
@@ -7584,6 +8241,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: **Check transfer field requirements** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-transfer-field-requirements) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-transfer-field-requirements).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payments | Write | `payments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /pay/fields (the `GetPaymentRequirements` operationId).
@@ -7605,6 +8271,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more details, see the guides: **Check costs and delivery time before paying** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-costs-and-delivery-time-before-paying) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-costs-and-delivery-time-before-paying).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payments | Write | `payments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -7628,6 +8303,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: **Check costs and delivery time before paying** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-costs-and-delivery-time-before-paying) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-costs-and-delivery-time-before-paying).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payments | Write | `payments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /pay/indicative-quote (the `GetIndicativeQuote` operationId).
@@ -7642,6 +8326,15 @@ type ClientInterface interface {
 	// The response lists the drafts with their details, such as the number of payments included in the draft, but not the payment details.
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Read | `payment-drafts:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with GET /payment-drafts (the `GetPaymentDrafts` operationId).
 	GetPaymentDrafts(ctx context.Context, params *GetPaymentDraftsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -7660,6 +8353,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more information on use cases and other details, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -7681,6 +8383,15 @@ type ClientInterface interface {
 	//
 	// For more information on use cases and other details, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /payment-drafts (the `CreatePaymentDraft` operationId).
@@ -7694,6 +8405,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with DELETE /payment-drafts/{payment_draft_id} (the `DeletePaymentDraft` operationId).
 	DeletePaymentDraft(ctx context.Context, paymentDraftId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7706,6 +8426,15 @@ type ClientInterface interface {
 	// The response lists the details of the payment(s) included in the draft, as well as the draft details.
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Read | `payment-drafts:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with GET /payment-drafts/{payment_draft_id} (the `GetPaymentDraft` operationId).
 	GetPaymentDraft(ctx context.Context, paymentDraftId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -7722,6 +8451,15 @@ type ClientInterface interface {
 	// All fields are optional — omitting a field leaves it unchanged.
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -7741,6 +8479,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with PATCH /payment-drafts/{payment_draft_id} (the `UpdatePaymentDraft` operationId).
@@ -7757,6 +8504,15 @@ type ClientInterface interface {
 	// The payment uses the same shape as the payments in the [create payment draft](#create-payment-draft) request.
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -7775,6 +8531,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /payment-drafts/{payment_draft_id}/payments (the `AddPaymentDraftPayment` operationId).
@@ -7790,6 +8555,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with DELETE /payment-drafts/{payment_draft_id}/payments/{payment_id} (the `DeletePaymentDraftPayment` operationId).
 	DeletePaymentDraftPayment(ctx context.Context, paymentDraftId openapi_types.UUID, paymentId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7804,6 +8578,15 @@ type ClientInterface interface {
 	// All fields are optional — omit what should not change. Other payments in the draft are unaffected.
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -7821,6 +8604,15 @@ type ClientInterface interface {
 	// All fields are optional — omit what should not change. Other payments in the draft are unaffected.
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -7843,6 +8635,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payout links | Read | `payout-links:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /payout-links (the `GetPayoutLinks` operationId).
 	GetPayoutLinks(ctx context.Context, params *GetPayoutLinksParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7856,6 +8657,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payout links | Write | `payout-links:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -7873,6 +8683,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payout links | Write | `payout-links:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /payout-links (the `CreatePayoutLink` operationId).
@@ -7888,6 +8707,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payout links | Read | `payout-links:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /payout-links/{payout_link_id} (the `GetPayoutLink` operationId).
 	GetPayoutLink(ctx context.Context, payoutLinkId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7902,6 +8730,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payout links | Write | `payout-links:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with POST /payout-links/{payout_link_id}/cancel (the `CancelPayoutLink` operationId).
 	CancelPayoutLink(ctx context.Context, payoutLinkId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7914,6 +8751,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Exchange money](https://developer.revolut.com/docs/guides/manage-accounts/exchange-money).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Foreign exchange** | Exchange | Read | `exchange:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /rate (the `GetRate` operationId).
 	GetRate(ctx context.Context, params *GetRateParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7925,6 +8771,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Read | `team-members:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /roles (the `GetRoles` operationId).
 	GetRoles(ctx context.Context, params *GetRolesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7935,6 +8790,15 @@ type ClientInterface interface {
 	// This is useful during testing, when you run out of money in your test account and need to add more.
 	//
 	// For more information, see the guides: [Test your flows with simulations (Sandbox only)](https://developer.revolut.com/docs/guides/manage-accounts/api-usage-and-testing/test-flows-with-simulations).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Sandbox simulations** | Simulations | Write | `simulations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -7949,6 +8813,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Test your flows with simulations (Sandbox only)](https://developer.revolut.com/docs/guides/manage-accounts/api-usage-and-testing/test-flows-with-simulations).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Sandbox simulations** | Simulations | Write | `simulations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /sandbox/topup (the `SimulateTopUp` operationId).
@@ -7961,6 +8834,15 @@ type ClientInterface interface {
 	// For example, after you make a transfer in Sandbox, you can change its state to `completed`. The resulting state is final and cannot be changed.
 	//
 	// For more information, see the guides: [Test your flows with simulations (Sandbox only)](https://developer.revolut.com/docs/guides/manage-accounts/api-usage-and-testing/test-flows-with-simulations).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Sandbox simulations** | Simulations | Write | `simulations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with POST /sandbox/transactions/{id}/{action} (the `SimulateTransferStateUpdate` operationId).
 	SimulateTransferStateUpdate(ctx context.Context, id openapi_types.UUID, action SimulateTransferStateUpdateParamsAction, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -7982,6 +8864,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Tax rates | Read | `tax-rates:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /tax-rates (the `GetTaxRates` operationId).
 	GetTaxRates(ctx context.Context, params *GetTaxRatesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -7994,6 +8885,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -8009,6 +8909,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -8032,6 +8941,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with DELETE /tax-rates/{tax_rate_id} (the `DeleteTaxRate` operationId).
 	DeleteTaxRate(ctx context.Context, taxRateId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -8042,6 +8960,15 @@ type ClientInterface interface {
 	// The details include the tax rate name and percentage, as well as when the tax rate was added to your settings, and when it was last updated.
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Tax rates | Read | `tax-rates:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with GET /tax-rates/{tax_rate_id} (the `GetTaxRate` operationId).
 	GetTaxRate(ctx context.Context, taxRateId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -8055,6 +8982,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -8071,6 +9007,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with PATCH /tax-rates/{tax_rate_id} (the `UpdateTaxRate` operationId).
@@ -8084,6 +9029,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Read | `team-members:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /team-members (the `GetTeamMembers` operationId).
 	GetTeamMembers(ctx context.Context, params *GetTeamMembersParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -8095,6 +9049,15 @@ type ClientInterface interface {
 	// To join your business account, the new team member has to accept this invitation.
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -8109,6 +9072,15 @@ type ClientInterface interface {
 	// To join your business account, the new team member has to accept this invitation.
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -8127,6 +9099,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with DELETE /team-members/{team_member_id} (the `DeleteTeamMember` operationId).
 	DeleteTeamMember(ctx context.Context, teamMemberId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -8135,6 +9116,15 @@ type ClientInterface interface {
 	// Get information about a specific team member by their ID.
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Read | `team-members:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with GET /team-members/{team_member_id} (the `GetTeamMemberById` operationId).
 	GetTeamMemberById(ctx context.Context, teamMemberId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -8145,6 +9135,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with DELETE /team-members/{team_member_id}/department (the `UnassignDepartment` operationId).
 	UnassignDepartment(ctx context.Context, teamMemberId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -8153,6 +9152,15 @@ type ClientInterface interface {
 	// Assign a department to a specific team member.
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members) and [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -8165,6 +9173,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members) and [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with PUT /team-members/{team_member_id}/department (the `AssignDepartment` operationId).
@@ -8176,6 +9193,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with DELETE /team-members/{team_member_id}/manager (the `UnassignManager` operationId).
 	UnassignManager(ctx context.Context, teamMemberId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -8184,6 +9210,15 @@ type ClientInterface interface {
 	// Assign a manager to a specific team member.
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -8195,6 +9230,15 @@ type ClientInterface interface {
 	// Assign a manager to a specific team member.
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -8211,6 +9255,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with PUT /team-members/{team_member_id}/role (the `UpdateTeamMemberRole` operationId).
@@ -8225,6 +9278,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -8243,6 +9305,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with POST /team-members/{team_member_id}/suspend (the `SuspendTeamMember` operationId).
 	SuspendTeamMember(ctx context.Context, teamMemberId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -8255,6 +9326,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with POST /team-members/{team_member_id}/unsuspend (the `UnsuspendTeamMember` operationId).
 	UnsuspendTeamMember(ctx context.Context, teamMemberId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -8271,6 +9351,15 @@ type ClientInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Retrieve transactions](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-transactions).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounts** | Transactions | Read | `transactions:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with GET /transaction/{id} (the `GetTransaction` operationId).
 	GetTransaction(ctx context.Context, id string, params *GetTransactionParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -8289,6 +9378,15 @@ type ClientInterface interface {
 	//
 	// For more details, see the guides: [Retrieve transactions](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-transactions).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounts** | Transactions | Read | `transactions:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /transactions (the `GetTransactions` operationId).
 	GetTransactions(ctx context.Context, params *GetTransactionsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -8299,6 +9397,15 @@ type ClientInterface interface {
 	// The resulting transaction has the type `transfer`.
 	//
 	// For more information, see the guides: [Send money](https://developer.revolut.com/docs/guides/manage-accounts/transfers/send-money).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Transfers | Write | `transfers:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -8313,6 +9420,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [Send money](https://developer.revolut.com/docs/guides/manage-accounts/transfers/send-money).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Transfers | Write | `transfers:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /transfer (the `CreateTransfer` operationId).
@@ -8325,12 +9441,30 @@ type ClientInterface interface {
 	//
 	// After you retrieve the results, use the appropriate reason code in the `transfer_reason_code` field when [making a transfer to a counterparty](https://developer.revolut.com/docs/api/business#create-payment) or [creating a payout link](https://developer.revolut.com/docs/api/business#create-payout-link).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Transfer reasons | Read | `transfer-reasons:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /transfer-reasons (the `GetTransferReasons` operationId).
 	GetTransferReasons(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteWebhookV1 Delete a webhook
 	//
 	// Delete a webhook so that events are not sent to the specified URL any more.
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with DELETE /webhook (the `DeleteWebhookV1` operationId).
 	//
@@ -8341,6 +9475,15 @@ type ClientInterface interface {
 	//
 	// Get your webhook URL.
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /webhook (the `GetWebhookV1` operationId).
 	//
 	// Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
@@ -8349,6 +9492,15 @@ type ClientInterface interface {
 	// SetUpWebhookWithBody Set a webhook
 	//
 	// Set up a webhook URL so that event notifications are pushed to the specified URL. Only HTTPS URLs are supported.
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -8360,6 +9512,15 @@ type ClientInterface interface {
 	// SetUpWebhook Set a webhook
 	//
 	// Set up a webhook URL so that event notifications are pushed to the specified URL. Only HTTPS URLs are supported.
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -8374,6 +9535,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#retrieve-a-list-of-webhooks).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /webhooks (the `GetWebhooks` operationId).
 	GetWebhooks(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -8383,6 +9553,15 @@ type ClientInterface interface {
 	// Only HTTPS URLs are supported.
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#create-a-webhook).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -8395,6 +9574,15 @@ type ClientInterface interface {
 	// Only HTTPS URLs are supported.
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#create-a-webhook).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -8409,6 +9597,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#delete-a-webhook).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with DELETE /webhooks/{webhook_id} (the `DeleteWebhook` operationId).
 	DeleteWebhook(ctx context.Context, webhookId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -8417,6 +9614,15 @@ type ClientInterface interface {
 	// Get the information about a specific webhook by ID.
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#retrieve-a-specific-webhook).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Corresponds with GET /webhooks/{webhook_id} (the `GetWebhook` operationId).
 	GetWebhook(ctx context.Context, webhookId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -8428,6 +9634,15 @@ type ClientInterface interface {
 	// You must specify at least one of these two. The fields that you don't specify are not updated.
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#update-a-webhook).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -8441,6 +9656,15 @@ type ClientInterface interface {
 	// You must specify at least one of these two. The fields that you don't specify are not updated.
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#update-a-webhook).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -8459,6 +9683,15 @@ type ClientInterface interface {
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#retrieve-a-list-of-failed-webhook-events).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Corresponds with GET /webhooks/{webhook_id}/failed-events (the `GetFailedWebhookEvents` operationId).
 	GetFailedWebhookEvents(ctx context.Context, webhookId openapi_types.UUID, params *GetFailedWebhookEventsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -8467,6 +9700,15 @@ type ClientInterface interface {
 	// Rotate a signing secret for a specific webhook.
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#rotate-a-webhook-signing-secret).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type.
 	//
@@ -8478,6 +9720,15 @@ type ClientInterface interface {
 	// Rotate a signing secret for a specific webhook.
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#rotate-a-webhook-signing-secret).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type.
 	//
@@ -8508,6 +9759,15 @@ type ClientInterface interface {
 // These factors determine which fields you must provide and what response you get.
 // - For examples, refer to the request body samples.
 // - For more information, see the guides: [Validate an account name (CoP/VoP)](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/confirmation-of-payee).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Write | `counterparties:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -8548,6 +9808,15 @@ func (c *Client) ValidateAccountNameWithBody(ctx context.Context, contentType st
 // - For examples, refer to the request body samples.
 // - For more information, see the guides: [Validate an account name (CoP/VoP)](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/confirmation-of-payee).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Write | `counterparties:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /account-name-validation (the `ValidateAccountName` operationId).
@@ -8580,6 +9849,15 @@ func (c *Client) ValidateAccountName(ctx context.Context, body ValidateAccountNa
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Accounting categories | Read | `accounting-categories:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /accounting-categories (the `GetAccountingCategories` operationId).
 func (c *Client) GetAccountingCategories(ctx context.Context, params *GetAccountingCategoriesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetAccountingCategoriesRequest(c.Server, params)
@@ -8602,6 +9880,15 @@ func (c *Client) GetAccountingCategories(ctx context.Context, params *GetAccount
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -8627,6 +9914,15 @@ func (c *Client) CreateAccountingCategoryWithBody(ctx context.Context, contentTy
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -8660,6 +9956,15 @@ func (c *Client) CreateAccountingCategory(ctx context.Context, body CreateAccoun
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with DELETE /accounting-categories/{accounting_category_id} (the `DeleteAccountingCategory` operationId).
 func (c *Client) DeleteAccountingCategory(ctx context.Context, accountingCategoryId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteAccountingCategoryRequest(c.Server, accountingCategoryId)
@@ -8680,6 +9985,15 @@ func (c *Client) DeleteAccountingCategory(ctx context.Context, accountingCategor
 // The details include the accounting category name, code, and default tax rate, as well as when the accounting category was added to your settings, and when it was last updated.
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Accounting categories | Read | `accounting-categories:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with GET /accounting-categories/{accounting_category_id} (the `GetAccountingCategory` operationId).
 func (c *Client) GetAccountingCategory(ctx context.Context, accountingCategoryId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -8703,6 +10017,15 @@ func (c *Client) GetAccountingCategory(ctx context.Context, accountingCategoryId
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -8729,6 +10052,15 @@ func (c *Client) UpdateAccountingCategoryWithBody(ctx context.Context, accountin
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with PATCH /accounting-categories/{accounting_category_id} (the `UpdateAccountingCategory` operationId).
@@ -8750,6 +10082,15 @@ func (c *Client) UpdateAccountingCategory(ctx context.Context, accountingCategor
 //
 // For more information, see the guides: [Get your account details](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/manage-your-accounts).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounts** | Accounts | Read | `accounts:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /accounts (the `GetAccounts` operationId).
 func (c *Client) GetAccounts(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetAccountsRequest(c.Server)
@@ -8770,6 +10111,15 @@ func (c *Client) GetAccounts(ctx context.Context, reqEditors ...RequestEditorFn)
 //
 // For more information, see the guides: [Get your account details](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/manage-your-accounts).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounts** | Accounts | Read | `accounts:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /accounts/{account_id} (the `GetAccount` operationId).
 func (c *Client) GetAccount(ctx context.Context, accountId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetAccountRequest(c.Server, accountId)
@@ -8789,6 +10139,15 @@ func (c *Client) GetAccount(ctx context.Context, accountId openapi_types.UUID, r
 // Specify the account by its ID.
 //
 // For more information, see the guides: [Get your account details](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/manage-your-accounts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounts** | Accounts | Read | `accounts:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with GET /accounts/{account_id}/bank-details (the `GetAccountDetails` operationId).
 func (c *Client) GetAccountDetails(ctx context.Context, accountId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -8815,6 +10174,15 @@ func (c *Client) GetAccountDetails(ctx context.Context, accountId openapi_types.
 //
 // For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card invitations | Read | `card-invitations:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /card-invitations (the `GetCardInvitations` operationId).
 func (c *Client) GetCardInvitations(ctx context.Context, params *GetCardInvitationsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetCardInvitationsRequest(c.Server, params)
@@ -8838,6 +10206,15 @@ func (c *Client) GetCardInvitations(ctx context.Context, params *GetCardInvitati
 // :::
 //
 // For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card invitations | Write | `card-invitations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -8865,6 +10242,15 @@ func (c *Client) CreateCardInvitationWithBody(ctx context.Context, contentType s
 //
 // For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card invitations | Write | `card-invitations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /card-invitations (the `CreateCardInvitation` operationId).
@@ -8890,6 +10276,15 @@ func (c *Client) CreateCardInvitation(ctx context.Context, body CreateCardInvita
 //
 // For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card invitations | Read | `card-invitations:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /card-invitations/{card_invitation_id} (the `GetCardInvitation` operationId).
 func (c *Client) GetCardInvitation(ctx context.Context, cardInvitationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetCardInvitationRequest(c.Server, cardInvitationId)
@@ -8913,6 +10308,15 @@ func (c *Client) GetCardInvitation(ctx context.Context, cardInvitationId openapi
 // :::
 //
 // For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card invitations | Write | `card-invitations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -8939,6 +10343,15 @@ func (c *Client) UpdateCardInvitationWithBody(ctx context.Context, cardInvitatio
 // :::
 //
 // For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card invitations | Write | `card-invitations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -8971,6 +10384,15 @@ func (c *Client) UpdateCardInvitation(ctx context.Context, cardInvitationId open
 //
 // For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card invitations | Write | `card-invitations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with POST /card-invitations/{card_invitation_id}/cancel (the `CancelCardInvitation` operationId).
 func (c *Client) CancelCardInvitation(ctx context.Context, cardInvitationId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewCancelCardInvitationRequest(c.Server, cardInvitationId)
@@ -8998,6 +10420,15 @@ func (c *Client) CancelCardInvitation(ctx context.Context, cardInvitationId open
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Read | `cards:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /cards (the `GetCards` operationId).
 func (c *Client) GetCards(ctx context.Context, params *GetCardsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetCardsRequest(c.Server, params)
@@ -9023,6 +10454,15 @@ func (c *Client) GetCards(ctx context.Context, params *GetCardsParams, reqEditor
 // :::
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -9051,6 +10491,15 @@ func (c *Client) CreateCardWithBody(ctx context.Context, contentType string, bod
 // :::
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -9082,6 +10531,15 @@ func (c *Client) CreateCard(ctx context.Context, body CreateCardJSONRequestBody,
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with DELETE /cards/{card_id} (the `DeleteCard` operationId).
 func (c *Client) DeleteCard(ctx context.Context, cardId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteCardRequest(c.Server, cardId)
@@ -9105,6 +10563,15 @@ func (c *Client) DeleteCard(ctx context.Context, cardId openapi_types.UUID, reqE
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Read | `cards:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /cards/{card_id} (the `GetCard` operationId).
 func (c *Client) GetCard(ctx context.Context, cardId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetCardRequest(c.Server, cardId)
@@ -9127,6 +10594,15 @@ func (c *Client) GetCard(ctx context.Context, cardId openapi_types.UUID, reqEdit
 // :::
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -9152,6 +10628,15 @@ func (c *Client) UpdateCardWithBody(ctx context.Context, cardId openapi_types.UU
 // :::
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -9190,6 +10675,15 @@ func (c *Client) UpdateCard(ctx context.Context, cardId openapi_types.UUID, body
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type.
 //
 // Corresponds with PUT /cards/{card_id}/contacts (the `UpdateCardContacts` operationId).
@@ -9227,6 +10721,15 @@ func (c *Client) UpdateCardContactsWithBody(ctx context.Context, cardId openapi_
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with PUT /cards/{card_id}/contacts (the `UpdateCardContacts` operationId).
@@ -9255,6 +10758,15 @@ func (c *Client) UpdateCardContacts(ctx context.Context, cardId openapi_types.UU
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with POST /cards/{card_id}/freeze (the `FreezeCard` operationId).
 func (c *Client) FreezeCard(ctx context.Context, cardId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewFreezeCardRequest(c.Server, cardId)
@@ -9279,6 +10791,15 @@ func (c *Client) FreezeCard(ctx context.Context, cardId openapi_types.UUID, reqE
 // :::
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with POST /cards/{card_id}/lock (the `LockCard` operationId).
 func (c *Client) LockCard(ctx context.Context, cardId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -9323,6 +10844,15 @@ func (c *Client) LockCard(ctx context.Context, cardId openapi_types.UUID, reqEdi
 // :::
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -9370,6 +10900,15 @@ func (c *Client) UpdateCardReferencesWithBody(ctx context.Context, cardId openap
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with PUT /cards/{card_id}/references (the `UpdateCardReferences` operationId).
@@ -9397,6 +10936,15 @@ func (c *Client) UpdateCardReferences(ctx context.Context, cardId openapi_types.
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card sensitive details | Read | `card-sensitive-details:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /cards/{card_id}/sensitive-details (the `GetSensitiveCardDetails` operationId).
 func (c *Client) GetSensitiveCardDetails(ctx context.Context, cardId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetSensitiveCardDetailsRequest(c.Server, cardId)
@@ -9422,6 +10970,15 @@ func (c *Client) GetSensitiveCardDetails(ctx context.Context, cardId openapi_typ
 // :::
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with POST /cards/{card_id}/unfreeze (the `UnfreezeCard` operationId).
 func (c *Client) UnfreezeCard(ctx context.Context, cardId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -9461,6 +11018,15 @@ func (c *Client) UnfreezeCard(ctx context.Context, cardId openapi_types.UUID, re
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with POST /cards/{card_id}/unlock (the `UnlockCard` operationId).
 func (c *Client) UnlockCard(ctx context.Context, cardId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewUnlockCardRequest(c.Server, cardId)
@@ -9486,6 +11052,15 @@ func (c *Client) UnlockCard(ctx context.Context, cardId openapi_types.UUID, reqE
 //
 // For more information, see the guides: [Retrieve counterparties](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/retrieve-counterparties).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Read | `counterparties:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /counterparties (the `GetCounterparties` operationId).
 func (c *Client) GetCounterparties(ctx context.Context, params *GetCounterpartiesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetCounterpartiesRequest(c.Server, params)
@@ -9510,6 +11085,15 @@ func (c *Client) GetCounterparties(ctx context.Context, params *GetCounterpartie
 // Use this endpoint to discover which country and currency combinations are supported before checking field requirements with the [Check counterparty field requirements endpoint](https://developer.revolut.com/docs/api/business#get-counterparty-requirements).
 //
 // For more details, see the guide: **Check supported counterparty countries and currencies** section in [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty#check-supported-counterparty-countries-and-currencies).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Read | `counterparties:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with GET /counterparties/countries (the `GetCounterpartyCountries` operationId).
 func (c *Client) GetCounterpartyCountries(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -9540,6 +11124,15 @@ func (c *Client) GetCounterpartyCountries(ctx context.Context, reqEditors ...Req
 //
 // For more details, see the guide: **Check counterparty field requirements** section in [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty#check-counterparty-field-requirements).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Read | `counterparties:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /counterparties/fields (the `GetCounterpartyRequirements` operationId).
 func (c *Client) GetCounterpartyRequirements(ctx context.Context, params *GetCounterpartyRequirementsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetCounterpartyRequirementsRequest(c.Server, params)
@@ -9569,6 +11162,15 @@ func (c *Client) GetCounterpartyRequirements(ctx context.Context, params *GetCou
 // Omitted optional fields will retain their existing values.
 //
 // For more information, see the guide: [Update a counterparty's payment method](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/update-counterparty-payment-method).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Write | `counterparties:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -9601,6 +11203,15 @@ func (c *Client) UpdateCounterpartyPaymentMethodWithBody(ctx context.Context, co
 // Omitted optional fields will retain their existing values.
 //
 // For more information, see the guide: [Update a counterparty's payment method](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/update-counterparty-payment-method).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Write | `counterparties:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -9691,6 +11302,15 @@ func (c *Client) UpdateCounterpartyPaymentMethod(ctx context.Context, counterpar
 //
 // For more information, see the guides: [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Write | `counterparties:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /counterparty (the `AddCounterparty` operationId).
@@ -9780,6 +11400,15 @@ func (c *Client) AddCounterpartyWithBody(ctx context.Context, contentType string
 //
 // For more information, see the guides: [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Write | `counterparties:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /counterparty (the `AddCounterparty` operationId).
@@ -9799,6 +11428,15 @@ func (c *Client) AddCounterparty(ctx context.Context, body AddCounterpartyJSONRe
 //
 // Delete a counterparty with the given ID. When a counterparty is deleted, you cannot make any payments to the counterparty.
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Write | `counterparties:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with DELETE /counterparty/{counterparty_id} (the `DeleteCounterparty` operationId).
 func (c *Client) DeleteCounterparty(ctx context.Context, counterpartyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteCounterpartyRequest(c.Server, counterpartyId)
@@ -9815,6 +11453,15 @@ func (c *Client) DeleteCounterparty(ctx context.Context, counterpartyId openapi_
 // GetCounterparty Retrieve a counterparty
 //
 // Get the information about a specific counterparty by ID.
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Read | `counterparties:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with GET /counterparty/{counterparty_id} (the `GetCounterparty` operationId).
 func (c *Client) GetCounterparty(ctx context.Context, counterpartyId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -9835,6 +11482,15 @@ func (c *Client) GetCounterparty(ctx context.Context, counterpartyId openapi_typ
 //
 // For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Departments | Read | `departments:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /departments (the `GetDepartments` operationId).
 func (c *Client) GetDepartments(ctx context.Context, params *GetDepartmentsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetDepartmentsRequest(c.Server, params)
@@ -9853,6 +11509,15 @@ func (c *Client) GetDepartments(ctx context.Context, params *GetDepartmentsParam
 // Create a new department in your business.
 //
 // For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Departments | Write | `departments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -9874,6 +11539,15 @@ func (c *Client) CreateDepartmentWithBody(ctx context.Context, contentType strin
 // Create a new department in your business.
 //
 // For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Departments | Write | `departments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -9901,6 +11575,15 @@ func (c *Client) CreateDepartment(ctx context.Context, body CreateDepartmentJSON
 //
 // For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Departments | Write | `departments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with DELETE /departments/{department_id} (the `DeleteDepartment` operationId).
 func (c *Client) DeleteDepartment(ctx context.Context, departmentId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteDepartmentRequest(c.Server, departmentId)
@@ -9920,6 +11603,15 @@ func (c *Client) DeleteDepartment(ctx context.Context, departmentId openapi_type
 //
 // For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Departments | Read | `departments:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /departments/{department_id} (the `GetDepartment` operationId).
 func (c *Client) GetDepartment(ctx context.Context, departmentId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetDepartmentRequest(c.Server, departmentId)
@@ -9938,6 +11630,15 @@ func (c *Client) GetDepartment(ctx context.Context, departmentId openapi_types.U
 // Update the name of a specific department.
 //
 // For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Departments | Write | `departments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -9959,6 +11660,15 @@ func (c *Client) UpdateDepartmentWithBody(ctx context.Context, departmentId open
 // Update the name of a specific department.
 //
 // For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Departments | Write | `departments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -9998,6 +11708,15 @@ func (c *Client) UpdateDepartment(ctx context.Context, departmentId openapi_type
 //
 // For more information, see the guides: [Exchange money](https://developer.revolut.com/docs/guides/manage-accounts/exchange-money).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Foreign exchange** | Exchange | Write | `exchange:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /exchange (the `ExchangeMoney` operationId).
@@ -10036,6 +11755,15 @@ func (c *Client) ExchangeMoneyWithBody(ctx context.Context, contentType string, 
 //
 // For more information, see the guides: [Exchange money](https://developer.revolut.com/docs/guides/manage-accounts/exchange-money).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Foreign exchange** | Exchange | Write | `exchange:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /exchange (the `ExchangeMoney` operationId).
@@ -10057,6 +11785,15 @@ func (c *Client) ExchangeMoney(ctx context.Context, body ExchangeMoneyJSONReques
 // With this endpoint, you can retrieve all exchange reasons available to your business account.
 //
 // After you retrieve the results, use the appropriate reason code in the `exchange_reason_code` field when [exchanging money](https://developer.revolut.com/docs/api/business#exchange-money) or [making a payment](https://developer.revolut.com/docs/api/business#create-payment) that involves foreign currency exchange.
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Foreign exchange** | Exchange reasons | Read | `exchange-reasons:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with GET /exchange-reasons (the `GetExchangeReasons` operationId).
 func (c *Client) GetExchangeReasons(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -10088,6 +11825,15 @@ func (c *Client) GetExchangeReasons(ctx context.Context, reqEditors ...RequestEd
 //
 // For more information, see the guides: [Retrieve expenses and receipts](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-expenses).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Expenses** | Expenses | Read | `expenses:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /expenses (the `GetExpenses` operationId).
 func (c *Client) GetExpenses(ctx context.Context, params *GetExpensesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetExpensesRequest(c.Server, params)
@@ -10113,6 +11859,15 @@ func (c *Client) GetExpenses(ctx context.Context, params *GetExpensesParams, req
 //
 // For more information, see the guides: [Retrieve expenses and receipts](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-expenses).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Expenses** | Expenses | Read | `expenses:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /expenses/{expense_id} (the `GetExpense` operationId).
 func (c *Client) GetExpense(ctx context.Context, expenseId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetExpenseRequest(c.Server, expenseId)
@@ -10136,6 +11891,15 @@ func (c *Client) GetExpense(ctx context.Context, expenseId openapi_types.UUID, r
 //
 // For more information, see the guides: [Retrieve expenses and receipts](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-expenses).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Expenses** | Expenses | Read | `expenses:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /expenses/{expense_id}/receipts/{receipt_id}/content (the `GetExpenseReceipt` operationId).
 func (c *Client) GetExpenseReceipt(ctx context.Context, expenseId openapi_types.UUID, receiptId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetExpenseReceiptRequest(c.Server, expenseId, receiptId)
@@ -10156,6 +11920,15 @@ func (c *Client) GetExpenseReceipt(ctx context.Context, expenseId openapi_types.
 // The label groups are sorted by the `created_at` date in reverse chronological order, and they're **paginated**.
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Read | `labels:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with GET /label-groups (the `GetLabelGroups` operationId).
 func (c *Client) GetLabelGroups(ctx context.Context, params *GetLabelGroupsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -10180,6 +11953,15 @@ func (c *Client) GetLabelGroups(ctx context.Context, params *GetLabelGroupsParam
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -10206,6 +11988,15 @@ func (c *Client) CreateLabelGroupWithBody(ctx context.Context, contentType strin
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -10239,6 +12030,15 @@ func (c *Client) CreateLabelGroup(ctx context.Context, body CreateLabelGroupJSON
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with DELETE /label-groups/{group_id} (the `DeleteLabelGroup` operationId).
 func (c *Client) DeleteLabelGroup(ctx context.Context, groupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteLabelGroupRequest(c.Server, groupId)
@@ -10259,6 +12059,15 @@ func (c *Client) DeleteLabelGroup(ctx context.Context, groupId openapi_types.UUI
 // The details include the label group name, as well as when the label group was added to your settings, and when it was last updated.
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Read | `labels:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with GET /label-groups/{group_id} (the `GetLabelGroup` operationId).
 func (c *Client) GetLabelGroup(ctx context.Context, groupId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -10282,6 +12091,15 @@ func (c *Client) GetLabelGroup(ctx context.Context, groupId openapi_types.UUID, 
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -10307,6 +12125,15 @@ func (c *Client) UpdateLabelGroupWithBody(ctx context.Context, groupId openapi_t
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -10340,6 +12167,15 @@ func (c *Client) UpdateLabelGroup(ctx context.Context, groupId openapi_types.UUI
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Read | `labels:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /label-groups/{group_id}/labels (the `GetLabels` operationId).
 func (c *Client) GetLabels(ctx context.Context, groupId openapi_types.UUID, params *GetLabelsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetLabelsRequest(c.Server, groupId, params)
@@ -10364,6 +12200,15 @@ func (c *Client) GetLabels(ctx context.Context, groupId openapi_types.UUID, para
 // The labels are used for accounting and can be applied to your financial records, such as expenses.
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -10391,6 +12236,15 @@ func (c *Client) CreateLabelWithBody(ctx context.Context, groupId openapi_types.
 // The labels are used for accounting and can be applied to your financial records, such as expenses.
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -10424,6 +12278,15 @@ func (c *Client) CreateLabel(ctx context.Context, groupId openapi_types.UUID, bo
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with DELETE /label-groups/{group_id}/labels/{label_id} (the `DeleteLabel` operationId).
 func (c *Client) DeleteLabel(ctx context.Context, groupId openapi_types.UUID, labelId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteLabelRequest(c.Server, groupId, labelId)
@@ -10446,6 +12309,15 @@ func (c *Client) DeleteLabel(ctx context.Context, groupId openapi_types.UUID, la
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -10472,6 +12344,15 @@ func (c *Client) UpdateLabelWithBody(ctx context.Context, groupId openapi_types.
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with PATCH /label-groups/{group_id}/labels/{label_id} (the `UpdateLabel` operationId).
@@ -10497,6 +12378,15 @@ func (c *Client) UpdateLabel(ctx context.Context, groupId openapi_types.UUID, la
 //
 // For more details, see the guides: [Send money via bank transfer](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers) and [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payments | Write | `payments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /pay (the `CreatePayment` operationId).
@@ -10521,6 +12411,15 @@ func (c *Client) CreatePaymentWithBody(ctx context.Context, contentType string, 
 // If the counterparty has multiple payment methods available, for example, 2 accounts, or 1 account and 1 card, you **must specify the account or card** to which you want to transfer the money (`receiver.account_id` or `receiver.card_id` respectively).
 //
 // For more details, see the guides: [Send money via bank transfer](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers) and [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payments | Write | `payments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -10557,6 +12456,15 @@ func (c *Client) CreatePayment(ctx context.Context, body CreatePaymentJSONReques
 //
 // For more details, see the guides: **Check transfer field requirements** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-transfer-field-requirements) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-transfer-field-requirements).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payments | Write | `payments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /pay/fields (the `GetPaymentRequirements` operationId).
@@ -10592,6 +12500,15 @@ func (c *Client) GetPaymentRequirementsWithBody(ctx context.Context, contentType
 //
 // For more details, see the guides: **Check transfer field requirements** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-transfer-field-requirements) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-transfer-field-requirements).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payments | Write | `payments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /pay/fields (the `GetPaymentRequirements` operationId).
@@ -10623,6 +12540,15 @@ func (c *Client) GetPaymentRequirements(ctx context.Context, body GetPaymentRequ
 // :::
 //
 // For more details, see the guides: **Check costs and delivery time before paying** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-costs-and-delivery-time-before-paying) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-costs-and-delivery-time-before-paying).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payments | Write | `payments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -10656,6 +12582,15 @@ func (c *Client) GetIndicativeQuoteWithBody(ctx context.Context, contentType str
 //
 // For more details, see the guides: **Check costs and delivery time before paying** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-costs-and-delivery-time-before-paying) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-costs-and-delivery-time-before-paying).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payments | Write | `payments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /pay/indicative-quote (the `GetIndicativeQuote` operationId).
@@ -10680,6 +12615,15 @@ func (c *Client) GetIndicativeQuote(ctx context.Context, body GetIndicativeQuote
 // The response lists the drafts with their details, such as the number of payments included in the draft, but not the payment details.
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Read | `payment-drafts:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with GET /payment-drafts (the `GetPaymentDrafts` operationId).
 func (c *Client) GetPaymentDrafts(ctx context.Context, params *GetPaymentDraftsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -10708,6 +12652,15 @@ func (c *Client) GetPaymentDrafts(ctx context.Context, params *GetPaymentDraftsP
 // :::
 //
 // For more information on use cases and other details, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -10739,6 +12692,15 @@ func (c *Client) CreatePaymentDraftWithBody(ctx context.Context, contentType str
 //
 // For more information on use cases and other details, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /payment-drafts (the `CreatePaymentDraft` operationId).
@@ -10762,6 +12724,15 @@ func (c *Client) CreatePaymentDraft(ctx context.Context, body CreatePaymentDraft
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with DELETE /payment-drafts/{payment_draft_id} (the `DeletePaymentDraft` operationId).
 func (c *Client) DeletePaymentDraft(ctx context.Context, paymentDraftId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeletePaymentDraftRequest(c.Server, paymentDraftId)
@@ -10784,6 +12755,15 @@ func (c *Client) DeletePaymentDraft(ctx context.Context, paymentDraftId openapi_
 // The response lists the details of the payment(s) included in the draft, as well as the draft details.
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Read | `payment-drafts:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with GET /payment-drafts/{payment_draft_id} (the `GetPaymentDraft` operationId).
 func (c *Client) GetPaymentDraft(ctx context.Context, paymentDraftId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -10810,6 +12790,15 @@ func (c *Client) GetPaymentDraft(ctx context.Context, paymentDraftId openapi_typ
 // All fields are optional — omitting a field leaves it unchanged.
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -10839,6 +12828,15 @@ func (c *Client) UpdatePaymentDraftWithBody(ctx context.Context, paymentDraftId 
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with PATCH /payment-drafts/{payment_draft_id} (the `UpdatePaymentDraft` operationId).
@@ -10865,6 +12863,15 @@ func (c *Client) UpdatePaymentDraft(ctx context.Context, paymentDraftId openapi_
 // The payment uses the same shape as the payments in the [create payment draft](#create-payment-draft) request.
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -10893,6 +12900,15 @@ func (c *Client) AddPaymentDraftPaymentWithBody(ctx context.Context, paymentDraf
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /payment-drafts/{payment_draft_id}/payments (the `AddPaymentDraftPayment` operationId).
@@ -10918,6 +12934,15 @@ func (c *Client) AddPaymentDraftPayment(ctx context.Context, paymentDraftId open
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with DELETE /payment-drafts/{payment_draft_id}/payments/{payment_id} (the `DeletePaymentDraftPayment` operationId).
 func (c *Client) DeletePaymentDraftPayment(ctx context.Context, paymentDraftId openapi_types.UUID, paymentId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeletePaymentDraftPaymentRequest(c.Server, paymentDraftId, paymentId)
@@ -10942,6 +12967,15 @@ func (c *Client) DeletePaymentDraftPayment(ctx context.Context, paymentDraftId o
 // All fields are optional — omit what should not change. Other payments in the draft are unaffected.
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -10969,6 +13003,15 @@ func (c *Client) UpdatePaymentDraftPaymentWithBody(ctx context.Context, paymentD
 // All fields are optional — omit what should not change. Other payments in the draft are unaffected.
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -11001,6 +13044,15 @@ func (c *Client) UpdatePaymentDraftPayment(ctx context.Context, paymentDraftId o
 //
 // For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payout links | Read | `payout-links:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /payout-links (the `GetPayoutLinks` operationId).
 func (c *Client) GetPayoutLinks(ctx context.Context, params *GetPayoutLinksParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetPayoutLinksRequest(c.Server, params)
@@ -11024,6 +13076,15 @@ func (c *Client) GetPayoutLinks(ctx context.Context, params *GetPayoutLinksParam
 // :::
 //
 // For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payout links | Write | `payout-links:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -11051,6 +13112,15 @@ func (c *Client) CreatePayoutLinkWithBody(ctx context.Context, contentType strin
 //
 // For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payout links | Write | `payout-links:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /payout-links (the `CreatePayoutLink` operationId).
@@ -11076,6 +13146,15 @@ func (c *Client) CreatePayoutLink(ctx context.Context, body CreatePayoutLinkJSON
 //
 // For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payout links | Read | `payout-links:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /payout-links/{payout_link_id} (the `GetPayoutLink` operationId).
 func (c *Client) GetPayoutLink(ctx context.Context, payoutLinkId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetPayoutLinkRequest(c.Server, payoutLinkId)
@@ -11100,6 +13179,15 @@ func (c *Client) GetPayoutLink(ctx context.Context, payoutLinkId openapi_types.U
 //
 // For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payout links | Write | `payout-links:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with POST /payout-links/{payout_link_id}/cancel (the `CancelPayoutLink` operationId).
 func (c *Client) CancelPayoutLink(ctx context.Context, payoutLinkId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewCancelPayoutLinkRequest(c.Server, payoutLinkId)
@@ -11122,6 +13210,15 @@ func (c *Client) CancelPayoutLink(ctx context.Context, payoutLinkId openapi_type
 //
 // For more information, see the guides: [Exchange money](https://developer.revolut.com/docs/guides/manage-accounts/exchange-money).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Foreign exchange** | Exchange | Read | `exchange:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /rate (the `GetRate` operationId).
 func (c *Client) GetRate(ctx context.Context, params *GetRateParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetRateRequest(c.Server, params)
@@ -11143,6 +13240,15 @@ func (c *Client) GetRate(ctx context.Context, params *GetRateParams, reqEditors 
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Read | `team-members:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /roles (the `GetRoles` operationId).
 func (c *Client) GetRoles(ctx context.Context, params *GetRolesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetRolesRequest(c.Server, params)
@@ -11163,6 +13269,15 @@ func (c *Client) GetRoles(ctx context.Context, params *GetRolesParams, reqEditor
 // This is useful during testing, when you run out of money in your test account and need to add more.
 //
 // For more information, see the guides: [Test your flows with simulations (Sandbox only)](https://developer.revolut.com/docs/guides/manage-accounts/api-usage-and-testing/test-flows-with-simulations).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Sandbox simulations** | Simulations | Write | `simulations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -11187,6 +13302,15 @@ func (c *Client) SimulateTopUpWithBody(ctx context.Context, contentType string, 
 //
 // For more information, see the guides: [Test your flows with simulations (Sandbox only)](https://developer.revolut.com/docs/guides/manage-accounts/api-usage-and-testing/test-flows-with-simulations).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Sandbox simulations** | Simulations | Write | `simulations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /sandbox/topup (the `SimulateTopUp` operationId).
@@ -11209,6 +13333,15 @@ func (c *Client) SimulateTopUp(ctx context.Context, body SimulateTopUpJSONReques
 // For example, after you make a transfer in Sandbox, you can change its state to `completed`. The resulting state is final and cannot be changed.
 //
 // For more information, see the guides: [Test your flows with simulations (Sandbox only)](https://developer.revolut.com/docs/guides/manage-accounts/api-usage-and-testing/test-flows-with-simulations).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Sandbox simulations** | Simulations | Write | `simulations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with POST /sandbox/transactions/{id}/{action} (the `SimulateTransferStateUpdate` operationId).
 func (c *Client) SimulateTransferStateUpdate(ctx context.Context, id openapi_types.UUID, action SimulateTransferStateUpdateParamsAction, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -11240,6 +13373,15 @@ func (c *Client) SimulateTransferStateUpdate(ctx context.Context, id openapi_typ
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Tax rates | Read | `tax-rates:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /tax-rates (the `GetTaxRates` operationId).
 func (c *Client) GetTaxRates(ctx context.Context, params *GetTaxRatesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetTaxRatesRequest(c.Server, params)
@@ -11262,6 +13404,15 @@ func (c *Client) GetTaxRates(ctx context.Context, params *GetTaxRatesParams, req
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -11287,6 +13438,15 @@ func (c *Client) CreateTaxRateWithBody(ctx context.Context, contentType string, 
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -11320,6 +13480,15 @@ func (c *Client) CreateTaxRate(ctx context.Context, body CreateTaxRateJSONReques
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with DELETE /tax-rates/{tax_rate_id} (the `DeleteTaxRate` operationId).
 func (c *Client) DeleteTaxRate(ctx context.Context, taxRateId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteTaxRateRequest(c.Server, taxRateId)
@@ -11340,6 +13509,15 @@ func (c *Client) DeleteTaxRate(ctx context.Context, taxRateId openapi_types.UUID
 // The details include the tax rate name and percentage, as well as when the tax rate was added to your settings, and when it was last updated.
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Tax rates | Read | `tax-rates:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with GET /tax-rates/{tax_rate_id} (the `GetTaxRate` operationId).
 func (c *Client) GetTaxRate(ctx context.Context, taxRateId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -11363,6 +13541,15 @@ func (c *Client) GetTaxRate(ctx context.Context, taxRateId openapi_types.UUID, r
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -11389,6 +13576,15 @@ func (c *Client) UpdateTaxRateWithBody(ctx context.Context, taxRateId openapi_ty
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with PATCH /tax-rates/{tax_rate_id} (the `UpdateTaxRate` operationId).
@@ -11412,6 +13608,15 @@ func (c *Client) UpdateTaxRate(ctx context.Context, taxRateId openapi_types.UUID
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Read | `team-members:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /team-members (the `GetTeamMembers` operationId).
 func (c *Client) GetTeamMembers(ctx context.Context, params *GetTeamMembersParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetTeamMembersRequest(c.Server, params)
@@ -11433,6 +13638,15 @@ func (c *Client) GetTeamMembers(ctx context.Context, params *GetTeamMembersParam
 // To join your business account, the new team member has to accept this invitation.
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -11457,6 +13671,15 @@ func (c *Client) InviteTeamMemberWithBody(ctx context.Context, contentType strin
 // To join your business account, the new team member has to accept this invitation.
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -11485,6 +13708,15 @@ func (c *Client) InviteTeamMember(ctx context.Context, body InviteTeamMemberJSON
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with DELETE /team-members/{team_member_id} (the `DeleteTeamMember` operationId).
 func (c *Client) DeleteTeamMember(ctx context.Context, teamMemberId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteTeamMemberRequest(c.Server, teamMemberId)
@@ -11503,6 +13735,15 @@ func (c *Client) DeleteTeamMember(ctx context.Context, teamMemberId openapi_type
 // Get information about a specific team member by their ID.
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Read | `team-members:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with GET /team-members/{team_member_id} (the `GetTeamMemberById` operationId).
 func (c *Client) GetTeamMemberById(ctx context.Context, teamMemberId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -11523,6 +13764,15 @@ func (c *Client) GetTeamMemberById(ctx context.Context, teamMemberId openapi_typ
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with DELETE /team-members/{team_member_id}/department (the `UnassignDepartment` operationId).
 func (c *Client) UnassignDepartment(ctx context.Context, teamMemberId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewUnassignDepartmentRequest(c.Server, teamMemberId)
@@ -11541,6 +13791,15 @@ func (c *Client) UnassignDepartment(ctx context.Context, teamMemberId openapi_ty
 // Assign a department to a specific team member.
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members) and [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -11563,6 +13822,15 @@ func (c *Client) AssignDepartmentWithBody(ctx context.Context, teamMemberId open
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members) and [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with PUT /team-members/{team_member_id}/department (the `AssignDepartment` operationId).
@@ -11584,6 +13852,15 @@ func (c *Client) AssignDepartment(ctx context.Context, teamMemberId openapi_type
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with DELETE /team-members/{team_member_id}/manager (the `UnassignManager` operationId).
 func (c *Client) UnassignManager(ctx context.Context, teamMemberId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewUnassignManagerRequest(c.Server, teamMemberId)
@@ -11602,6 +13879,15 @@ func (c *Client) UnassignManager(ctx context.Context, teamMemberId openapi_types
 // Assign a manager to a specific team member.
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -11623,6 +13909,15 @@ func (c *Client) AssignManagerWithBody(ctx context.Context, teamMemberId openapi
 // Assign a manager to a specific team member.
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -11649,6 +13944,15 @@ func (c *Client) AssignManager(ctx context.Context, teamMemberId openapi_types.U
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type.
 //
 // Corresponds with PUT /team-members/{team_member_id}/role (the `UpdateTeamMemberRole` operationId).
@@ -11673,6 +13977,15 @@ func (c *Client) UpdateTeamMemberRoleWithBody(ctx context.Context, teamMemberId 
 // :::
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -11701,6 +14014,15 @@ func (c *Client) UpdateTeamMemberRole(ctx context.Context, teamMemberId openapi_
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with POST /team-members/{team_member_id}/suspend (the `SuspendTeamMember` operationId).
 func (c *Client) SuspendTeamMember(ctx context.Context, teamMemberId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewSuspendTeamMemberRequest(c.Server, teamMemberId)
@@ -11723,6 +14045,15 @@ func (c *Client) SuspendTeamMember(ctx context.Context, teamMemberId openapi_typ
 // :::
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with POST /team-members/{team_member_id}/unsuspend (the `UnsuspendTeamMember` operationId).
 func (c *Client) UnsuspendTeamMember(ctx context.Context, teamMemberId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -11749,6 +14080,15 @@ func (c *Client) UnsuspendTeamMember(ctx context.Context, teamMemberId openapi_t
 // :::
 //
 // For more details, see the guides: [Retrieve transactions](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-transactions).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounts** | Transactions | Read | `transactions:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with GET /transaction/{id} (the `GetTransaction` operationId).
 func (c *Client) GetTransaction(ctx context.Context, id string, params *GetTransactionParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -11777,6 +14117,15 @@ func (c *Client) GetTransaction(ctx context.Context, id string, params *GetTrans
 //
 // For more details, see the guides: [Retrieve transactions](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-transactions).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounts** | Transactions | Read | `transactions:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /transactions (the `GetTransactions` operationId).
 func (c *Client) GetTransactions(ctx context.Context, params *GetTransactionsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetTransactionsRequest(c.Server, params)
@@ -11797,6 +14146,15 @@ func (c *Client) GetTransactions(ctx context.Context, params *GetTransactionsPar
 // The resulting transaction has the type `transfer`.
 //
 // For more information, see the guides: [Send money](https://developer.revolut.com/docs/guides/manage-accounts/transfers/send-money).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Transfers | Write | `transfers:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -11821,6 +14179,15 @@ func (c *Client) CreateTransferWithBody(ctx context.Context, contentType string,
 //
 // For more information, see the guides: [Send money](https://developer.revolut.com/docs/guides/manage-accounts/transfers/send-money).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Transfers | Write | `transfers:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /transfer (the `CreateTransfer` operationId).
@@ -11843,6 +14210,15 @@ func (c *Client) CreateTransfer(ctx context.Context, body CreateTransferJSONRequ
 //
 // After you retrieve the results, use the appropriate reason code in the `transfer_reason_code` field when [making a transfer to a counterparty](https://developer.revolut.com/docs/api/business#create-payment) or [creating a payout link](https://developer.revolut.com/docs/api/business#create-payout-link).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Transfer reasons | Read | `transfer-reasons:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /transfer-reasons (the `GetTransferReasons` operationId).
 func (c *Client) GetTransferReasons(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetTransferReasonsRequest(c.Server)
@@ -11859,6 +14235,15 @@ func (c *Client) GetTransferReasons(ctx context.Context, reqEditors ...RequestEd
 // DeleteWebhookV1 Delete a webhook
 //
 // Delete a webhook so that events are not sent to the specified URL any more.
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with DELETE /webhook (the `DeleteWebhookV1` operationId).
 // Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
@@ -11878,6 +14263,15 @@ func (c *Client) DeleteWebhookV1(ctx context.Context, reqEditors ...RequestEdito
 //
 // Get your webhook URL.
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /webhook (the `GetWebhookV1` operationId).
 // Deprecated: this operation has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 func (c *Client) GetWebhookV1(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -11895,6 +14289,15 @@ func (c *Client) GetWebhookV1(ctx context.Context, reqEditors ...RequestEditorFn
 // SetUpWebhookWithBody Set a webhook
 //
 // Set up a webhook URL so that event notifications are pushed to the specified URL. Only HTTPS URLs are supported.
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -11915,6 +14318,15 @@ func (c *Client) SetUpWebhookWithBody(ctx context.Context, contentType string, b
 // SetUpWebhook Set a webhook
 //
 // Set up a webhook URL so that event notifications are pushed to the specified URL. Only HTTPS URLs are supported.
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -11938,6 +14350,15 @@ func (c *Client) SetUpWebhook(ctx context.Context, body SetUpWebhookJSONRequestB
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#retrieve-a-list-of-webhooks).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /webhooks (the `GetWebhooks` operationId).
 func (c *Client) GetWebhooks(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetWebhooksRequest(c.Server)
@@ -11957,6 +14378,15 @@ func (c *Client) GetWebhooks(ctx context.Context, reqEditors ...RequestEditorFn)
 // Only HTTPS URLs are supported.
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#create-a-webhook).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -11979,6 +14409,15 @@ func (c *Client) CreateWebhookWithBody(ctx context.Context, contentType string, 
 // Only HTTPS URLs are supported.
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#create-a-webhook).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -12003,6 +14442,15 @@ func (c *Client) CreateWebhook(ctx context.Context, body CreateWebhookJSONReques
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#delete-a-webhook).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with DELETE /webhooks/{webhook_id} (the `DeleteWebhook` operationId).
 func (c *Client) DeleteWebhook(ctx context.Context, webhookId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteWebhookRequest(c.Server, webhookId)
@@ -12021,6 +14469,15 @@ func (c *Client) DeleteWebhook(ctx context.Context, webhookId openapi_types.UUID
 // Get the information about a specific webhook by ID.
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#retrieve-a-specific-webhook).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Corresponds with GET /webhooks/{webhook_id} (the `GetWebhook` operationId).
 func (c *Client) GetWebhook(ctx context.Context, webhookId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -12042,6 +14499,15 @@ func (c *Client) GetWebhook(ctx context.Context, webhookId openapi_types.UUID, r
 // You must specify at least one of these two. The fields that you don't specify are not updated.
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#update-a-webhook).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -12065,6 +14531,15 @@ func (c *Client) UpdateWebhookWithBody(ctx context.Context, webhookId openapi_ty
 // You must specify at least one of these two. The fields that you don't specify are not updated.
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#update-a-webhook).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -12093,6 +14568,15 @@ func (c *Client) UpdateWebhook(ctx context.Context, webhookId openapi_types.UUID
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#retrieve-a-list-of-failed-webhook-events).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Corresponds with GET /webhooks/{webhook_id}/failed-events (the `GetFailedWebhookEvents` operationId).
 func (c *Client) GetFailedWebhookEvents(ctx context.Context, webhookId openapi_types.UUID, params *GetFailedWebhookEventsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetFailedWebhookEventsRequest(c.Server, webhookId, params)
@@ -12111,6 +14595,15 @@ func (c *Client) GetFailedWebhookEvents(ctx context.Context, webhookId openapi_t
 // Rotate a signing secret for a specific webhook.
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#rotate-a-webhook-signing-secret).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type.
 //
@@ -12132,6 +14625,15 @@ func (c *Client) RotateWebhookSigningSecretWithBody(ctx context.Context, webhook
 // Rotate a signing secret for a specific webhook.
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#rotate-a-webhook-signing-secret).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type.
 //
@@ -16779,6 +19281,15 @@ type ClientWithResponsesInterface interface {
 	// - For examples, refer to the request body samples.
 	// - For more information, see the guides: [Validate an account name (CoP/VoP)](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/confirmation-of-payee).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Write | `counterparties:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /account-name-validation (the `ValidateAccountName` operationId).
@@ -16807,6 +19318,15 @@ type ClientWithResponsesInterface interface {
 	// - For examples, refer to the request body samples.
 	// - For more information, see the guides: [Validate an account name (CoP/VoP)](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/confirmation-of-payee).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Write | `counterparties:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /account-name-validation (the `ValidateAccountName` operationId).
@@ -16829,6 +19349,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Accounting categories | Read | `accounting-categories:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /accounting-categories (the `GetAccountingCategories` operationId).
@@ -16844,6 +19373,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /accounting-categories (the `CreateAccountingCategory` operationId).
@@ -16858,6 +19396,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -16881,6 +19428,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with DELETE /accounting-categories/{accounting_category_id} (the `DeleteAccountingCategory` operationId).
@@ -16893,6 +19449,15 @@ type ClientWithResponsesInterface interface {
 	// The details include the accounting category name, code, and default tax rate, as well as when the accounting category was added to your settings, and when it was last updated.
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Accounting categories | Read | `accounting-categories:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -16909,6 +19474,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PATCH /accounting-categories/{accounting_category_id} (the `UpdateAccountingCategory` operationId).
@@ -16924,6 +19498,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PATCH /accounting-categories/{accounting_category_id} (the `UpdateAccountingCategory` operationId).
@@ -16934,6 +19517,15 @@ type ClientWithResponsesInterface interface {
 	// Get a list of all your accounts.
 	//
 	// For more information, see the guides: [Get your account details](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/manage-your-accounts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounts** | Accounts | Read | `accounts:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -16947,6 +19539,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Get your account details](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/manage-your-accounts).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounts** | Accounts | Read | `accounts:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /accounts/{account_id} (the `GetAccount` operationId).
@@ -16958,6 +19559,15 @@ type ClientWithResponsesInterface interface {
 	// Specify the account by its ID.
 	//
 	// For more information, see the guides: [Get your account details](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/manage-your-accounts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounts** | Accounts | Read | `accounts:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -16976,6 +19586,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card invitations | Read | `card-invitations:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /card-invitations (the `GetCardInvitations` operationId).
@@ -16991,6 +19610,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card invitations | Write | `card-invitations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -17008,6 +19636,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card invitations | Write | `card-invitations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /card-invitations (the `CreateCardInvitation` operationId).
@@ -17022,6 +19659,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card invitations | Read | `card-invitations:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -17039,6 +19685,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card invitations | Write | `card-invitations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PATCH /card-invitations/{card_invitation_id} (the `UpdateCardInvitation` operationId).
@@ -17054,6 +19709,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card invitations | Write | `card-invitations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -17076,6 +19740,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card invitations | Write | `card-invitations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /card-invitations/{card_invitation_id}/cancel (the `CancelCardInvitation` operationId).
@@ -17095,6 +19768,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Read | `cards:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /cards (the `GetCards` operationId).
@@ -17113,6 +19795,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /cards (the `CreateCard` operationId).
@@ -17130,6 +19821,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -17151,6 +19851,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with DELETE /cards/{card_id} (the `DeleteCard` operationId).
@@ -17165,6 +19874,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Read | `cards:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -17181,6 +19899,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PATCH /cards/{card_id} (the `UpdateCard` operationId).
@@ -17195,6 +19922,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -17223,6 +19959,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PUT /cards/{card_id}/contacts (the `UpdateCardContacts` operationId).
@@ -17250,6 +19995,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PUT /cards/{card_id}/contacts (the `UpdateCardContacts` operationId).
@@ -17268,6 +20022,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /cards/{card_id}/freeze (the `FreezeCard` operationId).
@@ -17284,6 +20047,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -17321,6 +20093,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PUT /cards/{card_id}/references (the `UpdateCardReferences` operationId).
@@ -17357,6 +20138,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PUT /cards/{card_id}/references (the `UpdateCardReferences` operationId).
@@ -17373,6 +20163,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Card sensitive details | Read | `card-sensitive-details:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -17391,6 +20190,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -17422,6 +20230,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Cards** | Cards | Write | `cards:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /cards/{card_id}/unlock (the `UnlockCard` operationId).
@@ -17439,6 +20256,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Retrieve counterparties](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/retrieve-counterparties).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Read | `counterparties:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /counterparties (the `GetCounterparties` operationId).
@@ -17455,6 +20281,15 @@ type ClientWithResponsesInterface interface {
 	// Use this endpoint to discover which country and currency combinations are supported before checking field requirements with the [Check counterparty field requirements endpoint](https://developer.revolut.com/docs/api/business#get-counterparty-requirements).
 	//
 	// For more details, see the guide: **Check supported counterparty countries and currencies** section in [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty#check-supported-counterparty-countries-and-currencies).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Read | `counterparties:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -17476,6 +20311,15 @@ type ClientWithResponsesInterface interface {
 	// The input parameters (`country`, `currency`, and `recipient_type`) are intentionally excluded from the response.
 	//
 	// For more details, see the guide: **Check counterparty field requirements** section in [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty#check-counterparty-field-requirements).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Read | `counterparties:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -17499,6 +20343,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guide: [Update a counterparty's payment method](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/update-counterparty-payment-method).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Write | `counterparties:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PATCH /counterparties/{counterparty_id}/payment-methods/{payment_method_id} (the `UpdateCounterpartyPaymentMethod` operationId).
@@ -17520,6 +20373,15 @@ type ClientWithResponsesInterface interface {
 	// Omitted optional fields will retain their existing values.
 	//
 	// For more information, see the guide: [Update a counterparty's payment method](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/update-counterparty-payment-method).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Write | `counterparties:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -17597,6 +20459,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Write | `counterparties:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /counterparty (the `AddCounterparty` operationId).
@@ -17673,6 +20544,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Write | `counterparties:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /counterparty (the `AddCounterparty` operationId).
@@ -17682,6 +20562,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// Delete a counterparty with the given ID. When a counterparty is deleted, you cannot make any payments to the counterparty.
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Write | `counterparties:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with DELETE /counterparty/{counterparty_id} (the `DeleteCounterparty` operationId).
@@ -17690,6 +20579,15 @@ type ClientWithResponsesInterface interface {
 	// GetCounterpartyWithResponse Retrieve a counterparty
 	//
 	// Get the information about a specific counterparty by ID.
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Counterparties | Read | `counterparties:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -17702,6 +20600,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Departments | Read | `departments:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /departments (the `GetDepartments` operationId).
@@ -17713,6 +20620,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Departments | Write | `departments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /departments (the `CreateDepartment` operationId).
@@ -17723,6 +20639,15 @@ type ClientWithResponsesInterface interface {
 	// Create a new department in your business.
 	//
 	// For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Departments | Write | `departments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -17740,6 +20665,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Departments | Write | `departments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with DELETE /departments/{department_id} (the `DeleteDepartment` operationId).
@@ -17750,6 +20684,15 @@ type ClientWithResponsesInterface interface {
 	// Get details of a specific department by its ID.
 	//
 	// For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Departments | Read | `departments:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -17762,6 +20705,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Departments | Write | `departments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PATCH /departments/{department_id} (the `UpdateDepartment` operationId).
@@ -17772,6 +20724,15 @@ type ClientWithResponsesInterface interface {
 	// Update the name of a specific department.
 	//
 	// For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Departments | Write | `departments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -17800,6 +20761,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Exchange money](https://developer.revolut.com/docs/guides/manage-accounts/exchange-money).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Foreign exchange** | Exchange | Write | `exchange:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /exchange (the `ExchangeMoney` operationId).
@@ -17827,6 +20797,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Exchange money](https://developer.revolut.com/docs/guides/manage-accounts/exchange-money).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Foreign exchange** | Exchange | Write | `exchange:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /exchange (the `ExchangeMoney` operationId).
@@ -17838,6 +20817,15 @@ type ClientWithResponsesInterface interface {
 	// With this endpoint, you can retrieve all exchange reasons available to your business account.
 	//
 	// After you retrieve the results, use the appropriate reason code in the `exchange_reason_code` field when [exchanging money](https://developer.revolut.com/docs/api/business#exchange-money) or [making a payment](https://developer.revolut.com/docs/api/business#create-payment) that involves foreign currency exchange.
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Foreign exchange** | Exchange reasons | Read | `exchange-reasons:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -17861,6 +20849,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Retrieve expenses and receipts](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-expenses).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Expenses** | Expenses | Read | `expenses:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /expenses (the `GetExpenses` operationId).
@@ -17878,6 +20875,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Retrieve expenses and receipts](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-expenses).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Expenses** | Expenses | Read | `expenses:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /expenses/{expense_id} (the `GetExpense` operationId).
@@ -17893,6 +20899,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Retrieve expenses and receipts](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-expenses).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Expenses** | Expenses | Read | `expenses:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /expenses/{expense_id}/receipts/{receipt_id}/content (the `GetExpenseReceipt` operationId).
@@ -17905,6 +20920,15 @@ type ClientWithResponsesInterface interface {
 	// The label groups are sorted by the `created_at` date in reverse chronological order, and they're **paginated**.
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Read | `labels:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -17922,6 +20946,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /label-groups (the `CreateLabelGroup` operationId).
@@ -17937,6 +20970,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -17960,6 +21002,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with DELETE /label-groups/{group_id} (the `DeleteLabelGroup` operationId).
@@ -17972,6 +21023,15 @@ type ClientWithResponsesInterface interface {
 	// The details include the label group name, as well as when the label group was added to your settings, and when it was last updated.
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Read | `labels:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -17988,6 +21048,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PATCH /label-groups/{group_id} (the `UpdateLabelGroup` operationId).
@@ -18002,6 +21071,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -18025,6 +21103,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Read | `labels:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /label-groups/{group_id}/labels (the `GetLabels` operationId).
@@ -18042,6 +21129,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /label-groups/{group_id}/labels (the `CreateLabel` operationId).
@@ -18058,6 +21154,15 @@ type ClientWithResponsesInterface interface {
 	// The labels are used for accounting and can be applied to your financial records, such as expenses.
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -18081,6 +21186,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with DELETE /label-groups/{group_id}/labels/{label_id} (the `DeleteLabel` operationId).
@@ -18095,6 +21209,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -18111,6 +21234,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Labels | Write | `labels:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PATCH /label-groups/{group_id}/labels/{label_id} (the `UpdateLabel` operationId).
@@ -18126,6 +21258,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Send money via bank transfer](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers) and [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payments | Write | `payments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /pay (the `CreatePayment` operationId).
@@ -18140,6 +21281,15 @@ type ClientWithResponsesInterface interface {
 	// If the counterparty has multiple payment methods available, for example, 2 accounts, or 1 account and 1 card, you **must specify the account or card** to which you want to transfer the money (`receiver.account_id` or `receiver.card_id` respectively).
 	//
 	// For more details, see the guides: [Send money via bank transfer](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers) and [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payments | Write | `payments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -18166,6 +21316,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: **Check transfer field requirements** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-transfer-field-requirements) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-transfer-field-requirements).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payments | Write | `payments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /pay/fields (the `GetPaymentRequirements` operationId).
@@ -18191,6 +21350,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: **Check transfer field requirements** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-transfer-field-requirements) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-transfer-field-requirements).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payments | Write | `payments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /pay/fields (the `GetPaymentRequirements` operationId).
@@ -18212,6 +21380,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more details, see the guides: **Check costs and delivery time before paying** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-costs-and-delivery-time-before-paying) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-costs-and-delivery-time-before-paying).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payments | Write | `payments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -18235,6 +21412,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: **Check costs and delivery time before paying** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-costs-and-delivery-time-before-paying) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-costs-and-delivery-time-before-paying).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payments | Write | `payments:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /pay/indicative-quote (the `GetIndicativeQuote` operationId).
@@ -18249,6 +21435,15 @@ type ClientWithResponsesInterface interface {
 	// The response lists the drafts with their details, such as the number of payments included in the draft, but not the payment details.
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Read | `payment-drafts:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -18270,6 +21465,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information on use cases and other details, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /payment-drafts (the `CreatePaymentDraft` operationId).
@@ -18290,6 +21494,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information on use cases and other details, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /payment-drafts (the `CreatePaymentDraft` operationId).
@@ -18302,6 +21515,15 @@ type ClientWithResponsesInterface interface {
 	// You can delete a payment draft only if it hasn't been [sent for processing](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts#send-drafts-for-processing).
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -18317,6 +21539,15 @@ type ClientWithResponsesInterface interface {
 	// The response lists the details of the payment(s) included in the draft, as well as the draft details.
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Read | `payment-drafts:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -18336,6 +21567,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PATCH /payment-drafts/{payment_draft_id} (the `UpdatePaymentDraft` operationId).
@@ -18354,6 +21594,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PATCH /payment-drafts/{payment_draft_id} (the `UpdatePaymentDraft` operationId).
@@ -18370,6 +21619,15 @@ type ClientWithResponsesInterface interface {
 	// The payment uses the same shape as the payments in the [create payment draft](#create-payment-draft) request.
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -18388,6 +21646,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /payment-drafts/{payment_draft_id}/payments (the `AddPaymentDraftPayment` operationId).
@@ -18402,6 +21669,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -18420,6 +21696,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PATCH /payment-drafts/{payment_draft_id}/payments/{payment_id} (the `UpdatePaymentDraftPayment` operationId).
@@ -18436,6 +21721,15 @@ type ClientWithResponsesInterface interface {
 	// All fields are optional — omit what should not change. Other payments in the draft are unaffected.
 	//
 	// For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -18458,6 +21752,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payout links | Read | `payout-links:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /payout-links (the `GetPayoutLinks` operationId).
@@ -18473,6 +21776,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payout links | Write | `payout-links:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -18490,6 +21802,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payout links | Write | `payout-links:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /payout-links (the `CreatePayoutLink` operationId).
@@ -18504,6 +21825,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payout links | Read | `payout-links:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -18521,6 +21851,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Payout links | Write | `payout-links:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /payout-links/{payout_link_id}/cancel (the `CancelPayoutLink` operationId).
@@ -18535,6 +21874,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Exchange money](https://developer.revolut.com/docs/guides/manage-accounts/exchange-money).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Foreign exchange** | Exchange | Read | `exchange:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /rate (the `GetRate` operationId).
@@ -18547,6 +21895,15 @@ type ClientWithResponsesInterface interface {
 	// The results are paginated and sorted by the `created_at` date in reverse chronological order.
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Read | `team-members:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -18561,6 +21918,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Test your flows with simulations (Sandbox only)](https://developer.revolut.com/docs/guides/manage-accounts/api-usage-and-testing/test-flows-with-simulations).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Sandbox simulations** | Simulations | Write | `simulations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /sandbox/topup (the `SimulateTopUp` operationId).
@@ -18574,6 +21940,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Test your flows with simulations (Sandbox only)](https://developer.revolut.com/docs/guides/manage-accounts/api-usage-and-testing/test-flows-with-simulations).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Sandbox simulations** | Simulations | Write | `simulations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /sandbox/topup (the `SimulateTopUp` operationId).
@@ -18586,6 +21961,15 @@ type ClientWithResponsesInterface interface {
 	// For example, after you make a transfer in Sandbox, you can change its state to `completed`. The resulting state is final and cannot be changed.
 	//
 	// For more information, see the guides: [Test your flows with simulations (Sandbox only)](https://developer.revolut.com/docs/guides/manage-accounts/api-usage-and-testing/test-flows-with-simulations).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Sandbox simulations** | Simulations | Write | `simulations:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -18609,6 +21993,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Tax rates | Read | `tax-rates:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /tax-rates (the `GetTaxRates` operationId).
@@ -18624,6 +22017,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /tax-rates (the `CreateTaxRate` operationId).
@@ -18638,6 +22040,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -18661,6 +22072,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with DELETE /tax-rates/{tax_rate_id} (the `DeleteTaxRate` operationId).
@@ -18673,6 +22093,15 @@ type ClientWithResponsesInterface interface {
 	// The details include the tax rate name and percentage, as well as when the tax rate was added to your settings, and when it was last updated.
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Tax rates | Read | `tax-rates:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -18689,6 +22118,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PATCH /tax-rates/{tax_rate_id} (the `UpdateTaxRate` operationId).
@@ -18704,6 +22142,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PATCH /tax-rates/{tax_rate_id} (the `UpdateTaxRate` operationId).
@@ -18716,6 +22163,15 @@ type ClientWithResponsesInterface interface {
 	// The results are paginated and sorted by the `created_at` date in reverse chronological order.
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Read | `team-members:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -18731,6 +22187,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /team-members (the `InviteTeamMember` operationId).
@@ -18744,6 +22209,15 @@ type ClientWithResponsesInterface interface {
 	// To join your business account, the new team member has to accept this invitation.
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -18762,6 +22236,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with DELETE /team-members/{team_member_id} (the `DeleteTeamMember` operationId).
@@ -18772,6 +22255,15 @@ type ClientWithResponsesInterface interface {
 	// Get information about a specific team member by their ID.
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Read | `team-members:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -18784,6 +22276,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with DELETE /team-members/{team_member_id}/department (the `UnassignDepartment` operationId).
@@ -18794,6 +22295,15 @@ type ClientWithResponsesInterface interface {
 	// Assign a department to a specific team member.
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members) and [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -18806,6 +22316,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members) and [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PUT /team-members/{team_member_id}/department (the `AssignDepartment` operationId).
@@ -18816,6 +22335,15 @@ type ClientWithResponsesInterface interface {
 	// Remove the manager assignment from a specific team member.
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -18828,6 +22356,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PUT /team-members/{team_member_id}/manager (the `AssignManager` operationId).
@@ -18838,6 +22375,15 @@ type ClientWithResponsesInterface interface {
 	// Assign a manager to a specific team member.
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -18854,6 +22400,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PUT /team-members/{team_member_id}/role (the `UpdateTeamMemberRole` operationId).
@@ -18868,6 +22423,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -18886,6 +22450,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /team-members/{team_member_id}/suspend (the `SuspendTeamMember` operationId).
@@ -18900,6 +22473,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Team** | Team members | Write | `team-members:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -18918,6 +22500,15 @@ type ClientWithResponsesInterface interface {
 	// :::
 	//
 	// For more details, see the guides: [Retrieve transactions](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-transactions).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounts** | Transactions | Read | `transactions:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -18938,6 +22529,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more details, see the guides: [Retrieve transactions](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-transactions).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Accounts** | Transactions | Read | `transactions:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /transactions (the `GetTransactions` operationId).
@@ -18950,6 +22550,15 @@ type ClientWithResponsesInterface interface {
 	// The resulting transaction has the type `transfer`.
 	//
 	// For more information, see the guides: [Send money](https://developer.revolut.com/docs/guides/manage-accounts/transfers/send-money).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Transfers | Write | `transfers:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -18964,6 +22573,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [Send money](https://developer.revolut.com/docs/guides/manage-accounts/transfers/send-money).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Transfers | Write | `transfers:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /transfer (the `CreateTransfer` operationId).
@@ -18976,6 +22594,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// After you retrieve the results, use the appropriate reason code in the `transfer_reason_code` field when [making a transfer to a counterparty](https://developer.revolut.com/docs/api/business#create-payment) or [creating a payout link](https://developer.revolut.com/docs/api/business#create-payout-link).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Transfers** | Transfer reasons | Read | `transfer-reasons:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /transfer-reasons (the `GetTransferReasons` operationId).
@@ -18984,6 +22611,15 @@ type ClientWithResponsesInterface interface {
 	// DeleteWebhookV1WithResponse Delete a webhook
 	//
 	// Delete a webhook so that events are not sent to the specified URL any more.
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -18996,6 +22632,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// Get your webhook URL.
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /webhook (the `GetWebhookV1` operationId).
@@ -19007,6 +22652,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// Set up a webhook URL so that event notifications are pushed to the specified URL. Only HTTPS URLs are supported.
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /webhook (the `SetUpWebhook` operationId).
@@ -19017,6 +22671,15 @@ type ClientWithResponsesInterface interface {
 	// SetUpWebhookWithResponse Set a webhook
 	//
 	// Set up a webhook URL so that event notifications are pushed to the specified URL. Only HTTPS URLs are supported.
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -19031,6 +22694,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#retrieve-a-list-of-webhooks).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /webhooks (the `GetWebhooks` operationId).
@@ -19043,6 +22715,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#create-a-webhook).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /webhooks (the `CreateWebhook` operationId).
@@ -19054,6 +22735,15 @@ type ClientWithResponsesInterface interface {
 	// Only HTTPS URLs are supported.
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#create-a-webhook).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -19068,6 +22758,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#delete-a-webhook).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with DELETE /webhooks/{webhook_id} (the `DeleteWebhook` operationId).
@@ -19078,6 +22777,15 @@ type ClientWithResponsesInterface interface {
 	// Get the information about a specific webhook by ID.
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#retrieve-a-specific-webhook).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
@@ -19092,6 +22800,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#update-a-webhook).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with PATCH /webhooks/{webhook_id} (the `UpdateWebhook` operationId).
@@ -19104,6 +22821,15 @@ type ClientWithResponsesInterface interface {
 	// You must specify at least one of these two. The fields that you don't specify are not updated.
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#update-a-webhook).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -19122,6 +22848,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#retrieve-a-list-of-failed-webhook-events).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /webhooks/{webhook_id}/failed-events (the `GetFailedWebhookEvents` operationId).
@@ -19133,6 +22868,15 @@ type ClientWithResponsesInterface interface {
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#rotate-a-webhook-signing-secret).
 	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /webhooks/{webhook_id}/rotate-signing-secret (the `RotateWebhookSigningSecret` operationId).
@@ -19143,6 +22887,15 @@ type ClientWithResponsesInterface interface {
 	// Rotate a signing secret for a specific webhook.
 	//
 	// For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#rotate-a-webhook-signing-secret).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
@@ -26260,6 +30013,15 @@ func (r RotateWebhookSigningSecretResponse) ContentType() string {
 // - For examples, refer to the request body samples.
 // - For more information, see the guides: [Validate an account name (CoP/VoP)](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/confirmation-of-payee).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Write | `counterparties:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /account-name-validation (the `ValidateAccountName` operationId).
@@ -26295,6 +30057,15 @@ func (c *ClientWithResponses) ValidateAccountNameWithBodyWithResponse(ctx contex
 // - For examples, refer to the request body samples.
 // - For more information, see the guides: [Validate an account name (CoP/VoP)](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/confirmation-of-payee).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Write | `counterparties:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /account-name-validation (the `ValidateAccountName` operationId).
@@ -26323,6 +30094,15 @@ func (c *ClientWithResponses) ValidateAccountNameWithResponse(ctx context.Contex
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Accounting categories | Read | `accounting-categories:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /accounting-categories (the `GetAccountingCategories` operationId).
@@ -26344,6 +30124,15 @@ func (c *ClientWithResponses) GetAccountingCategoriesWithResponse(ctx context.Co
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /accounting-categories (the `CreateAccountingCategory` operationId).
@@ -26364,6 +30153,15 @@ func (c *ClientWithResponses) CreateAccountingCategoryWithBodyWithResponse(ctx c
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -26393,6 +30191,15 @@ func (c *ClientWithResponses) CreateAccountingCategoryWithResponse(ctx context.C
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with DELETE /accounting-categories/{accounting_category_id} (the `DeleteAccountingCategory` operationId).
@@ -26411,6 +30218,15 @@ func (c *ClientWithResponses) DeleteAccountingCategoryWithResponse(ctx context.C
 // The details include the accounting category name, code, and default tax rate, as well as when the accounting category was added to your settings, and when it was last updated.
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Accounting categories | Read | `accounting-categories:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -26433,6 +30249,15 @@ func (c *ClientWithResponses) GetAccountingCategoryWithResponse(ctx context.Cont
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PATCH /accounting-categories/{accounting_category_id} (the `UpdateAccountingCategory` operationId).
@@ -26454,6 +30279,15 @@ func (c *ClientWithResponses) UpdateAccountingCategoryWithBodyWithResponse(ctx c
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage accounting categories](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-categories).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Accounting categories | Write | `accounting-categories:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PATCH /accounting-categories/{accounting_category_id} (the `UpdateAccountingCategory` operationId).
@@ -26470,6 +30304,15 @@ func (c *ClientWithResponses) UpdateAccountingCategoryWithResponse(ctx context.C
 // Get a list of all your accounts.
 //
 // For more information, see the guides: [Get your account details](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/manage-your-accounts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounts** | Accounts | Read | `accounts:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -26489,6 +30332,15 @@ func (c *ClientWithResponses) GetAccountsWithResponse(ctx context.Context, reqEd
 //
 // For more information, see the guides: [Get your account details](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/manage-your-accounts).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounts** | Accounts | Read | `accounts:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /accounts/{account_id} (the `GetAccount` operationId).
@@ -26506,6 +30358,15 @@ func (c *ClientWithResponses) GetAccountWithResponse(ctx context.Context, accoun
 // Specify the account by its ID.
 //
 // For more information, see the guides: [Get your account details](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/manage-your-accounts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounts** | Accounts | Read | `accounts:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -26530,6 +30391,15 @@ func (c *ClientWithResponses) GetAccountDetailsWithResponse(ctx context.Context,
 //
 // For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card invitations | Read | `card-invitations:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /card-invitations (the `GetCardInvitations` operationId).
@@ -26551,6 +30421,15 @@ func (c *ClientWithResponses) GetCardInvitationsWithResponse(ctx context.Context
 // :::
 //
 // For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card invitations | Write | `card-invitations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -26574,6 +30453,15 @@ func (c *ClientWithResponses) CreateCardInvitationWithBodyWithResponse(ctx conte
 //
 // For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card invitations | Write | `card-invitations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /card-invitations (the `CreateCardInvitation` operationId).
@@ -26594,6 +30482,15 @@ func (c *ClientWithResponses) CreateCardInvitationWithResponse(ctx context.Conte
 // :::
 //
 // For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card invitations | Read | `card-invitations:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -26617,6 +30514,15 @@ func (c *ClientWithResponses) GetCardInvitationWithResponse(ctx context.Context,
 //
 // For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card invitations | Write | `card-invitations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PATCH /card-invitations/{card_invitation_id} (the `UpdateCardInvitation` operationId).
@@ -26638,6 +30544,15 @@ func (c *ClientWithResponses) UpdateCardInvitationWithBodyWithResponse(ctx conte
 // :::
 //
 // For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card invitations | Write | `card-invitations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -26666,6 +30581,15 @@ func (c *ClientWithResponses) UpdateCardInvitationWithResponse(ctx context.Conte
 //
 // For more information, see the guides: [Manage card invitations](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-card-invitations).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card invitations | Write | `card-invitations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /card-invitations/{card_invitation_id}/cancel (the `CancelCardInvitation` operationId).
@@ -26691,6 +30615,15 @@ func (c *ClientWithResponses) CancelCardInvitationWithResponse(ctx context.Conte
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Read | `cards:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /cards (the `GetCards` operationId).
@@ -26715,6 +30648,15 @@ func (c *ClientWithResponses) GetCardsWithResponse(ctx context.Context, params *
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /cards (the `CreateCard` operationId).
@@ -26738,6 +30680,15 @@ func (c *ClientWithResponses) CreateCardWithBodyWithResponse(ctx context.Context
 // :::
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -26765,6 +30716,15 @@ func (c *ClientWithResponses) CreateCardWithResponse(ctx context.Context, body C
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with DELETE /cards/{card_id} (the `DeleteCard` operationId).
@@ -26785,6 +30745,15 @@ func (c *ClientWithResponses) DeleteCardWithResponse(ctx context.Context, cardId
 // :::
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Read | `cards:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -26807,6 +30776,15 @@ func (c *ClientWithResponses) GetCardWithResponse(ctx context.Context, cardId op
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PATCH /cards/{card_id} (the `UpdateCard` operationId).
@@ -26827,6 +30805,15 @@ func (c *ClientWithResponses) UpdateCardWithBodyWithResponse(ctx context.Context
 // :::
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -26861,6 +30848,15 @@ func (c *ClientWithResponses) UpdateCardWithResponse(ctx context.Context, cardId
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PUT /cards/{card_id}/contacts (the `UpdateCardContacts` operationId).
@@ -26894,6 +30890,15 @@ func (c *ClientWithResponses) UpdateCardContactsWithBodyWithResponse(ctx context
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PUT /cards/{card_id}/contacts (the `UpdateCardContacts` operationId).
@@ -26918,6 +30923,15 @@ func (c *ClientWithResponses) UpdateCardContactsWithResponse(ctx context.Context
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /cards/{card_id}/freeze (the `FreezeCard` operationId).
@@ -26940,6 +30954,15 @@ func (c *ClientWithResponses) FreezeCardWithResponse(ctx context.Context, cardId
 // :::
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -26983,6 +31006,15 @@ func (c *ClientWithResponses) LockCardWithResponse(ctx context.Context, cardId o
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PUT /cards/{card_id}/references (the `UpdateCardReferences` operationId).
@@ -27025,6 +31057,15 @@ func (c *ClientWithResponses) UpdateCardReferencesWithBodyWithResponse(ctx conte
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PUT /cards/{card_id}/references (the `UpdateCardReferences` operationId).
@@ -27047,6 +31088,15 @@ func (c *ClientWithResponses) UpdateCardReferencesWithResponse(ctx context.Conte
 // :::
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Card sensitive details | Read | `card-sensitive-details:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -27071,6 +31121,15 @@ func (c *ClientWithResponses) GetSensitiveCardDetailsWithResponse(ctx context.Co
 // :::
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -27108,6 +31167,15 @@ func (c *ClientWithResponses) UnfreezeCardWithResponse(ctx context.Context, card
 //
 // For more information, see the guides: [Manage cards](https://developer.revolut.com/docs/guides/manage-accounts/cards/manage-cards).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Cards** | Cards | Write | `cards:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /cards/{card_id}/unlock (the `UnlockCard` operationId).
@@ -27131,6 +31199,15 @@ func (c *ClientWithResponses) UnlockCardWithResponse(ctx context.Context, cardId
 //
 // For more information, see the guides: [Retrieve counterparties](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/retrieve-counterparties).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Read | `counterparties:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /counterparties (the `GetCounterparties` operationId).
@@ -27153,6 +31230,15 @@ func (c *ClientWithResponses) GetCounterpartiesWithResponse(ctx context.Context,
 // Use this endpoint to discover which country and currency combinations are supported before checking field requirements with the [Check counterparty field requirements endpoint](https://developer.revolut.com/docs/api/business#get-counterparty-requirements).
 //
 // For more details, see the guide: **Check supported counterparty countries and currencies** section in [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty#check-supported-counterparty-countries-and-currencies).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Read | `counterparties:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -27180,6 +31266,15 @@ func (c *ClientWithResponses) GetCounterpartyCountriesWithResponse(ctx context.C
 // The input parameters (`country`, `currency`, and `recipient_type`) are intentionally excluded from the response.
 //
 // For more details, see the guide: **Check counterparty field requirements** section in [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty#check-counterparty-field-requirements).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Read | `counterparties:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -27209,6 +31304,15 @@ func (c *ClientWithResponses) GetCounterpartyRequirementsWithResponse(ctx contex
 //
 // For more information, see the guide: [Update a counterparty's payment method](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/update-counterparty-payment-method).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Write | `counterparties:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PATCH /counterparties/{counterparty_id}/payment-methods/{payment_method_id} (the `UpdateCounterpartyPaymentMethod` operationId).
@@ -27236,6 +31340,15 @@ func (c *ClientWithResponses) UpdateCounterpartyPaymentMethodWithBodyWithRespons
 // Omitted optional fields will retain their existing values.
 //
 // For more information, see the guide: [Update a counterparty's payment method](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/update-counterparty-payment-method).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Write | `counterparties:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -27322,6 +31435,15 @@ func (c *ClientWithResponses) UpdateCounterpartyPaymentMethodWithResponse(ctx co
 //
 // For more information, see the guides: [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Write | `counterparties:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /counterparty (the `AddCounterparty` operationId).
@@ -27407,6 +31529,15 @@ func (c *ClientWithResponses) AddCounterpartyWithBodyWithResponse(ctx context.Co
 //
 // For more information, see the guides: [Create a counterparty](https://developer.revolut.com/docs/guides/manage-accounts/counterparties/create-a-counterparty).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Write | `counterparties:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /counterparty (the `AddCounterparty` operationId).
@@ -27422,6 +31553,15 @@ func (c *ClientWithResponses) AddCounterpartyWithResponse(ctx context.Context, b
 //
 // Delete a counterparty with the given ID. When a counterparty is deleted, you cannot make any payments to the counterparty.
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Write | `counterparties:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with DELETE /counterparty/{counterparty_id} (the `DeleteCounterparty` operationId).
@@ -27436,6 +31576,15 @@ func (c *ClientWithResponses) DeleteCounterpartyWithResponse(ctx context.Context
 // GetCounterpartyWithResponse Retrieve a counterparty
 //
 // Get the information about a specific counterparty by ID.
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Counterparties | Read | `counterparties:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -27454,6 +31603,15 @@ func (c *ClientWithResponses) GetCounterpartyWithResponse(ctx context.Context, c
 //
 // For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Departments | Read | `departments:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /departments (the `GetDepartments` operationId).
@@ -27471,6 +31629,15 @@ func (c *ClientWithResponses) GetDepartmentsWithResponse(ctx context.Context, pa
 //
 // For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Departments | Write | `departments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /departments (the `CreateDepartment` operationId).
@@ -27487,6 +31654,15 @@ func (c *ClientWithResponses) CreateDepartmentWithBodyWithResponse(ctx context.C
 // Create a new department in your business.
 //
 // For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Departments | Write | `departments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -27510,6 +31686,15 @@ func (c *ClientWithResponses) CreateDepartmentWithResponse(ctx context.Context, 
 //
 // For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Departments | Write | `departments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with DELETE /departments/{department_id} (the `DeleteDepartment` operationId).
@@ -27526,6 +31711,15 @@ func (c *ClientWithResponses) DeleteDepartmentWithResponse(ctx context.Context, 
 // Get details of a specific department by its ID.
 //
 // For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Departments | Read | `departments:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -27544,6 +31738,15 @@ func (c *ClientWithResponses) GetDepartmentWithResponse(ctx context.Context, dep
 //
 // For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Departments | Write | `departments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PATCH /departments/{department_id} (the `UpdateDepartment` operationId).
@@ -27560,6 +31763,15 @@ func (c *ClientWithResponses) UpdateDepartmentWithBodyWithResponse(ctx context.C
 // Update the name of a specific department.
 //
 // For more information, see the guides: [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Departments | Write | `departments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -27595,6 +31807,15 @@ func (c *ClientWithResponses) UpdateDepartmentWithResponse(ctx context.Context, 
 //
 // For more information, see the guides: [Exchange money](https://developer.revolut.com/docs/guides/manage-accounts/exchange-money).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Foreign exchange** | Exchange | Write | `exchange:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /exchange (the `ExchangeMoney` operationId).
@@ -27629,6 +31850,15 @@ func (c *ClientWithResponses) ExchangeMoneyWithBodyWithResponse(ctx context.Cont
 //
 // For more information, see the guides: [Exchange money](https://developer.revolut.com/docs/guides/manage-accounts/exchange-money).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Foreign exchange** | Exchange | Write | `exchange:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /exchange (the `ExchangeMoney` operationId).
@@ -27646,6 +31876,15 @@ func (c *ClientWithResponses) ExchangeMoneyWithResponse(ctx context.Context, bod
 // With this endpoint, you can retrieve all exchange reasons available to your business account.
 //
 // After you retrieve the results, use the appropriate reason code in the `exchange_reason_code` field when [exchanging money](https://developer.revolut.com/docs/api/business#exchange-money) or [making a payment](https://developer.revolut.com/docs/api/business#create-payment) that involves foreign currency exchange.
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Foreign exchange** | Exchange reasons | Read | `exchange-reasons:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -27675,6 +31914,15 @@ func (c *ClientWithResponses) GetExchangeReasonsWithResponse(ctx context.Context
 //
 // For more information, see the guides: [Retrieve expenses and receipts](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-expenses).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Expenses** | Expenses | Read | `expenses:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /expenses (the `GetExpenses` operationId).
@@ -27698,6 +31946,15 @@ func (c *ClientWithResponses) GetExpensesWithResponse(ctx context.Context, param
 //
 // For more information, see the guides: [Retrieve expenses and receipts](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-expenses).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Expenses** | Expenses | Read | `expenses:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /expenses/{expense_id} (the `GetExpense` operationId).
@@ -27719,6 +31976,15 @@ func (c *ClientWithResponses) GetExpenseWithResponse(ctx context.Context, expens
 //
 // For more information, see the guides: [Retrieve expenses and receipts](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-expenses).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Expenses** | Expenses | Read | `expenses:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /expenses/{expense_id}/receipts/{receipt_id}/content (the `GetExpenseReceipt` operationId).
@@ -27737,6 +32003,15 @@ func (c *ClientWithResponses) GetExpenseReceiptWithResponse(ctx context.Context,
 // The label groups are sorted by the `created_at` date in reverse chronological order, and they're **paginated**.
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Read | `labels:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -27760,6 +32035,15 @@ func (c *ClientWithResponses) GetLabelGroupsWithResponse(ctx context.Context, pa
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /label-groups (the `CreateLabelGroup` operationId).
@@ -27781,6 +32065,15 @@ func (c *ClientWithResponses) CreateLabelGroupWithBodyWithResponse(ctx context.C
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -27810,6 +32103,15 @@ func (c *ClientWithResponses) CreateLabelGroupWithResponse(ctx context.Context, 
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with DELETE /label-groups/{group_id} (the `DeleteLabelGroup` operationId).
@@ -27828,6 +32130,15 @@ func (c *ClientWithResponses) DeleteLabelGroupWithResponse(ctx context.Context, 
 // The details include the label group name, as well as when the label group was added to your settings, and when it was last updated.
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Read | `labels:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -27850,6 +32161,15 @@ func (c *ClientWithResponses) GetLabelGroupWithResponse(ctx context.Context, gro
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PATCH /label-groups/{group_id} (the `UpdateLabelGroup` operationId).
@@ -27870,6 +32190,15 @@ func (c *ClientWithResponses) UpdateLabelGroupWithBodyWithResponse(ctx context.C
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -27899,6 +32228,15 @@ func (c *ClientWithResponses) UpdateLabelGroupWithResponse(ctx context.Context, 
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Read | `labels:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /label-groups/{group_id}/labels (the `GetLabels` operationId).
@@ -27922,6 +32260,15 @@ func (c *ClientWithResponses) GetLabelsWithResponse(ctx context.Context, groupId
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /label-groups/{group_id}/labels (the `CreateLabel` operationId).
@@ -27944,6 +32291,15 @@ func (c *ClientWithResponses) CreateLabelWithBodyWithResponse(ctx context.Contex
 // The labels are used for accounting and can be applied to your financial records, such as expenses.
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -27973,6 +32329,15 @@ func (c *ClientWithResponses) CreateLabelWithResponse(ctx context.Context, group
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with DELETE /label-groups/{group_id}/labels/{label_id} (the `DeleteLabel` operationId).
@@ -27993,6 +32358,15 @@ func (c *ClientWithResponses) DeleteLabelWithResponse(ctx context.Context, group
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -28015,6 +32389,15 @@ func (c *ClientWithResponses) UpdateLabelWithBodyWithResponse(ctx context.Contex
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage labels and label groups](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-labels-and-label-groups).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Labels | Write | `labels:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PATCH /label-groups/{group_id}/labels/{label_id} (the `UpdateLabel` operationId).
@@ -28036,6 +32419,15 @@ func (c *ClientWithResponses) UpdateLabelWithResponse(ctx context.Context, group
 //
 // For more details, see the guides: [Send money via bank transfer](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers) and [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payments | Write | `payments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /pay (the `CreatePayment` operationId).
@@ -28056,6 +32448,15 @@ func (c *ClientWithResponses) CreatePaymentWithBodyWithResponse(ctx context.Cont
 // If the counterparty has multiple payment methods available, for example, 2 accounts, or 1 account and 1 card, you **must specify the account or card** to which you want to transfer the money (`receiver.account_id` or `receiver.card_id` respectively).
 //
 // For more details, see the guides: [Send money via bank transfer](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers) and [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payments | Write | `payments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -28088,6 +32489,15 @@ func (c *ClientWithResponses) CreatePaymentWithResponse(ctx context.Context, bod
 //
 // For more details, see the guides: **Check transfer field requirements** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-transfer-field-requirements) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-transfer-field-requirements).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payments | Write | `payments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /pay/fields (the `GetPaymentRequirements` operationId).
@@ -28119,6 +32529,15 @@ func (c *ClientWithResponses) GetPaymentRequirementsWithBodyWithResponse(ctx con
 //
 // For more details, see the guides: **Check transfer field requirements** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-transfer-field-requirements) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-transfer-field-requirements).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payments | Write | `payments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /pay/fields (the `GetPaymentRequirements` operationId).
@@ -28146,6 +32565,15 @@ func (c *ClientWithResponses) GetPaymentRequirementsWithResponse(ctx context.Con
 // :::
 //
 // For more details, see the guides: **Check costs and delivery time before paying** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-costs-and-delivery-time-before-paying) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-costs-and-delivery-time-before-paying).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payments | Write | `payments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -28175,6 +32603,15 @@ func (c *ClientWithResponses) GetIndicativeQuoteWithBodyWithResponse(ctx context
 //
 // For more details, see the guides: **Check costs and delivery time before paying** section in [Bank transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/bank-transfers#check-costs-and-delivery-time-before-paying) or [Card transfers](https://developer.revolut.com/docs/guides/manage-accounts/transfers/card-transfers#check-costs-and-delivery-time-before-paying).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payments | Write | `payments:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /pay/indicative-quote (the `GetIndicativeQuote` operationId).
@@ -28195,6 +32632,15 @@ func (c *ClientWithResponses) GetIndicativeQuoteWithResponse(ctx context.Context
 // The response lists the drafts with their details, such as the number of payments included in the draft, but not the payment details.
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Read | `payment-drafts:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -28222,6 +32668,15 @@ func (c *ClientWithResponses) GetPaymentDraftsWithResponse(ctx context.Context, 
 //
 // For more information on use cases and other details, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /payment-drafts (the `CreatePaymentDraft` operationId).
@@ -28248,6 +32703,15 @@ func (c *ClientWithResponses) CreatePaymentDraftWithBodyWithResponse(ctx context
 //
 // For more information on use cases and other details, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /payment-drafts (the `CreatePaymentDraft` operationId).
@@ -28266,6 +32730,15 @@ func (c *ClientWithResponses) CreatePaymentDraftWithResponse(ctx context.Context
 // You can delete a payment draft only if it hasn't been [sent for processing](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts#send-drafts-for-processing).
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -28287,6 +32760,15 @@ func (c *ClientWithResponses) DeletePaymentDraftWithResponse(ctx context.Context
 // The response lists the details of the payment(s) included in the draft, as well as the draft details.
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Read | `payment-drafts:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -28312,6 +32794,15 @@ func (c *ClientWithResponses) GetPaymentDraftWithResponse(ctx context.Context, p
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PATCH /payment-drafts/{payment_draft_id} (the `UpdatePaymentDraft` operationId).
@@ -28336,6 +32827,15 @@ func (c *ClientWithResponses) UpdatePaymentDraftWithBodyWithResponse(ctx context
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PATCH /payment-drafts/{payment_draft_id} (the `UpdatePaymentDraft` operationId).
@@ -28358,6 +32858,15 @@ func (c *ClientWithResponses) UpdatePaymentDraftWithResponse(ctx context.Context
 // The payment uses the same shape as the payments in the [create payment draft](#create-payment-draft) request.
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -28382,6 +32891,15 @@ func (c *ClientWithResponses) AddPaymentDraftPaymentWithBodyWithResponse(ctx con
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /payment-drafts/{payment_draft_id}/payments (the `AddPaymentDraftPayment` operationId).
@@ -28402,6 +32920,15 @@ func (c *ClientWithResponses) AddPaymentDraftPaymentWithResponse(ctx context.Con
 // :::
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -28426,6 +32953,15 @@ func (c *ClientWithResponses) DeletePaymentDraftPaymentWithResponse(ctx context.
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PATCH /payment-drafts/{payment_draft_id}/payments/{payment_id} (the `UpdatePaymentDraftPayment` operationId).
@@ -28448,6 +32984,15 @@ func (c *ClientWithResponses) UpdatePaymentDraftPaymentWithBodyWithResponse(ctx 
 // All fields are optional — omit what should not change. Other payments in the draft are unaffected.
 //
 // For more information, see the guides: [Payment drafts](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payment-drafts).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payment drafts | Write | `payment-drafts:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -28476,6 +33021,15 @@ func (c *ClientWithResponses) UpdatePaymentDraftPaymentWithResponse(ctx context.
 //
 // For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payout links | Read | `payout-links:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /payout-links (the `GetPayoutLinks` operationId).
@@ -28497,6 +33051,15 @@ func (c *ClientWithResponses) GetPayoutLinksWithResponse(ctx context.Context, pa
 // :::
 //
 // For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payout links | Write | `payout-links:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -28520,6 +33083,15 @@ func (c *ClientWithResponses) CreatePayoutLinkWithBodyWithResponse(ctx context.C
 //
 // For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payout links | Write | `payout-links:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /payout-links (the `CreatePayoutLink` operationId).
@@ -28540,6 +33112,15 @@ func (c *ClientWithResponses) CreatePayoutLinkWithResponse(ctx context.Context, 
 // :::
 //
 // For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payout links | Read | `payout-links:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -28563,6 +33144,15 @@ func (c *ClientWithResponses) GetPayoutLinkWithResponse(ctx context.Context, pay
 //
 // For more information, see the guides: [Send money via payout link](https://developer.revolut.com/docs/guides/manage-accounts/transfers/payout-links).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Payout links | Write | `payout-links:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /payout-links/{payout_link_id}/cancel (the `CancelPayoutLink` operationId).
@@ -28583,6 +33173,15 @@ func (c *ClientWithResponses) CancelPayoutLinkWithResponse(ctx context.Context, 
 //
 // For more information, see the guides: [Exchange money](https://developer.revolut.com/docs/guides/manage-accounts/exchange-money).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Foreign exchange** | Exchange | Read | `exchange:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /rate (the `GetRate` operationId).
@@ -28601,6 +33200,15 @@ func (c *ClientWithResponses) GetRateWithResponse(ctx context.Context, params *G
 // The results are paginated and sorted by the `created_at` date in reverse chronological order.
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Read | `team-members:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -28621,6 +33229,15 @@ func (c *ClientWithResponses) GetRolesWithResponse(ctx context.Context, params *
 //
 // For more information, see the guides: [Test your flows with simulations (Sandbox only)](https://developer.revolut.com/docs/guides/manage-accounts/api-usage-and-testing/test-flows-with-simulations).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Sandbox simulations** | Simulations | Write | `simulations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /sandbox/topup (the `SimulateTopUp` operationId).
@@ -28640,6 +33257,15 @@ func (c *ClientWithResponses) SimulateTopUpWithBodyWithResponse(ctx context.Cont
 //
 // For more information, see the guides: [Test your flows with simulations (Sandbox only)](https://developer.revolut.com/docs/guides/manage-accounts/api-usage-and-testing/test-flows-with-simulations).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Sandbox simulations** | Simulations | Write | `simulations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /sandbox/topup (the `SimulateTopUp` operationId).
@@ -28658,6 +33284,15 @@ func (c *ClientWithResponses) SimulateTopUpWithResponse(ctx context.Context, bod
 // For example, after you make a transfer in Sandbox, you can change its state to `completed`. The resulting state is final and cannot be changed.
 //
 // For more information, see the guides: [Test your flows with simulations (Sandbox only)](https://developer.revolut.com/docs/guides/manage-accounts/api-usage-and-testing/test-flows-with-simulations).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Sandbox simulations** | Simulations | Write | `simulations:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -28687,6 +33322,15 @@ func (c *ClientWithResponses) SimulateTransferStateUpdateWithResponse(ctx contex
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Tax rates | Read | `tax-rates:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /tax-rates (the `GetTaxRates` operationId).
@@ -28708,6 +33352,15 @@ func (c *ClientWithResponses) GetTaxRatesWithResponse(ctx context.Context, param
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /tax-rates (the `CreateTaxRate` operationId).
@@ -28728,6 +33381,15 @@ func (c *ClientWithResponses) CreateTaxRateWithBodyWithResponse(ctx context.Cont
 // :::
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -28757,6 +33419,15 @@ func (c *ClientWithResponses) CreateTaxRateWithResponse(ctx context.Context, bod
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with DELETE /tax-rates/{tax_rate_id} (the `DeleteTaxRate` operationId).
@@ -28775,6 +33446,15 @@ func (c *ClientWithResponses) DeleteTaxRateWithResponse(ctx context.Context, tax
 // The details include the tax rate name and percentage, as well as when the tax rate was added to your settings, and when it was last updated.
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Tax rates | Read | `tax-rates:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -28797,6 +33477,15 @@ func (c *ClientWithResponses) GetTaxRateWithResponse(ctx context.Context, taxRat
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PATCH /tax-rates/{tax_rate_id} (the `UpdateTaxRate` operationId).
@@ -28818,6 +33507,15 @@ func (c *ClientWithResponses) UpdateTaxRateWithBodyWithResponse(ctx context.Cont
 //
 // For more details, see the guides: [Manage accounting settings](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-accounting-settings) and [Manage tax rates](https://developer.revolut.com/docs/guides/manage-accounts/accounting/manage-tax-rates).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounting** | Tax rates | Write | `tax-rates:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PATCH /tax-rates/{tax_rate_id} (the `UpdateTaxRate` operationId).
@@ -28836,6 +33534,15 @@ func (c *ClientWithResponses) UpdateTaxRateWithResponse(ctx context.Context, tax
 // The results are paginated and sorted by the `created_at` date in reverse chronological order.
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Read | `team-members:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -28857,6 +33564,15 @@ func (c *ClientWithResponses) GetTeamMembersWithResponse(ctx context.Context, pa
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /team-members (the `InviteTeamMember` operationId).
@@ -28876,6 +33592,15 @@ func (c *ClientWithResponses) InviteTeamMemberWithBodyWithResponse(ctx context.C
 // To join your business account, the new team member has to accept this invitation.
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -28900,6 +33625,15 @@ func (c *ClientWithResponses) InviteTeamMemberWithResponse(ctx context.Context, 
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with DELETE /team-members/{team_member_id} (the `DeleteTeamMember` operationId).
@@ -28916,6 +33650,15 @@ func (c *ClientWithResponses) DeleteTeamMemberWithResponse(ctx context.Context, 
 // Get information about a specific team member by their ID.
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Read | `team-members:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -28934,6 +33677,15 @@ func (c *ClientWithResponses) GetTeamMemberByIdWithResponse(ctx context.Context,
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with DELETE /team-members/{team_member_id}/department (the `UnassignDepartment` operationId).
@@ -28950,6 +33702,15 @@ func (c *ClientWithResponses) UnassignDepartmentWithResponse(ctx context.Context
 // Assign a department to a specific team member.
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members) and [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -28968,6 +33729,15 @@ func (c *ClientWithResponses) AssignDepartmentWithBodyWithResponse(ctx context.C
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members) and [Manage departments](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-departments).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PUT /team-members/{team_member_id}/department (the `AssignDepartment` operationId).
@@ -28984,6 +33754,15 @@ func (c *ClientWithResponses) AssignDepartmentWithResponse(ctx context.Context, 
 // Remove the manager assignment from a specific team member.
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -29002,6 +33781,15 @@ func (c *ClientWithResponses) UnassignManagerWithResponse(ctx context.Context, t
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PUT /team-members/{team_member_id}/manager (the `AssignManager` operationId).
@@ -29018,6 +33806,15 @@ func (c *ClientWithResponses) AssignManagerWithBodyWithResponse(ctx context.Cont
 // Assign a manager to a specific team member.
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -29040,6 +33837,15 @@ func (c *ClientWithResponses) AssignManagerWithResponse(ctx context.Context, tea
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PUT /team-members/{team_member_id}/role (the `UpdateTeamMemberRole` operationId).
@@ -29060,6 +33866,15 @@ func (c *ClientWithResponses) UpdateTeamMemberRoleWithBodyWithResponse(ctx conte
 // :::
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -29084,6 +33899,15 @@ func (c *ClientWithResponses) UpdateTeamMemberRoleWithResponse(ctx context.Conte
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /team-members/{team_member_id}/suspend (the `SuspendTeamMember` operationId).
@@ -29104,6 +33928,15 @@ func (c *ClientWithResponses) SuspendTeamMemberWithResponse(ctx context.Context,
 // :::
 //
 // For more information, see the guides: [Manage team members](https://developer.revolut.com/docs/guides/manage-accounts/teams/manage-team-members).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Team** | Team members | Write | `team-members:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -29128,6 +33961,15 @@ func (c *ClientWithResponses) UnsuspendTeamMemberWithResponse(ctx context.Contex
 // :::
 //
 // For more details, see the guides: [Retrieve transactions](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-transactions).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounts** | Transactions | Read | `transactions:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -29154,6 +33996,15 @@ func (c *ClientWithResponses) GetTransactionWithResponse(ctx context.Context, id
 //
 // For more details, see the guides: [Retrieve transactions](https://developer.revolut.com/docs/guides/manage-accounts/accounts-and-transactions/retrieve-transactions).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Accounts** | Transactions | Read | `transactions:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /transactions (the `GetTransactions` operationId).
@@ -29172,6 +34023,15 @@ func (c *ClientWithResponses) GetTransactionsWithResponse(ctx context.Context, p
 // The resulting transaction has the type `transfer`.
 //
 // For more information, see the guides: [Send money](https://developer.revolut.com/docs/guides/manage-accounts/transfers/send-money).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Transfers | Write | `transfers:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
@@ -29192,6 +34052,15 @@ func (c *ClientWithResponses) CreateTransferWithBodyWithResponse(ctx context.Con
 //
 // For more information, see the guides: [Send money](https://developer.revolut.com/docs/guides/manage-accounts/transfers/send-money).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Transfers | Write | `transfers:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /transfer (the `CreateTransfer` operationId).
@@ -29210,6 +34079,15 @@ func (c *ClientWithResponses) CreateTransferWithResponse(ctx context.Context, bo
 //
 // After you retrieve the results, use the appropriate reason code in the `transfer_reason_code` field when [making a transfer to a counterparty](https://developer.revolut.com/docs/api/business#create-payment) or [creating a payout link](https://developer.revolut.com/docs/api/business#create-payout-link).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Transfers** | Transfer reasons | Read | `transfer-reasons:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /transfer-reasons (the `GetTransferReasons` operationId).
@@ -29224,6 +34102,15 @@ func (c *ClientWithResponses) GetTransferReasonsWithResponse(ctx context.Context
 // DeleteWebhookV1WithResponse Delete a webhook
 //
 // Delete a webhook so that events are not sent to the specified URL any more.
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -29242,6 +34129,15 @@ func (c *ClientWithResponses) DeleteWebhookV1WithResponse(ctx context.Context, r
 //
 // Get your webhook URL.
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /webhook (the `GetWebhookV1` operationId).
@@ -29259,6 +34155,15 @@ func (c *ClientWithResponses) GetWebhookV1WithResponse(ctx context.Context, reqE
 //
 // Set up a webhook URL so that event notifications are pushed to the specified URL. Only HTTPS URLs are supported.
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /webhook (the `SetUpWebhook` operationId).
@@ -29275,6 +34180,15 @@ func (c *ClientWithResponses) SetUpWebhookWithBodyWithResponse(ctx context.Conte
 // SetUpWebhookWithResponse Set a webhook
 //
 // Set up a webhook URL so that event notifications are pushed to the specified URL. Only HTTPS URLs are supported.
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -29294,6 +34208,15 @@ func (c *ClientWithResponses) SetUpWebhookWithResponse(ctx context.Context, body
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#retrieve-a-list-of-webhooks).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /webhooks (the `GetWebhooks` operationId).
@@ -29312,6 +34235,15 @@ func (c *ClientWithResponses) GetWebhooksWithResponse(ctx context.Context, reqEd
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#create-a-webhook).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /webhooks (the `CreateWebhook` operationId).
@@ -29329,6 +34261,15 @@ func (c *ClientWithResponses) CreateWebhookWithBodyWithResponse(ctx context.Cont
 // Only HTTPS URLs are supported.
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#create-a-webhook).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -29349,6 +34290,15 @@ func (c *ClientWithResponses) CreateWebhookWithResponse(ctx context.Context, bod
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#delete-a-webhook).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with DELETE /webhooks/{webhook_id} (the `DeleteWebhook` operationId).
@@ -29365,6 +34315,15 @@ func (c *ClientWithResponses) DeleteWebhookWithResponse(ctx context.Context, web
 // Get the information about a specific webhook by ID.
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#retrieve-a-specific-webhook).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Returns a wrapper object for the known response body format(s).
 //
@@ -29385,6 +34344,15 @@ func (c *ClientWithResponses) GetWebhookWithResponse(ctx context.Context, webhoo
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#update-a-webhook).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with PATCH /webhooks/{webhook_id} (the `UpdateWebhook` operationId).
@@ -29403,6 +34371,15 @@ func (c *ClientWithResponses) UpdateWebhookWithBodyWithResponse(ctx context.Cont
 // You must specify at least one of these two. The fields that you don't specify are not updated.
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#update-a-webhook).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
@@ -29427,6 +34404,15 @@ func (c *ClientWithResponses) UpdateWebhookWithResponse(ctx context.Context, web
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#retrieve-a-list-of-failed-webhook-events).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Read | `webhooks:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /webhooks/{webhook_id}/failed-events (the `GetFailedWebhookEvents` operationId).
@@ -29444,6 +34430,15 @@ func (c *ClientWithResponses) GetFailedWebhookEventsWithResponse(ctx context.Con
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#rotate-a-webhook-signing-secret).
 //
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /webhooks/{webhook_id}/rotate-signing-secret (the `RotateWebhookSigningSecret` operationId).
@@ -29460,6 +34455,15 @@ func (c *ClientWithResponses) RotateWebhookSigningSecretWithBodyWithResponse(ctx
 // Rotate a signing secret for a specific webhook.
 //
 // For more information, see the guides: [About webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/about-webhooks) and [Manage webhooks](https://developer.revolut.com/docs/guides/manage-accounts/webhooks/manage-webhooks#rotate-a-webhook-signing-secret).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Webhooks** | Webhooks | Write | `webhooks:write` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //

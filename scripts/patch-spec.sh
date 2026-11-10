@@ -7,6 +7,12 @@
 # numeric keyword whose value is not a number (or a 3.0 boolean exclusive
 # flag) is dropped. The prose stays in the schema descriptions.
 #
+# Every path lists the Authorization, Revolut-Api-Timestamp and
+# Revolut-Api-Signature headers as parameters. The generator turns them into a
+# params argument on each method, which breaks every call that has no other
+# parameters. The references are removed, and callers set the headers with a
+# request editor.
+#
 # Some path templates name a placeholder in camelCase while the operation
 # declares the parameter in snake_case, which every other path uses. The
 # generator cannot match them, so camelCase placeholders in path keys are
@@ -28,6 +34,7 @@ readonly SOURCE_SPEC="${SPEC_DIR}/business.yaml"
 readonly OUTPUT_SPEC="${SPEC_DIR}/business.patched.yaml"
 readonly NUMERIC_KEYWORD='^[[:space:]]*(minimum|maximum|exclusiveMinimum|exclusiveMaximum|multipleOf):'
 readonly VALID_VALUE=':[[:space:]]*(-?[0-9.]+|true|false)[[:space:]]*$'
+readonly AUTH_PARAMETER="^      - [$]ref: '#/components/parameters/(Authorization|Revolut-Api-Timestamp|Revolut-Api-Signature)'[[:space:]]*$"
 
 on_error() {
 	local exit_code="$1"
@@ -62,7 +69,7 @@ main() {
 	# shellcheck disable=SC2064 # expand tmp now, the local is gone when EXIT fires
 	trap "rm -f -- '${tmp}'" EXIT
 
-	awk -v key="$NUMERIC_KEYWORD" -v ok="$VALID_VALUE" '
+	awk -v key="$NUMERIC_KEYWORD" -v ok="$VALID_VALUE" -v auth="$AUTH_PARAMETER" '
 		function snake(s, out, i, c) {
 			out = ""
 			for (i = 1; i <= length(s); i++) {
@@ -114,6 +121,17 @@ main() {
 			}
 		}
 		$0 ~ key && $0 !~ ok { dropped++; next }
+		/^    parameters:[[:space:]]*$/ { held = $0; next }
+		held != "" {
+			if ($0 ~ auth) {
+				removed++
+				next
+			}
+			if ($0 ~ /^      -/) {
+				print held
+			}
+			held = ""
+		}
 		/^  \/.*:[[:space:]]*$/ && /\{[a-z]+[A-Z][A-Za-z]*\}/ {
 			line = $0
 			result = ""
@@ -125,16 +143,16 @@ main() {
 			renamed++
 		}
 		{ print }
-		END { print dropped + 0, renamed + 0, collisions + 0 > "/dev/stderr" }
+		END { print dropped + 0, renamed + 0, collisions + 0, removed + 0 > "/dev/stderr" }
 	' "$SOURCE_SPEC" "$SOURCE_SPEC" >"$tmp" 2>"${tmp}.count"
 
-	local dropped renamed collisions
-	read -r dropped renamed collisions <"${tmp}.count"
+	local dropped renamed collisions removed
+	read -r dropped renamed collisions removed <"${tmp}.count"
 	rm -f -- "${tmp}.count"
 
 	chmod 0644 "$tmp"
 	mv -- "$tmp" "$OUTPUT_SPEC"
-	log INFO "patched spec dropped_numeric_keywords=${dropped} renamed_path_keys=${renamed} renamed_inline_types=${collisions}"
+	log INFO "patched spec dropped_numeric_keywords=${dropped} renamed_path_keys=${renamed} renamed_inline_types=${collisions} removed_header_parameters=${removed}"
 }
 
 main "$@"

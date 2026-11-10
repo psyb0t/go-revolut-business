@@ -2,6 +2,13 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.1.6, 2026-11-10
+
+- Regenerated `client.gen.go` from the current Revolut Business spec. The doc comments on `ClientInterface`, `Client` and `ClientWithResponses` methods now include a "Required API key permissions" section that lists the mapped scope for each endpoint, for example `counterparties:write` on `ValidateAccountName`.
+- No exported identifiers were added, removed or changed. Method signatures such as `GetAccountsWithResponse(ctx)` keep their shape.
+- The upstream spec now lists the `Authorization`, `Revolut-Api-Timestamp` and `Revolut-Api-Signature` headers as parameters on every path. `scripts/patch-spec.sh` removes them from the patched spec, so the generated params types do not gain required header fields. Set those headers with a request editor, as before.
+- `scripts/patch-spec.sh` also drops a path-level `parameters:` block when nothing else is left in it, and its log line reports `removed_header_parameters`.
+
 ## v0.1.5, 2026-10-28
 
 - Updated Semgrep in the development image to 1.182.1 and refreshed its locked dependencies. certifi 2026.10.23 drops the emSign root CAs whose intermediate keys were compromised (GHSA-6q48-6c7w-9gw2).

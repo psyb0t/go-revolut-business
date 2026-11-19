@@ -9297,7 +9297,7 @@ type ClientInterface interface {
 	//
 	// Suspend a specific team member, preventing them from accessing the business.
 	//
-	// To restore access, use the [Unsuspend a team member](#unsuspend-a-team-member) operation.
+	// To restore access, use the [Unsuspend a team member](#unsuspend-team-member) operation.
 	//
 	// :::note
 	// You cannot suspend the business owner.
@@ -9319,7 +9319,7 @@ type ClientInterface interface {
 
 	// UnsuspendTeamMember Unsuspend a team member
 	//
-	// Unsuspend a [suspended](#suspend-a-team-member) team member, restoring their access to the business.
+	// Unsuspend a [suspended](#suspend-team-member) team member, restoring their access to the business.
 	//
 	// :::note
 	// You cannot unsuspend the business owner (the owner cannot be suspended).
@@ -14006,7 +14006,7 @@ func (c *Client) UpdateTeamMemberRole(ctx context.Context, teamMemberId openapi_
 //
 // Suspend a specific team member, preventing them from accessing the business.
 //
-// To restore access, use the [Unsuspend a team member](#unsuspend-a-team-member) operation.
+// To restore access, use the [Unsuspend a team member](#unsuspend-team-member) operation.
 //
 // :::note
 // You cannot suspend the business owner.
@@ -14038,7 +14038,7 @@ func (c *Client) SuspendTeamMember(ctx context.Context, teamMemberId openapi_typ
 
 // UnsuspendTeamMember Unsuspend a team member
 //
-// Unsuspend a [suspended](#suspend-a-team-member) team member, restoring their access to the business.
+// Unsuspend a [suspended](#suspend-team-member) team member, restoring their access to the business.
 //
 // :::note
 // You cannot unsuspend the business owner (the owner cannot be suspended).
@@ -22442,7 +22442,7 @@ type ClientWithResponsesInterface interface {
 	//
 	// Suspend a specific team member, preventing them from accessing the business.
 	//
-	// To restore access, use the [Unsuspend a team member](#unsuspend-a-team-member) operation.
+	// To restore access, use the [Unsuspend a team member](#unsuspend-team-member) operation.
 	//
 	// :::note
 	// You cannot suspend the business owner.
@@ -22466,7 +22466,7 @@ type ClientWithResponsesInterface interface {
 
 	// UnsuspendTeamMemberWithResponse Unsuspend a team member
 	//
-	// Unsuspend a [suspended](#suspend-a-team-member) team member, restoring their access to the business.
+	// Unsuspend a [suspended](#suspend-team-member) team member, restoring their access to the business.
 	//
 	// :::note
 	// You cannot unsuspend the business owner (the owner cannot be suspended).
@@ -33891,7 +33891,7 @@ func (c *ClientWithResponses) UpdateTeamMemberRoleWithResponse(ctx context.Conte
 //
 // Suspend a specific team member, preventing them from accessing the business.
 //
-// To restore access, use the [Unsuspend a team member](#unsuspend-a-team-member) operation.
+// To restore access, use the [Unsuspend a team member](#unsuspend-team-member) operation.
 //
 // :::note
 // You cannot suspend the business owner.
@@ -33921,7 +33921,7 @@ func (c *ClientWithResponses) SuspendTeamMemberWithResponse(ctx context.Context,
 
 // UnsuspendTeamMemberWithResponse Unsuspend a team member
 //
-// Unsuspend a [suspended](#suspend-a-team-member) team member, restoring their access to the business.
+// Unsuspend a [suspended](#suspend-team-member) team member, restoring their access to the business.
 //
 // :::note
 // You cannot unsuspend the business owner (the owner cannot be suspended).

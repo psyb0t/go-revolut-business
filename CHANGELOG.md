@@ -2,6 +2,13 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.1.7, 2026-11-19
+
+- Regenerated `client.gen.go` from the current Revolut Business spec. Only doc comments changed: the links in `SuspendTeamMember` and `UnsuspendTeamMember` (and their `WithResponse` variants, on `ClientInterface`, `Client`, `ClientWithResponsesInterface` and `ClientWithResponses`) now point to the `#unsuspend-team-member` and `#suspend-team-member` anchors.
+- No exported identifiers were added, removed or changed.
+- Raised the minimum Go version in `go.mod` from 1.26.10 to 1.26.11. Go 1.26.10 has a `net/http` vulnerability (GO-2026-6859) that govulncheck flagged, and 1.26.11 fixes it.
+- Moved the development image in `Dockerfile.dev` to `golang:1.26.11-trixie` and updated the Go version in the setup reference to match.
+
 ## v0.1.6, 2026-11-10
 
 - Regenerated `client.gen.go` from the current Revolut Business spec. The doc comments on `ClientInterface`, `Client` and `ClientWithResponses` methods now include a "Required API key permissions" section that lists the mapped scope for each endpoint, for example `counterparties:write` on `ValidateAccountName`.

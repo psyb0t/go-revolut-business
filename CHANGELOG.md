@@ -2,6 +2,11 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.2.0, 2026-11-21
+
+- Regenerated `client.gen.go`. `NewGetCardInvitationsRequest` now encodes the `state` query parameter of `GetCardInvitationsParams` with explode enabled, so a list of states is sent as repeated `state=...` pairs instead of one comma separated value.
+- No exported identifiers were added, removed or changed. Signatures such as `GetCardInvitations` keep their shape, but the request URL differs for callers that pass more than one state.
+
 ## v0.1.7, 2026-11-19
 
 - Regenerated `client.gen.go` from the current Revolut Business spec. Only doc comments changed: the links in `SuspendTeamMember` and `UnsuspendTeamMember` (and their `WithResponse` variants, on `ClientInterface`, `Client`, `ClientWithResponsesInterface` and `ClientWithResponses`) now point to the `#unsuspend-team-member` and `#suspend-team-member` anchors.

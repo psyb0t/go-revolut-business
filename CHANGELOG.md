@@ -2,6 +2,11 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.3.0, 2026-11-24
+
+- Add `GetCardsParams.CreatedAfter`, an optional `*time.Time` sent as the `created_after` query parameter on `GetCards`.
+- Change `GetCardsResponse.JSON400` and `GetCardsResponse.GetJSON400` from `*Error` to `*ErrorWithId`. `ParseGetCardsResponse` now decodes a 400 body into `ErrorWithId`.
+
 ## v0.2.0, 2026-11-21
 
 - Regenerated `client.gen.go`. `NewGetCardInvitationsRequest` now encodes the `state` query parameter of `GetCardInvitationsParams` with explode enabled, so a list of states is sent as repeated `state=...` pairs instead of one comma separated value.

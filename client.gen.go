@@ -5355,6 +5355,13 @@ type UpdateCardInvitationJSONBody struct {
 
 // GetCardsParams defines parameters for GetCards.
 type GetCardsParams struct {
+	// CreatedAfter Retrieves cards with `created_at` > `created_after`.
+	// Must be earlier than `created_before`, or the current date and time if `created_before` is not specified.
+	//
+	// Provided in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+	// The time component is optional — if you omit it, it defaults to `T00:00:00.000000Z`.
+	CreatedAfter *time.Time `form:"created_after,omitempty" json:"created_after,omitempty"`
+
 	// CreatedBefore Retrieves cards with `created_at` < `created_before`.
 	// The default value is the current date and time at which you are calling the endpoint.
 	//
@@ -15267,6 +15274,18 @@ func NewGetCardsRequest(server string, params *GetCardsParams) (*http.Request, e
 		// per the OpenAPI spec (e.g. "color=blue,black,brown").
 		var rawQueryFragments []string
 
+		if params.CreatedAfter != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "created_after", *params.CreatedAfter, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: "date-time"}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
 		if params.CreatedBefore != nil {
 
 			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "created_before", *params.CreatedBefore, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: "date-time"}); err != nil {
@@ -24034,7 +24053,7 @@ type GetCardsResponse struct {
 	// JSON200 the response for an HTTP 200 `application/json` response
 	JSON200 *CardsResponse
 	// JSON400 the response for an HTTP 400 `application/json` response
-	JSON400 *Error
+	JSON400 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *Error
 }
@@ -24045,7 +24064,7 @@ func (r GetCardsResponse) GetJSON200() *CardsResponse {
 }
 
 // GetJSON400 returns the response for an HTTP 400 `application/json` response
-func (r GetCardsResponse) GetJSON400() *Error {
+func (r GetCardsResponse) GetJSON400() *ErrorWithId {
 	return r.JSON400
 }
 
@@ -35395,7 +35414,7 @@ func ParseGetCardsResponse(rsp *http.Response) (*GetCardsResponse, error) {
 		response.JSON200 = &dest
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
+		var dest ErrorWithId
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
 		}

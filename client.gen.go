@@ -7,6 +7,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -63,6 +64,387 @@ func (e AccountState) Valid() bool {
 	case AccountStateActive:
 		return true
 	case AccountStateInactive:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsAggregationCycle.
+const (
+	AnalyticsAggregationCycleDay     AnalyticsAggregationCycle = "day"
+	AnalyticsAggregationCycleMonth   AnalyticsAggregationCycle = "month"
+	AnalyticsAggregationCycleQuarter AnalyticsAggregationCycle = "quarter"
+	AnalyticsAggregationCycleWeek    AnalyticsAggregationCycle = "week"
+	AnalyticsAggregationCycleYear    AnalyticsAggregationCycle = "year"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsAggregationCycle enum.
+func (e AnalyticsAggregationCycle) Valid() bool {
+	switch e {
+	case AnalyticsAggregationCycleDay:
+		return true
+	case AnalyticsAggregationCycleMonth:
+		return true
+	case AnalyticsAggregationCycleQuarter:
+		return true
+	case AnalyticsAggregationCycleWeek:
+		return true
+	case AnalyticsAggregationCycleYear:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsAssetGroup.
+const (
+	AnalyticsAssetGroupCash     AnalyticsAssetGroup = "cash"
+	AnalyticsAssetGroupMerchant AnalyticsAssetGroup = "merchant"
+	AnalyticsAssetGroupTreasury AnalyticsAssetGroup = "treasury"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsAssetGroup enum.
+func (e AnalyticsAssetGroup) Valid() bool {
+	switch e {
+	case AnalyticsAssetGroupCash:
+		return true
+	case AnalyticsAssetGroupMerchant:
+		return true
+	case AnalyticsAssetGroupTreasury:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsAssetGroupRecordInfoType.
+const (
+	AnalyticsAssetGroupRecordInfoTypeAssetGroup AnalyticsAssetGroupRecordInfoType = "asset_group"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsAssetGroupRecordInfoType enum.
+func (e AnalyticsAssetGroupRecordInfoType) Valid() bool {
+	switch e {
+	case AnalyticsAssetGroupRecordInfoTypeAssetGroup:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsAssetType.
+const (
+	AnalyticsAssetTypeCash            AnalyticsAssetType = "cash"
+	AnalyticsAssetTypeCrypto          AnalyticsAssetType = "crypto"
+	AnalyticsAssetTypeMerchant        AnalyticsAssetType = "merchant"
+	AnalyticsAssetTypeSavingsDeposits AnalyticsAssetType = "savings_deposits"
+	AnalyticsAssetTypeSavingsMmf      AnalyticsAssetType = "savings_mmf"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsAssetType enum.
+func (e AnalyticsAssetType) Valid() bool {
+	switch e {
+	case AnalyticsAssetTypeCash:
+		return true
+	case AnalyticsAssetTypeCrypto:
+		return true
+	case AnalyticsAssetTypeMerchant:
+		return true
+	case AnalyticsAssetTypeSavingsDeposits:
+		return true
+	case AnalyticsAssetTypeSavingsMmf:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsAssetTypeRecordInfoType.
+const (
+	AnalyticsAssetTypeRecordInfoTypeAssetType AnalyticsAssetTypeRecordInfoType = "asset_type"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsAssetTypeRecordInfoType enum.
+func (e AnalyticsAssetTypeRecordInfoType) Valid() bool {
+	switch e {
+	case AnalyticsAssetTypeRecordInfoTypeAssetType:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsCurrencyRecordInfoType.
+const (
+	AnalyticsCurrencyRecordInfoTypeCurrency AnalyticsCurrencyRecordInfoType = "currency"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsCurrencyRecordInfoType enum.
+func (e AnalyticsCurrencyRecordInfoType) Valid() bool {
+	switch e {
+	case AnalyticsCurrencyRecordInfoTypeCurrency:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsIncomeAggregationRecordRecordType.
+const (
+	AnalyticsIncomeAggregationRecordRecordTypeDefault  AnalyticsIncomeAggregationRecordRecordType = "default"
+	AnalyticsIncomeAggregationRecordRecordTypeExcluded AnalyticsIncomeAggregationRecordRecordType = "excluded"
+	AnalyticsIncomeAggregationRecordRecordTypeOther    AnalyticsIncomeAggregationRecordRecordType = "other"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsIncomeAggregationRecordRecordType enum.
+func (e AnalyticsIncomeAggregationRecordRecordType) Valid() bool {
+	switch e {
+	case AnalyticsIncomeAggregationRecordRecordTypeDefault:
+		return true
+	case AnalyticsIncomeAggregationRecordRecordTypeExcluded:
+		return true
+	case AnalyticsIncomeAggregationRecordRecordTypeOther:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsIncomeBreakdownSearchRequestDimension.
+const (
+	AnalyticsIncomeBreakdownSearchRequestDimensionCurrency        AnalyticsIncomeBreakdownSearchRequestDimension = "currency"
+	AnalyticsIncomeBreakdownSearchRequestDimensionTransactionType AnalyticsIncomeBreakdownSearchRequestDimension = "transaction_type"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsIncomeBreakdownSearchRequestDimension enum.
+func (e AnalyticsIncomeBreakdownSearchRequestDimension) Valid() bool {
+	switch e {
+	case AnalyticsIncomeBreakdownSearchRequestDimensionCurrency:
+		return true
+	case AnalyticsIncomeBreakdownSearchRequestDimensionTransactionType:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsMerchantCategoryRecordInfoType.
+const (
+	AnalyticsMerchantCategoryRecordInfoTypeMerchantCategory AnalyticsMerchantCategoryRecordInfoType = "merchant_category"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsMerchantCategoryRecordInfoType enum.
+func (e AnalyticsMerchantCategoryRecordInfoType) Valid() bool {
+	switch e {
+	case AnalyticsMerchantCategoryRecordInfoTypeMerchantCategory:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsMerchantCountryRecordInfoType.
+const (
+	AnalyticsMerchantCountryRecordInfoTypeMerchantCountry AnalyticsMerchantCountryRecordInfoType = "merchant_country"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsMerchantCountryRecordInfoType enum.
+func (e AnalyticsMerchantCountryRecordInfoType) Valid() bool {
+	switch e {
+	case AnalyticsMerchantCountryRecordInfoTypeMerchantCountry:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsMerchantGroupRecordInfoGroup.
+const (
+	AnalyticsMerchantGroupRecordInfoGroupBrand    AnalyticsMerchantGroupRecordInfoGroup = "brand"
+	AnalyticsMerchantGroupRecordInfoGroupMerchant AnalyticsMerchantGroupRecordInfoGroup = "merchant"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsMerchantGroupRecordInfoGroup enum.
+func (e AnalyticsMerchantGroupRecordInfoGroup) Valid() bool {
+	switch e {
+	case AnalyticsMerchantGroupRecordInfoGroupBrand:
+		return true
+	case AnalyticsMerchantGroupRecordInfoGroupMerchant:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsMerchantGroupRecordInfoType.
+const (
+	AnalyticsMerchantGroupRecordInfoTypeMerchantGroup AnalyticsMerchantGroupRecordInfoType = "merchant_group"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsMerchantGroupRecordInfoType enum.
+func (e AnalyticsMerchantGroupRecordInfoType) Valid() bool {
+	switch e {
+	case AnalyticsMerchantGroupRecordInfoTypeMerchantGroup:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsSpendProgramRecordInfoType.
+const (
+	AnalyticsSpendProgramRecordInfoTypeSpendProgram AnalyticsSpendProgramRecordInfoType = "spend_program"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsSpendProgramRecordInfoType enum.
+func (e AnalyticsSpendProgramRecordInfoType) Valid() bool {
+	switch e {
+	case AnalyticsSpendProgramRecordInfoTypeSpendProgram:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsSpendingAggregationRecordRecordType.
+const (
+	AnalyticsSpendingAggregationRecordRecordTypeDefault  AnalyticsSpendingAggregationRecordRecordType = "default"
+	AnalyticsSpendingAggregationRecordRecordTypeExcluded AnalyticsSpendingAggregationRecordRecordType = "excluded"
+	AnalyticsSpendingAggregationRecordRecordTypeOther    AnalyticsSpendingAggregationRecordRecordType = "other"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsSpendingAggregationRecordRecordType enum.
+func (e AnalyticsSpendingAggregationRecordRecordType) Valid() bool {
+	switch e {
+	case AnalyticsSpendingAggregationRecordRecordTypeDefault:
+		return true
+	case AnalyticsSpendingAggregationRecordRecordTypeExcluded:
+		return true
+	case AnalyticsSpendingAggregationRecordRecordTypeOther:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsSpendingBreakdownSearchRequestDimension.
+const (
+	AnalyticsSpendingBreakdownSearchRequestDimensionCurrency         AnalyticsSpendingBreakdownSearchRequestDimension = "currency"
+	AnalyticsSpendingBreakdownSearchRequestDimensionMerchantCategory AnalyticsSpendingBreakdownSearchRequestDimension = "merchant_category"
+	AnalyticsSpendingBreakdownSearchRequestDimensionMerchantCountry  AnalyticsSpendingBreakdownSearchRequestDimension = "merchant_country"
+	AnalyticsSpendingBreakdownSearchRequestDimensionMerchantGroup    AnalyticsSpendingBreakdownSearchRequestDimension = "merchant_group"
+	AnalyticsSpendingBreakdownSearchRequestDimensionSpendProgram     AnalyticsSpendingBreakdownSearchRequestDimension = "spend_program"
+	AnalyticsSpendingBreakdownSearchRequestDimensionTeamMember       AnalyticsSpendingBreakdownSearchRequestDimension = "team_member"
+	AnalyticsSpendingBreakdownSearchRequestDimensionTransactionType  AnalyticsSpendingBreakdownSearchRequestDimension = "transaction_type"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsSpendingBreakdownSearchRequestDimension enum.
+func (e AnalyticsSpendingBreakdownSearchRequestDimension) Valid() bool {
+	switch e {
+	case AnalyticsSpendingBreakdownSearchRequestDimensionCurrency:
+		return true
+	case AnalyticsSpendingBreakdownSearchRequestDimensionMerchantCategory:
+		return true
+	case AnalyticsSpendingBreakdownSearchRequestDimensionMerchantCountry:
+		return true
+	case AnalyticsSpendingBreakdownSearchRequestDimensionMerchantGroup:
+		return true
+	case AnalyticsSpendingBreakdownSearchRequestDimensionSpendProgram:
+		return true
+	case AnalyticsSpendingBreakdownSearchRequestDimensionTeamMember:
+		return true
+	case AnalyticsSpendingBreakdownSearchRequestDimensionTransactionType:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsTeamMemberRecordInfoType.
+const (
+	AnalyticsTeamMemberRecordInfoTypeTeamMember AnalyticsTeamMemberRecordInfoType = "team_member"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsTeamMemberRecordInfoType enum.
+func (e AnalyticsTeamMemberRecordInfoType) Valid() bool {
+	switch e {
+	case AnalyticsTeamMemberRecordInfoTypeTeamMember:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsTotalWealthAggregationRecordRecordType.
+const (
+	AnalyticsTotalWealthAggregationRecordRecordTypeDefault AnalyticsTotalWealthAggregationRecordRecordType = "default"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsTotalWealthAggregationRecordRecordType enum.
+func (e AnalyticsTotalWealthAggregationRecordRecordType) Valid() bool {
+	switch e {
+	case AnalyticsTotalWealthAggregationRecordRecordTypeDefault:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsTotalWealthBreakdownSearchRequestDimension.
+const (
+	AnalyticsTotalWealthBreakdownSearchRequestDimensionAssetGroup AnalyticsTotalWealthBreakdownSearchRequestDimension = "asset_group"
+	AnalyticsTotalWealthBreakdownSearchRequestDimensionAssetType  AnalyticsTotalWealthBreakdownSearchRequestDimension = "asset_type"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsTotalWealthBreakdownSearchRequestDimension enum.
+func (e AnalyticsTotalWealthBreakdownSearchRequestDimension) Valid() bool {
+	switch e {
+	case AnalyticsTotalWealthBreakdownSearchRequestDimensionAssetGroup:
+		return true
+	case AnalyticsTotalWealthBreakdownSearchRequestDimensionAssetType:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsTotalWealthFilterAssetType.
+const (
+	AnalyticsTotalWealthFilterAssetTypeCash            AnalyticsTotalWealthFilterAssetType = "cash"
+	AnalyticsTotalWealthFilterAssetTypeCrypto          AnalyticsTotalWealthFilterAssetType = "crypto"
+	AnalyticsTotalWealthFilterAssetTypeMerchant        AnalyticsTotalWealthFilterAssetType = "merchant"
+	AnalyticsTotalWealthFilterAssetTypeSavingsDeposits AnalyticsTotalWealthFilterAssetType = "savings_deposits"
+	AnalyticsTotalWealthFilterAssetTypeSavingsMmf      AnalyticsTotalWealthFilterAssetType = "savings_mmf"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsTotalWealthFilterAssetType enum.
+func (e AnalyticsTotalWealthFilterAssetType) Valid() bool {
+	switch e {
+	case AnalyticsTotalWealthFilterAssetTypeCash:
+		return true
+	case AnalyticsTotalWealthFilterAssetTypeCrypto:
+		return true
+	case AnalyticsTotalWealthFilterAssetTypeMerchant:
+		return true
+	case AnalyticsTotalWealthFilterAssetTypeSavingsDeposits:
+		return true
+	case AnalyticsTotalWealthFilterAssetTypeSavingsMmf:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for AnalyticsTransactionTypeRecordInfoType.
+const (
+	AnalyticsTransactionTypeRecordInfoTypeTransactionType AnalyticsTransactionTypeRecordInfoType = "transaction_type"
+)
+
+// Valid indicates whether the value is a known member of the AnalyticsTransactionTypeRecordInfoType enum.
+func (e AnalyticsTransactionTypeRecordInfoType) Valid() bool {
+	switch e {
+	case AnalyticsTransactionTypeRecordInfoTypeTransactionType:
 		return true
 	default:
 		return false
@@ -1614,6 +1996,918 @@ type AmountWithCurrency struct {
 	// Currency [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code in upper case.
 	Currency *Currency `json:"currency,omitempty"`
 }
+
+// AnalyticsAccountIds Restricts the analytics to transactions on the given accounts. If not provided, the analytics cover all accounts of the business.
+//
+// Example: ["9d2b4c1e-7a34-4f5a-9b0c-1e6f8a7b2c3d","b3d9e7f1-4c2a-4b8e-9d5f-6a7b8c9d0e1f"]
+type AnalyticsAccountIds = []openapi_types.UUID
+
+// AnalyticsAggregationCycle The length of the interval that each returned data point covers, for example `month` returns one data point per month in the requested period.
+//
+// Example: month
+type AnalyticsAggregationCycle string
+
+// AnalyticsAssetGroup A group of asset types:
+//
+// | Value | Description |
+// | --- | --- |
+// | **`cash`** | Cash accounts. |
+// | **`treasury`** | Combines `savings_deposits`, `savings_mmf`, and `crypto`. |
+// | **`merchant`** | Merchant balances. |
+//
+// Example: treasury
+type AnalyticsAssetGroup string
+
+// AnalyticsAssetGroupRecordInfo defines model for AnalyticsAssetGroupRecordInfo.
+type AnalyticsAssetGroupRecordInfo struct {
+	// AssetGroup A group of asset types:
+	//
+	// | Value | Description |
+	// | --- | --- |
+	// | **`cash`** | Cash accounts. |
+	// | **`treasury`** | Combines `savings_deposits`, `savings_mmf`, and `crypto`. |
+	// | **`merchant`** | Merchant balances. |
+	//
+	// Example: treasury
+	AssetGroup AnalyticsAssetGroup               `json:"asset_group"`
+	Type       AnalyticsAssetGroupRecordInfoType `json:"type"`
+}
+
+// AnalyticsAssetGroupRecordInfoType defines model for AnalyticsAssetGroupRecordInfo.Type.
+type AnalyticsAssetGroupRecordInfoType string
+
+// AnalyticsAssetType The type of the asset contributing to the total wealth:
+//
+// | Value | Description |
+// | --- | --- |
+// | **`cash`** | Funds in the business's cash accounts. |
+// | **`savings_deposits`** | Funds in savings accounts and deposits. |
+// | **`savings_mmf`** | Funds in savings money market funds. |
+// | **`merchant`** | Funds held with merchants. |
+// | **`crypto`** | Cryptocurrency holdings. |
+//
+// Example: cash
+type AnalyticsAssetType string
+
+// AnalyticsAssetTypeRecordInfo defines model for AnalyticsAssetTypeRecordInfo.
+type AnalyticsAssetTypeRecordInfo struct {
+	// AssetType The type of the asset contributing to the total wealth:
+	//
+	// | Value | Description |
+	// | --- | --- |
+	// | **`cash`** | Funds in the business's cash accounts. |
+	// | **`savings_deposits`** | Funds in savings accounts and deposits. |
+	// | **`savings_mmf`** | Funds in savings money market funds. |
+	// | **`merchant`** | Funds held with merchants. |
+	// | **`crypto`** | Cryptocurrency holdings. |
+	//
+	// Example: cash
+	AssetType AnalyticsAssetType               `json:"asset_type"`
+	Type      AnalyticsAssetTypeRecordInfoType `json:"type"`
+}
+
+// AnalyticsAssetTypeRecordInfoType defines model for AnalyticsAssetTypeRecordInfo.Type.
+type AnalyticsAssetTypeRecordInfoType string
+
+// AnalyticsBrandIds Restricts the analytics to transactions made with the given brands.
+// A brand groups multiple merchants.
+// For example, `Amazon UK` and `Amazon PL` are merchants, and `Amazon` is their brand.
+//
+// Example: ["1f2e3d4c-5b6a-4c9d-8e7f-6a5b4c3d2e1f"]
+type AnalyticsBrandIds = []openapi_types.UUID
+
+// AnalyticsCashflowFilter Filters for the cashflow report.
+type AnalyticsCashflowFilter struct {
+	// AccountId Restricts the analytics to transactions on the given accounts. If not provided, the analytics cover all accounts of the business.
+	//
+	// Example: ["9d2b4c1e-7a34-4f5a-9b0c-1e6f8a7b2c3d","b3d9e7f1-4c2a-4b8e-9d5f-6a7b8c9d0e1f"]
+	AccountId *AnalyticsAccountIds `json:"account_id,omitempty"`
+}
+
+// AnalyticsCashflowResponse A cashflow report with income and spending time series and the period totals.
+type AnalyticsCashflowResponse struct {
+	// Income The income time series.
+	Income AnalyticsTimeSeries `json:"income"`
+
+	// Spent The spending time series.
+	Spent AnalyticsTimeSeries `json:"spent"`
+
+	// Summary The period totals of a cashflow report.
+	Summary AnalyticsCashflowSummary `json:"summary"`
+}
+
+// AnalyticsCashflowSearchRequest defines model for AnalyticsCashflowSearchRequest.
+type AnalyticsCashflowSearchRequest struct {
+	// AggregationCycle The length of the interval that each returned data point covers, for example `month` returns one data point per month in the requested period.
+	//
+	// Example: month
+	AggregationCycle AnalyticsAggregationCycle `json:"aggregation_cycle"`
+
+	// Filter Filters for the cashflow report.
+	Filter *AnalyticsCashflowFilter `json:"filter,omitempty"`
+
+	// From The start date of the reporting period (inclusive).
+	// Interpreted in the business's timezone.
+	// Cannot be in the future.
+	//
+	// Example: 2025-01-01
+	From AnalyticsReportingPeriodStart `json:"from"`
+
+	// To The end date of the reporting period (exclusive).
+	// Interpreted in the business's timezone.
+	// Must be 1-365 days after `from`.
+	// Cannot be in the future.
+	// For example, to cover all of January 2025, set the dates as follows: `from` -> `2025-01-01`, `to` -> `2025-02-01`.
+	//
+	// Example: 2025-02-01
+	To AnalyticsReportingPeriodEnd `json:"to"`
+}
+
+// AnalyticsCashflowSummary The period totals of a cashflow report.
+type AnalyticsCashflowSummary struct {
+	// Total The net cashflow, calculated as income minus spending.
+	// Expressed in the business's base currency.
+	Total AnalyticsMoney `json:"total"`
+
+	// TotalIncome The total income for the requested period.
+	// Expressed in the business's base currency.
+	TotalIncome AnalyticsMoney `json:"total_income"`
+
+	// TotalSpent The total spending for the requested period.
+	// Expressed in the business's base currency.
+	TotalSpent AnalyticsMoney `json:"total_spent"`
+}
+
+// AnalyticsCurrencies Restricts the analytics to transactions in the given currencies.
+//
+// Example: ["GBP","EUR"]
+type AnalyticsCurrencies = []AnalyticsCurrency
+
+// AnalyticsCurrency The currency of the amount, provided as an [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code or a standard cryptocurrency code such as `BTC` or `ETH`.
+//
+// Example: GBP
+type AnalyticsCurrency = string
+
+// AnalyticsCurrencyRecordInfo defines model for AnalyticsCurrencyRecordInfo.
+type AnalyticsCurrencyRecordInfo struct {
+	// Currency The currency of the amount, provided as an [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code or a standard cryptocurrency code such as `BTC` or `ETH`.
+	//
+	// Example: GBP
+	Currency AnalyticsCurrency               `json:"currency"`
+	Type     AnalyticsCurrencyRecordInfoType `json:"type"`
+}
+
+// AnalyticsCurrencyRecordInfoType defines model for AnalyticsCurrencyRecordInfo.Type.
+type AnalyticsCurrencyRecordInfoType string
+
+// AnalyticsExcludedSummary Summary of the transactions that a user excluded from analytics.
+type AnalyticsExcludedSummary struct {
+	// Total The total amount of the excluded transactions.
+	// Expressed in the business's base currency.
+	Total AnalyticsMoney `json:"total"`
+
+	// TransactionCount The number of excluded transactions.
+	//
+	// Example: 2
+	TransactionCount int `json:"transaction_count"`
+}
+
+// AnalyticsIncomeAggregationRecord A single row of a income breakdown, i.e. one group of transactions that share the value of the requested dimension.
+type AnalyticsIncomeAggregationRecord struct {
+	// Percentage The share of the overall total that this group represents, on a 0-100 scale.
+	//
+	// Example: 27.4
+	Percentage float32 `json:"percentage"`
+
+	// RecordInfo The dimension value of this row. Present only for `default` records; omitted for `other` and `excluded` records.
+	RecordInfo *AnalyticsIncomeRecordInfo `json:"record_info,omitempty"`
+
+	// RecordType The type of this record:
+	//
+	// | Value | Description |
+	// | --- | --- |
+	// | **`default`** | A group of transactions sharing a dimension value. |
+	// | **`other`** | Transactions that have no value for the requested dimension. |
+	// | **`excluded`** | Transactions that a user excluded from analytics. |
+	//
+	// Example: default
+	RecordType AnalyticsIncomeAggregationRecordRecordType `json:"record_type"`
+
+	// Total The total of the transactions in this group, in the business's base currency.
+	Total AnalyticsMoney `json:"total"`
+
+	// TransactionCount The number of transactions in this group.
+	//
+	// Example: 42
+	TransactionCount int `json:"transaction_count"`
+}
+
+// AnalyticsIncomeAggregationRecordRecordType The type of this record:
+//
+// | Value | Description |
+// | --- | --- |
+// | **`default`** | A group of transactions sharing a dimension value. |
+// | **`other`** | Transactions that have no value for the requested dimension. |
+// | **`excluded`** | Transactions that a user excluded from analytics. |
+//
+// Example: default
+type AnalyticsIncomeAggregationRecordRecordType string
+
+// AnalyticsIncomeBreakdownResponse An income breakdown report with the period total and one row per dimension value.
+type AnalyticsIncomeBreakdownResponse struct {
+	// Aggregations Rows grouped by the requested dimension, ordered by total in the business's base currency in descending order.
+	Aggregations []AnalyticsIncomeAggregationRecord `json:"aggregations"`
+
+	// Excluded Summary of the transactions excluded from analytics by the user. Returned only on the first page, only when relevant.
+	Excluded *AnalyticsExcludedSummary `json:"excluded,omitempty"`
+
+	// NextPageToken An opaque cursor for the next page. Omitted when no further pages exist.
+	NextPageToken *string `json:"next_page_token,omitempty"`
+
+	// Total The total income for the whole requested period, across all aggregation groups.
+	// Expressed in the business's base currency.
+	Total AnalyticsMoney `json:"total"`
+}
+
+// AnalyticsIncomeBreakdownSearchRequest defines model for AnalyticsIncomeBreakdownSearchRequest.
+type AnalyticsIncomeBreakdownSearchRequest struct {
+	// Dimension The dimension to group income by.
+	//
+	// Example: transaction_type
+	Dimension AnalyticsIncomeBreakdownSearchRequestDimension `json:"dimension"`
+
+	// Filter Filters for the income report.
+	Filter *AnalyticsIncomeFilter `json:"filter,omitempty"`
+
+	// From The start date of the reporting period (inclusive).
+	// Interpreted in the business's timezone.
+	// Cannot be in the future.
+	//
+	// Example: 2025-01-01
+	From AnalyticsReportingPeriodStart `json:"from"`
+
+	// Limit The maximum number of rows to return per page.
+	//
+	// Example: 20
+	Limit *AnalyticsLimit `json:"limit,omitempty"`
+
+	// PageToken An opaque cursor taken from `next_page_token` in a previous response.
+	// Omit it to retrieve the first page.
+	//
+	// Example: eyJvZmZzZXQiOjJ9
+	PageToken *AnalyticsPageToken `json:"page_token,omitempty"`
+
+	// To The end date of the reporting period (exclusive).
+	// Interpreted in the business's timezone.
+	// Must be 1-365 days after `from`.
+	// Cannot be in the future.
+	// For example, to cover all of January 2025, set the dates as follows: `from` -> `2025-01-01`, `to` -> `2025-02-01`.
+	//
+	// Example: 2025-02-01
+	To AnalyticsReportingPeriodEnd `json:"to"`
+}
+
+// AnalyticsIncomeBreakdownSearchRequestDimension The dimension to group income by.
+//
+// Example: transaction_type
+type AnalyticsIncomeBreakdownSearchRequestDimension string
+
+// AnalyticsIncomeFilter Filters for the income report.
+type AnalyticsIncomeFilter struct {
+	// AccountId Restricts the analytics to transactions on the given accounts. If not provided, the analytics cover all accounts of the business.
+	//
+	// Example: ["9d2b4c1e-7a34-4f5a-9b0c-1e6f8a7b2c3d","b3d9e7f1-4c2a-4b8e-9d5f-6a7b8c9d0e1f"]
+	AccountId *AnalyticsAccountIds `json:"account_id,omitempty"`
+
+	// Currency Restricts the analytics to transactions in the given currencies.
+	//
+	// Example: ["GBP","EUR"]
+	Currency *AnalyticsCurrencies `json:"currency,omitempty"`
+
+	// TransactionType Restricts the analytics to transactions of the given types.
+	//
+	// Example: ["topup","transfer"]
+	TransactionType *AnalyticsTransactionTypes `json:"transaction_type,omitempty"`
+}
+
+// AnalyticsIncomeRecordInfo The dimension value that an income breakdown row represents, for example a currency code or transaction type.
+type AnalyticsIncomeRecordInfo struct {
+	union json.RawMessage
+}
+
+// AnalyticsIncomeSearchRequest defines model for AnalyticsIncomeSearchRequest.
+type AnalyticsIncomeSearchRequest struct {
+	// AggregationCycle The length of the interval that each returned data point covers, for example `month` returns one data point per month in the requested period.
+	//
+	// Example: month
+	AggregationCycle AnalyticsAggregationCycle `json:"aggregation_cycle"`
+
+	// Filter Filters for the income report.
+	Filter *AnalyticsIncomeFilter `json:"filter,omitempty"`
+
+	// From The start date of the reporting period (inclusive).
+	// Interpreted in the business's timezone.
+	// Cannot be in the future.
+	//
+	// Example: 2025-01-01
+	From AnalyticsReportingPeriodStart `json:"from"`
+
+	// To The end date of the reporting period (exclusive).
+	// Interpreted in the business's timezone.
+	// Must be 1-365 days after `from`.
+	// Cannot be in the future.
+	// For example, to cover all of January 2025, set the dates as follows: `from` -> `2025-01-01`, `to` -> `2025-02-01`.
+	//
+	// Example: 2025-02-01
+	To AnalyticsReportingPeriodEnd `json:"to"`
+}
+
+// AnalyticsIncomeSearchResponse An income time series report with the period total.
+type AnalyticsIncomeSearchResponse struct {
+	// DataPoints Data points for the requested aggregation cycle.
+	DataPoints []AnalyticsTimeSeriesDataPoint `json:"data_points"`
+
+	// Total The total income for the whole requested period.
+	// Equals the sum of all data point totals.
+	// Expressed in the business's base currency.
+	Total AnalyticsMoney `json:"total"`
+}
+
+// AnalyticsLimit The maximum number of rows to return per page.
+//
+// Example: 20
+type AnalyticsLimit = int
+
+// AnalyticsMerchantCategories Restricts the analytics to transactions with merchants in the given categories.
+//
+// Example: ["food","software"]
+type AnalyticsMerchantCategories = []string
+
+// AnalyticsMerchantCategoryRecordInfo defines model for AnalyticsMerchantCategoryRecordInfo.
+type AnalyticsMerchantCategoryRecordInfo struct {
+	// Name Merchant category display name.
+	//
+	// Example: software
+	Name string                                  `json:"name"`
+	Type AnalyticsMerchantCategoryRecordInfoType `json:"type"`
+}
+
+// AnalyticsMerchantCategoryRecordInfoType defines model for AnalyticsMerchantCategoryRecordInfo.Type.
+type AnalyticsMerchantCategoryRecordInfoType string
+
+// AnalyticsMerchantCountries Restricts the analytics to transactions with merchants in the given countries.
+//
+// Example: ["GB","US"]
+type AnalyticsMerchantCountries = []string
+
+// AnalyticsMerchantCountryRecordInfo defines model for AnalyticsMerchantCountryRecordInfo.
+type AnalyticsMerchantCountryRecordInfo struct {
+	// Country Merchant country, an [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+	//
+	// Example: GB
+	Country string                                 `json:"country"`
+	Type    AnalyticsMerchantCountryRecordInfoType `json:"type"`
+}
+
+// AnalyticsMerchantCountryRecordInfoType defines model for AnalyticsMerchantCountryRecordInfo.Type.
+type AnalyticsMerchantCountryRecordInfoType string
+
+// AnalyticsMerchantGroupRecordInfo defines model for AnalyticsMerchantGroupRecordInfo.
+type AnalyticsMerchantGroupRecordInfo struct {
+	// Group Whether the record represents a merchant or a brand.
+	//
+	// | Value | Meaning | Example |
+	// |-------|---------|---------|
+	// | `merchant` | The merchant doesn't belong to any brand. | Joe's Café |
+	// | `brand` | The merchant belongs to a brand. | Amazon |
+	Group AnalyticsMerchantGroupRecordInfoGroup `json:"group"`
+
+	// Id The merchant UUID for the `merchant` group, or the brand UUID for the `brand` group.
+	Id openapi_types.UUID `json:"id"`
+
+	// Name Display name of the merchant or brand.
+	//
+	// Example: Software Ltd
+	Name *string                              `json:"name,omitempty"`
+	Type AnalyticsMerchantGroupRecordInfoType `json:"type"`
+}
+
+// AnalyticsMerchantGroupRecordInfoGroup Whether the record represents a merchant or a brand.
+//
+// | Value | Meaning | Example |
+// |-------|---------|---------|
+// | `merchant` | The merchant doesn't belong to any brand. | Joe's Café |
+// | `brand` | The merchant belongs to a brand. | Amazon |
+type AnalyticsMerchantGroupRecordInfoGroup string
+
+// AnalyticsMerchantGroupRecordInfoType defines model for AnalyticsMerchantGroupRecordInfo.Type.
+type AnalyticsMerchantGroupRecordInfoType string
+
+// AnalyticsMerchantIds Restricts the analytics to transactions made with the given merchants.
+//
+// Example: ["5e8a9f2b-3c1d-4e6f-8a7b-2c3d4e5f6a7b"]
+type AnalyticsMerchantIds = []openapi_types.UUID
+
+// AnalyticsMoney A monetary amount and the currency it is expressed in.
+type AnalyticsMoney struct {
+	// Amount The monetary amount as a decimal string.
+	//
+	// Example: 1099.72
+	Amount string `json:"amount"`
+
+	// Currency The currency of the amount, provided as an [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code or a standard cryptocurrency code such as `BTC` or `ETH`.
+	//
+	// Example: GBP
+	Currency AnalyticsCurrency `json:"currency"`
+}
+
+// AnalyticsPageToken An opaque cursor taken from `next_page_token` in a previous response.
+// Omit it to retrieve the first page.
+//
+// Example: eyJvZmZzZXQiOjJ9
+type AnalyticsPageToken = string
+
+// AnalyticsReportingPeriodEnd The end date of the reporting period (exclusive).
+// Interpreted in the business's timezone.
+// Must be 1-365 days after `from`.
+// Cannot be in the future.
+// For example, to cover all of January 2025, set the dates as follows: `from` -> `2025-01-01`, `to` -> `2025-02-01`.
+//
+// Example: 2025-02-01
+type AnalyticsReportingPeriodEnd = openapi_types.Date
+
+// AnalyticsReportingPeriodStart The start date of the reporting period (inclusive).
+// Interpreted in the business's timezone.
+// Cannot be in the future.
+//
+// Example: 2025-01-01
+type AnalyticsReportingPeriodStart = openapi_types.Date
+
+// AnalyticsSpendProgramIds Restricts the analytics to transactions made under the given spend programs.
+//
+// Example: ["a1b2c3d4-e5f6-4789-aabb-001122334455","b2c3d4e5-f6a7-4898-9abb-112233445566"]
+type AnalyticsSpendProgramIds = []openapi_types.UUID
+
+// AnalyticsSpendProgramRecordInfo defines model for AnalyticsSpendProgramRecordInfo.
+type AnalyticsSpendProgramRecordInfo struct {
+	// Id The spend program UUID.
+	Id openapi_types.UUID `json:"id"`
+
+	// Name Display name of the spend program.
+	//
+	// Example: Team budget
+	Name *string                             `json:"name,omitempty"`
+	Type AnalyticsSpendProgramRecordInfoType `json:"type"`
+}
+
+// AnalyticsSpendProgramRecordInfoType defines model for AnalyticsSpendProgramRecordInfo.Type.
+type AnalyticsSpendProgramRecordInfoType string
+
+// AnalyticsSpendingAggregationRecord A single row of a spending breakdown, i.e. one group of transactions that share the value of the requested dimension.
+type AnalyticsSpendingAggregationRecord struct {
+	// Percentage The share of the overall total that this group represents, on a 0-100 scale.
+	//
+	// Example: 27.4
+	Percentage float32 `json:"percentage"`
+
+	// RecordInfo The dimension value of this row. Present only for `default` records; omitted for `other` and `excluded` records.
+	RecordInfo *AnalyticsSpendingRecordInfo `json:"record_info,omitempty"`
+
+	// RecordType The type of this record:
+	//
+	// | Value | Description |
+	// | --- | --- |
+	// | **`default`** | A group of transactions sharing a dimension value. |
+	// | **`other`** | Transactions that have no value for the requested dimension. |
+	// | **`excluded`** | Transactions that a user excluded from analytics. |
+	//
+	// Example: default
+	RecordType AnalyticsSpendingAggregationRecordRecordType `json:"record_type"`
+
+	// Total The total of the transactions in this group, in the business's base currency.
+	Total AnalyticsMoney `json:"total"`
+
+	// TransactionCount The number of transactions in this group.
+	//
+	// Example: 42
+	TransactionCount int `json:"transaction_count"`
+}
+
+// AnalyticsSpendingAggregationRecordRecordType The type of this record:
+//
+// | Value | Description |
+// | --- | --- |
+// | **`default`** | A group of transactions sharing a dimension value. |
+// | **`other`** | Transactions that have no value for the requested dimension. |
+// | **`excluded`** | Transactions that a user excluded from analytics. |
+//
+// Example: default
+type AnalyticsSpendingAggregationRecordRecordType string
+
+// AnalyticsSpendingBreakdownResponse A spending breakdown report with the period total and one row per dimension value.
+type AnalyticsSpendingBreakdownResponse struct {
+	// Aggregations Rows grouped by the requested dimension, ordered by total in the business's base currency in descending order.
+	Aggregations []AnalyticsSpendingAggregationRecord `json:"aggregations"`
+
+	// Excluded Summary of the transactions excluded from analytics by the user. Returned only on the first page, only when relevant.
+	Excluded *AnalyticsExcludedSummary `json:"excluded,omitempty"`
+
+	// NextPageToken An opaque cursor for the next page. Omitted when no further pages exist.
+	NextPageToken *string `json:"next_page_token,omitempty"`
+
+	// Total The total spending for the whole requested period, across all aggregation groups.
+	// Expressed in the business's base currency.
+	Total AnalyticsMoney `json:"total"`
+}
+
+// AnalyticsSpendingBreakdownSearchRequest defines model for AnalyticsSpendingBreakdownSearchRequest.
+type AnalyticsSpendingBreakdownSearchRequest struct {
+	// Dimension The dimension to group spending by.
+	//
+	// Example: merchant_category
+	Dimension AnalyticsSpendingBreakdownSearchRequestDimension `json:"dimension"`
+
+	// Filter Filters for the spending report.
+	Filter *AnalyticsSpendingFilter `json:"filter,omitempty"`
+
+	// From The start date of the reporting period (inclusive).
+	// Interpreted in the business's timezone.
+	// Cannot be in the future.
+	//
+	// Example: 2025-01-01
+	From AnalyticsReportingPeriodStart `json:"from"`
+
+	// Limit The maximum number of rows to return per page.
+	//
+	// Example: 20
+	Limit *AnalyticsLimit `json:"limit,omitempty"`
+
+	// PageToken An opaque cursor taken from `next_page_token` in a previous response.
+	// Omit it to retrieve the first page.
+	//
+	// Example: eyJvZmZzZXQiOjJ9
+	PageToken *AnalyticsPageToken `json:"page_token,omitempty"`
+
+	// To The end date of the reporting period (exclusive).
+	// Interpreted in the business's timezone.
+	// Must be 1-365 days after `from`.
+	// Cannot be in the future.
+	// For example, to cover all of January 2025, set the dates as follows: `from` -> `2025-01-01`, `to` -> `2025-02-01`.
+	//
+	// Example: 2025-02-01
+	To AnalyticsReportingPeriodEnd `json:"to"`
+}
+
+// AnalyticsSpendingBreakdownSearchRequestDimension The dimension to group spending by.
+//
+// Example: merchant_category
+type AnalyticsSpendingBreakdownSearchRequestDimension string
+
+// AnalyticsSpendingFilter Filters for the spending report.
+type AnalyticsSpendingFilter struct {
+	// AccountId Restricts the analytics to transactions on the given accounts. If not provided, the analytics cover all accounts of the business.
+	//
+	// Example: ["9d2b4c1e-7a34-4f5a-9b0c-1e6f8a7b2c3d","b3d9e7f1-4c2a-4b8e-9d5f-6a7b8c9d0e1f"]
+	AccountId *AnalyticsAccountIds `json:"account_id,omitempty"`
+
+	// BrandId Restricts the analytics to transactions made with the given brands.
+	// A brand groups multiple merchants.
+	// For example, `Amazon UK` and `Amazon PL` are merchants, and `Amazon` is their brand.
+	//
+	// Example: ["1f2e3d4c-5b6a-4c9d-8e7f-6a5b4c3d2e1f"]
+	BrandId *AnalyticsBrandIds `json:"brand_id,omitempty"`
+
+	// Currency Restricts the analytics to transactions in the given currencies.
+	//
+	// Example: ["GBP","EUR"]
+	Currency *AnalyticsCurrencies `json:"currency,omitempty"`
+
+	// MerchantCategory Restricts the analytics to transactions with merchants in the given categories.
+	//
+	// Example: ["food","software"]
+	MerchantCategory *AnalyticsMerchantCategories `json:"merchant_category,omitempty"`
+
+	// MerchantCountry Restricts the analytics to transactions with merchants in the given countries.
+	//
+	// Example: ["GB","US"]
+	MerchantCountry *AnalyticsMerchantCountries `json:"merchant_country,omitempty"`
+
+	// MerchantId Restricts the analytics to transactions made with the given merchants.
+	//
+	// Example: ["5e8a9f2b-3c1d-4e6f-8a7b-2c3d4e5f6a7b"]
+	MerchantId *AnalyticsMerchantIds `json:"merchant_id,omitempty"`
+
+	// SpendProgramId Restricts the analytics to transactions made under the given spend programs.
+	//
+	// Example: ["a1b2c3d4-e5f6-4789-aabb-001122334455","b2c3d4e5-f6a7-4898-9abb-112233445566"]
+	SpendProgramId *AnalyticsSpendProgramIds `json:"spend_program_id,omitempty"`
+
+	// TeamMemberId Restricts the analytics to transactions made by the given team members.
+	//
+	// Example: ["77c3e5a1-9b8d-4f2e-a6c4-3d5e7f9a1b2c","88d4f6b2-0c9e-4039-b7d5-4e6f80a2c3d4"]
+	TeamMemberId *AnalyticsTeamMemberIds `json:"team_member_id,omitempty"`
+
+	// TransactionType Restricts the analytics to transactions of the given types.
+	//
+	// Example: ["topup","transfer"]
+	TransactionType *AnalyticsTransactionTypes `json:"transaction_type,omitempty"`
+}
+
+// AnalyticsSpendingRecordInfo The dimension value that a spending breakdown row represents, for example a merchant category name or a team member ID.
+type AnalyticsSpendingRecordInfo struct {
+	union json.RawMessage
+}
+
+// AnalyticsSpendingSearchRequest defines model for AnalyticsSpendingSearchRequest.
+type AnalyticsSpendingSearchRequest struct {
+	// AggregationCycle The length of the interval that each returned data point covers, for example `month` returns one data point per month in the requested period.
+	//
+	// Example: month
+	AggregationCycle AnalyticsAggregationCycle `json:"aggregation_cycle"`
+
+	// Filter Filters for the spending report.
+	Filter *AnalyticsSpendingFilter `json:"filter,omitempty"`
+
+	// From The start date of the reporting period (inclusive).
+	// Interpreted in the business's timezone.
+	// Cannot be in the future.
+	//
+	// Example: 2025-01-01
+	From AnalyticsReportingPeriodStart `json:"from"`
+
+	// To The end date of the reporting period (exclusive).
+	// Interpreted in the business's timezone.
+	// Must be 1-365 days after `from`.
+	// Cannot be in the future.
+	// For example, to cover all of January 2025, set the dates as follows: `from` -> `2025-01-01`, `to` -> `2025-02-01`.
+	//
+	// Example: 2025-02-01
+	To AnalyticsReportingPeriodEnd `json:"to"`
+}
+
+// AnalyticsSpendingSearchResponse A spending time series report with the period total.
+type AnalyticsSpendingSearchResponse struct {
+	// DataPoints Data points for the requested aggregation cycle.
+	DataPoints []AnalyticsTimeSeriesDataPoint `json:"data_points"`
+
+	// Total The total spending for the whole requested period.
+	// Equals the sum of all data point totals.
+	// Expressed in the business's base currency.
+	Total AnalyticsMoney `json:"total"`
+}
+
+// AnalyticsTeamMemberIds Restricts the analytics to transactions made by the given team members.
+//
+// Example: ["77c3e5a1-9b8d-4f2e-a6c4-3d5e7f9a1b2c","88d4f6b2-0c9e-4039-b7d5-4e6f80a2c3d4"]
+type AnalyticsTeamMemberIds = []openapi_types.UUID
+
+// AnalyticsTeamMemberRecordInfo defines model for AnalyticsTeamMemberRecordInfo.
+type AnalyticsTeamMemberRecordInfo struct {
+	// Id The team member UUID.
+	Id   openapi_types.UUID                `json:"id"`
+	Type AnalyticsTeamMemberRecordInfoType `json:"type"`
+}
+
+// AnalyticsTeamMemberRecordInfoType defines model for AnalyticsTeamMemberRecordInfo.Type.
+type AnalyticsTeamMemberRecordInfoType string
+
+// AnalyticsTimeSeries A time series of a cashflow side.
+type AnalyticsTimeSeries struct {
+	// DataPoints Data points for the requested aggregation cycle.
+	DataPoints []AnalyticsTimeSeriesDataPoint `json:"data_points"`
+}
+
+// AnalyticsTimeSeriesDataPoint A single data point of a time series.
+type AnalyticsTimeSeriesDataPoint struct {
+	// From The start date of this data point (inclusive). Interpreted in the business's timezone.
+	//
+	// Example: 2025-08-01
+	From openapi_types.Date `json:"from"`
+
+	// To The end date of this data point (exclusive). Interpreted in the business's timezone.
+	//
+	// Example: 2025-08-02
+	To openapi_types.Date `json:"to"`
+
+	// Total The total for this data point's interval, i.e. the sum of the transactions in this interval.
+	// Expressed in the business's base currency.
+	Total AnalyticsMoney `json:"total"`
+}
+
+// AnalyticsTotalWealthAggregationRecord A single row of a total wealth breakdown, i.e. one asset type or asset group.
+type AnalyticsTotalWealthAggregationRecord struct {
+	// AccountCount The number of accounts included in this group.
+	//
+	// Example: 3
+	AccountCount int `json:"account_count"`
+
+	// Percentage The share of the overall total that this group represents, on a 0-100 scale.
+	//
+	// Example: 60
+	Percentage float32 `json:"percentage"`
+
+	// RecordInfo The asset type or group of this row.
+	RecordInfo AnalyticsTotalWealthAggregationRecord_RecordInfo `json:"record_info"`
+
+	// RecordType The type of this record.
+	// Total wealth breakdowns contain only `default` records.
+	//
+	// | Value | Description |
+	// | --- | --- |
+	// | **`default`** | A group of assets sharing the requested dimension value. |
+	//
+	// Example: default
+	RecordType AnalyticsTotalWealthAggregationRecordRecordType `json:"record_type"`
+
+	// Total The total value of the assets in this group, in the business's base currency.
+	Total AnalyticsMoney `json:"total"`
+}
+
+// AnalyticsTotalWealthAggregationRecord_RecordInfo The asset type or group of this row.
+type AnalyticsTotalWealthAggregationRecord_RecordInfo struct {
+	union json.RawMessage
+}
+
+// AnalyticsTotalWealthAggregationRecordRecordType The type of this record.
+// Total wealth breakdowns contain only `default` records.
+//
+// | Value | Description |
+// | --- | --- |
+// | **`default`** | A group of assets sharing the requested dimension value. |
+//
+// Example: default
+type AnalyticsTotalWealthAggregationRecordRecordType string
+
+// AnalyticsTotalWealthBreakdownResponse A total wealth breakdown by asset type or asset group.
+type AnalyticsTotalWealthBreakdownResponse struct {
+	// Aggregations Rows for the requested dimension, ordered by total in the business's base currency in descending order.
+	// Rows with the same total keep the order in which the values are listed in the enum - see `record_info.asset_type` and `record_info.asset_group`.
+	// Group totals and account counts are combined before percentages are calculated.
+	Aggregations []AnalyticsTotalWealthAggregationRecord `json:"aggregations"`
+
+	// Total The total wealth of the business.
+	// Expressed in the business's base currency.
+	Total AnalyticsMoney `json:"total"`
+}
+
+// AnalyticsTotalWealthBreakdownSearchRequest defines model for AnalyticsTotalWealthBreakdownSearchRequest.
+type AnalyticsTotalWealthBreakdownSearchRequest struct {
+	// Dimension The dimension to group wealth by:
+	//
+	// | Dimension value | Example groupings |
+	// | --- | --- |
+	// | **`asset_type`** | `cash`, `savings_deposits`, `savings_mmf`, `merchant`, `crypto` |
+	// | **`asset_group`** | `cash`, `treasury`, `merchant` |
+	//
+	// Example: asset_type
+	Dimension AnalyticsTotalWealthBreakdownSearchRequestDimension `json:"dimension"`
+
+	// From The start date of the reporting period (inclusive).
+	// Interpreted in the business's timezone.
+	// Cannot be in the future.
+	//
+	// Example: 2025-01-01
+	From AnalyticsReportingPeriodStart `json:"from"`
+
+	// To The end date of the reporting period (exclusive).
+	// Interpreted in the business's timezone.
+	// Must be 1-365 days after `from`.
+	// Cannot be in the future.
+	// For example, to cover all of January 2025, set the dates as follows: `from` -> `2025-01-01`, `to` -> `2025-02-01`.
+	//
+	// Example: 2025-02-01
+	To AnalyticsReportingPeriodEnd `json:"to"`
+}
+
+// AnalyticsTotalWealthBreakdownSearchRequestDimension The dimension to group wealth by:
+//
+// | Dimension value | Example groupings |
+// | --- | --- |
+// | **`asset_type`** | `cash`, `savings_deposits`, `savings_mmf`, `merchant`, `crypto` |
+// | **`asset_group`** | `cash`, `treasury`, `merchant` |
+//
+// Example: asset_type
+type AnalyticsTotalWealthBreakdownSearchRequestDimension string
+
+// AnalyticsTotalWealthDataPoint A single data point of a total wealth time series.
+type AnalyticsTotalWealthDataPoint struct {
+	// From The start date of this data point (inclusive). Interpreted in the business's timezone.
+	//
+	// Example: 2026-08-01
+	From openapi_types.Date `json:"from"`
+
+	// To The end date of this data point (exclusive). Interpreted in the business's timezone.
+	//
+	// Example: 2026-08-02
+	To openapi_types.Date `json:"to"`
+
+	// Total The total value of the business's assets.
+	// Expressed in the business's base currency.
+	Total AnalyticsMoney `json:"total"`
+}
+
+// AnalyticsTotalWealthFilter Filters for the total wealth report.
+type AnalyticsTotalWealthFilter struct {
+	// AssetType Restricts the report to the given asset type.
+	//
+	// | Value | Description |
+	// | --- | --- |
+	// | **`cash`** | Funds in the business's cash accounts. |
+	// | **`savings_deposits`** | Funds in savings accounts and deposits. |
+	// | **`savings_mmf`** | Funds in savings money market funds. |
+	// | **`merchant`** | Funds held with merchants. |
+	// | **`crypto`** | Cryptocurrency holdings. |
+	//
+	// Omit it to include all asset types.
+	//
+	// Example: crypto
+	AssetType *AnalyticsTotalWealthFilterAssetType `json:"asset_type,omitempty"`
+}
+
+// AnalyticsTotalWealthFilterAssetType Restricts the report to the given asset type.
+//
+// | Value | Description |
+// | --- | --- |
+// | **`cash`** | Funds in the business's cash accounts. |
+// | **`savings_deposits`** | Funds in savings accounts and deposits. |
+// | **`savings_mmf`** | Funds in savings money market funds. |
+// | **`merchant`** | Funds held with merchants. |
+// | **`crypto`** | Cryptocurrency holdings. |
+//
+// Omit it to include all asset types.
+//
+// Example: crypto
+type AnalyticsTotalWealthFilterAssetType string
+
+// AnalyticsTotalWealthSearchRequest defines model for AnalyticsTotalWealthSearchRequest.
+type AnalyticsTotalWealthSearchRequest struct {
+	// Filter Filters for the total wealth report.
+	Filter *AnalyticsTotalWealthFilter `json:"filter,omitempty"`
+
+	// From The start date of the reporting period (inclusive).
+	// Interpreted in the business's timezone.
+	// Cannot be in the future.
+	//
+	// Example: 2025-01-01
+	From AnalyticsReportingPeriodStart `json:"from"`
+
+	// To The end date of the reporting period (exclusive).
+	// Interpreted in the business's timezone.
+	// Must be 1-365 days after `from`.
+	// Cannot be in the future.
+	// For example, to cover all of January 2025, set the dates as follows: `from` -> `2025-01-01`, `to` -> `2025-02-01`.
+	//
+	// Example: 2025-02-01
+	To AnalyticsReportingPeriodEnd `json:"to"`
+}
+
+// AnalyticsTotalWealthSearchResponse A total wealth time series report with the period total.
+type AnalyticsTotalWealthSearchResponse struct {
+	// DataPoints Daily data points over the requested period.
+	DataPoints []AnalyticsTotalWealthDataPoint `json:"data_points"`
+
+	// Total The total wealth of the business.
+	// Expressed in the business's base currency.
+	Total AnalyticsMoney `json:"total"`
+}
+
+// AnalyticsTransactionType The transaction type. For example:
+//
+// | Transaction direction | Example values |
+// | --------------------- | -------------- |
+// | Money in | `cashback`, `refund`, `card_refund`, `topup`, `merchant_withdrawal`, `reward`, `rev_payment_refund` |
+// | Money out | `atm`, `fee`, `physical_card`, `rev_payment`, `tax`, `virtual_card` |
+// | Either direction | `transfer`, `other` |
+//
+// New transaction types may be added.
+//
+// Example: topup
+type AnalyticsTransactionType = string
+
+// AnalyticsTransactionTypeRecordInfo defines model for AnalyticsTransactionTypeRecordInfo.
+type AnalyticsTransactionTypeRecordInfo struct {
+	// TransactionType The transaction type. For example:
+	//
+	// | Transaction direction | Example values |
+	// | --------------------- | -------------- |
+	// | Money in | `cashback`, `refund`, `card_refund`, `topup`, `merchant_withdrawal`, `reward`, `rev_payment_refund` |
+	// | Money out | `atm`, `fee`, `physical_card`, `rev_payment`, `tax`, `virtual_card` |
+	// | Either direction | `transfer`, `other` |
+	//
+	// New transaction types may be added.
+	//
+	// Example: topup
+	TransactionType AnalyticsTransactionType               `json:"transaction_type"`
+	Type            AnalyticsTransactionTypeRecordInfoType `json:"type"`
+}
+
+// AnalyticsTransactionTypeRecordInfoType defines model for AnalyticsTransactionTypeRecordInfo.Type.
+type AnalyticsTransactionTypeRecordInfoType string
+
+// AnalyticsTransactionTypes Restricts the analytics to transactions of the given types.
+//
+// Example: ["topup","transfer"]
+type AnalyticsTransactionTypes = []AnalyticsTransactionType
 
 // BankCountryCode The country of the bank, provided as a 2-letter [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) code.
 //
@@ -3181,6 +4475,18 @@ type ErrorUnauthorized = ErrorWithStatus
 type ErrorUnprocessableEntity struct {
 	// Code The error code.
 	Code *int `json:"code,omitempty"`
+
+	// Message The description of the error.
+	Message string `json:"message"`
+}
+
+// ErrorV2 An error response.
+type ErrorV2 struct {
+	// Code The error code.
+	Code string `json:"code"`
+
+	// ErrorId The ID of the specific error instance. Used for traceability.
+	ErrorId openapi_types.UUID `json:"error_id"`
 
 	// Message The description of the error.
 	Message string `json:"message"`
@@ -5159,8 +6465,20 @@ type Webhooks = []WebhookV2Basic
 // Example: MjAyNi0wMS0wMVQwOToxMzoxNS40MDZaN2RhNTFjZGY0LTZiYjctNDRkNi04OWU1LTc2OWEzZGYxZDc5ZA
 type PageTokenParameter = PageToken
 
+// AnalyticsBadRequest An error response.
+type AnalyticsBadRequest = ErrorV2
+
+// AnalyticsNotEnabled An error response.
+type AnalyticsNotEnabled = ErrorV2
+
+// AnalyticsRateLimited An error response.
+type AnalyticsRateLimited = ErrorV2
+
 // Forbidden defines model for Forbidden.
 type Forbidden = ErrorWithId
+
+// ForbiddenAnalytics An error response.
+type ForbiddenAnalytics = ErrorV2
 
 // InternalServerError defines model for InternalServerError.
 type InternalServerError = ErrorWithId
@@ -5919,6 +7237,27 @@ type CreateAccountingCategoryJSONRequestBody = CreateAccountingCategoryRequest
 // UpdateAccountingCategoryJSONRequestBody defines body for UpdateAccountingCategory for application/json ContentType.
 type UpdateAccountingCategoryJSONRequestBody = UpdateAccountingCategoryRequest
 
+// SearchCashflowJSONRequestBody defines body for SearchCashflow for application/json ContentType.
+type SearchCashflowJSONRequestBody = AnalyticsCashflowSearchRequest
+
+// SearchIncomeBreakdownJSONRequestBody defines body for SearchIncomeBreakdown for application/json ContentType.
+type SearchIncomeBreakdownJSONRequestBody = AnalyticsIncomeBreakdownSearchRequest
+
+// SearchIncomeJSONRequestBody defines body for SearchIncome for application/json ContentType.
+type SearchIncomeJSONRequestBody = AnalyticsIncomeSearchRequest
+
+// SearchSpendingBreakdownJSONRequestBody defines body for SearchSpendingBreakdown for application/json ContentType.
+type SearchSpendingBreakdownJSONRequestBody = AnalyticsSpendingBreakdownSearchRequest
+
+// SearchSpendingJSONRequestBody defines body for SearchSpending for application/json ContentType.
+type SearchSpendingJSONRequestBody = AnalyticsSpendingSearchRequest
+
+// SearchTotalWealthBreakdownJSONRequestBody defines body for SearchTotalWealthBreakdown for application/json ContentType.
+type SearchTotalWealthBreakdownJSONRequestBody = AnalyticsTotalWealthBreakdownSearchRequest
+
+// SearchTotalWealthJSONRequestBody defines body for SearchTotalWealth for application/json ContentType.
+type SearchTotalWealthJSONRequestBody = AnalyticsTotalWealthSearchRequest
+
 // CreateCardInvitationJSONRequestBody defines body for CreateCardInvitation for application/json ContentType.
 type CreateCardInvitationJSONRequestBody CreateCardInvitationJSONBody
 
@@ -6025,6 +7364,489 @@ type UpdateWebhookJSONRequestBody = UpdateWebhookRequest
 
 // RotateWebhookSigningSecretJSONRequestBody defines body for RotateWebhookSigningSecret for application/json ContentType.
 type RotateWebhookSigningSecretJSONRequestBody = WebhookSigningSecretRotateRequest
+
+// AsAnalyticsTransactionTypeRecordInfo returns the union data inside the AnalyticsIncomeRecordInfo as a AnalyticsTransactionTypeRecordInfo
+func (t AnalyticsIncomeRecordInfo) AsAnalyticsTransactionTypeRecordInfo() (AnalyticsTransactionTypeRecordInfo, error) {
+	var body AnalyticsTransactionTypeRecordInfo
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAnalyticsTransactionTypeRecordInfo overwrites any union data inside the AnalyticsIncomeRecordInfo as the provided AnalyticsTransactionTypeRecordInfo
+func (t *AnalyticsIncomeRecordInfo) FromAnalyticsTransactionTypeRecordInfo(v AnalyticsTransactionTypeRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"transaction_type"}`))
+	t.union = b
+	return err
+}
+
+// MergeAnalyticsTransactionTypeRecordInfo performs a merge with any union data inside the AnalyticsIncomeRecordInfo, using the provided AnalyticsTransactionTypeRecordInfo
+func (t *AnalyticsIncomeRecordInfo) MergeAnalyticsTransactionTypeRecordInfo(v AnalyticsTransactionTypeRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"transaction_type"}`))
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsAnalyticsCurrencyRecordInfo returns the union data inside the AnalyticsIncomeRecordInfo as a AnalyticsCurrencyRecordInfo
+func (t AnalyticsIncomeRecordInfo) AsAnalyticsCurrencyRecordInfo() (AnalyticsCurrencyRecordInfo, error) {
+	var body AnalyticsCurrencyRecordInfo
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAnalyticsCurrencyRecordInfo overwrites any union data inside the AnalyticsIncomeRecordInfo as the provided AnalyticsCurrencyRecordInfo
+func (t *AnalyticsIncomeRecordInfo) FromAnalyticsCurrencyRecordInfo(v AnalyticsCurrencyRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"currency"}`))
+	t.union = b
+	return err
+}
+
+// MergeAnalyticsCurrencyRecordInfo performs a merge with any union data inside the AnalyticsIncomeRecordInfo, using the provided AnalyticsCurrencyRecordInfo
+func (t *AnalyticsIncomeRecordInfo) MergeAnalyticsCurrencyRecordInfo(v AnalyticsCurrencyRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"currency"}`))
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t AnalyticsIncomeRecordInfo) Discriminator() (string, error) {
+	var discriminator struct {
+		Discriminator string `json:"type"`
+	}
+	err := json.Unmarshal(t.union, &discriminator)
+	return discriminator.Discriminator, err
+}
+
+func (t AnalyticsIncomeRecordInfo) ValueByDiscriminator() (interface{}, error) {
+	discriminator, err := t.Discriminator()
+	if err != nil {
+		return nil, err
+	}
+	switch discriminator {
+	case "currency":
+		return t.AsAnalyticsCurrencyRecordInfo()
+	case "transaction_type":
+		return t.AsAnalyticsTransactionTypeRecordInfo()
+	default:
+		return nil, errors.New("unknown discriminator value: " + discriminator)
+	}
+}
+
+func (t AnalyticsIncomeRecordInfo) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *AnalyticsIncomeRecordInfo) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsAnalyticsMerchantCategoryRecordInfo returns the union data inside the AnalyticsSpendingRecordInfo as a AnalyticsMerchantCategoryRecordInfo
+func (t AnalyticsSpendingRecordInfo) AsAnalyticsMerchantCategoryRecordInfo() (AnalyticsMerchantCategoryRecordInfo, error) {
+	var body AnalyticsMerchantCategoryRecordInfo
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAnalyticsMerchantCategoryRecordInfo overwrites any union data inside the AnalyticsSpendingRecordInfo as the provided AnalyticsMerchantCategoryRecordInfo
+func (t *AnalyticsSpendingRecordInfo) FromAnalyticsMerchantCategoryRecordInfo(v AnalyticsMerchantCategoryRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"merchant_category"}`))
+	t.union = b
+	return err
+}
+
+// MergeAnalyticsMerchantCategoryRecordInfo performs a merge with any union data inside the AnalyticsSpendingRecordInfo, using the provided AnalyticsMerchantCategoryRecordInfo
+func (t *AnalyticsSpendingRecordInfo) MergeAnalyticsMerchantCategoryRecordInfo(v AnalyticsMerchantCategoryRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"merchant_category"}`))
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsAnalyticsMerchantCountryRecordInfo returns the union data inside the AnalyticsSpendingRecordInfo as a AnalyticsMerchantCountryRecordInfo
+func (t AnalyticsSpendingRecordInfo) AsAnalyticsMerchantCountryRecordInfo() (AnalyticsMerchantCountryRecordInfo, error) {
+	var body AnalyticsMerchantCountryRecordInfo
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAnalyticsMerchantCountryRecordInfo overwrites any union data inside the AnalyticsSpendingRecordInfo as the provided AnalyticsMerchantCountryRecordInfo
+func (t *AnalyticsSpendingRecordInfo) FromAnalyticsMerchantCountryRecordInfo(v AnalyticsMerchantCountryRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"merchant_country"}`))
+	t.union = b
+	return err
+}
+
+// MergeAnalyticsMerchantCountryRecordInfo performs a merge with any union data inside the AnalyticsSpendingRecordInfo, using the provided AnalyticsMerchantCountryRecordInfo
+func (t *AnalyticsSpendingRecordInfo) MergeAnalyticsMerchantCountryRecordInfo(v AnalyticsMerchantCountryRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"merchant_country"}`))
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsAnalyticsMerchantGroupRecordInfo returns the union data inside the AnalyticsSpendingRecordInfo as a AnalyticsMerchantGroupRecordInfo
+func (t AnalyticsSpendingRecordInfo) AsAnalyticsMerchantGroupRecordInfo() (AnalyticsMerchantGroupRecordInfo, error) {
+	var body AnalyticsMerchantGroupRecordInfo
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAnalyticsMerchantGroupRecordInfo overwrites any union data inside the AnalyticsSpendingRecordInfo as the provided AnalyticsMerchantGroupRecordInfo
+func (t *AnalyticsSpendingRecordInfo) FromAnalyticsMerchantGroupRecordInfo(v AnalyticsMerchantGroupRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"merchant_group"}`))
+	t.union = b
+	return err
+}
+
+// MergeAnalyticsMerchantGroupRecordInfo performs a merge with any union data inside the AnalyticsSpendingRecordInfo, using the provided AnalyticsMerchantGroupRecordInfo
+func (t *AnalyticsSpendingRecordInfo) MergeAnalyticsMerchantGroupRecordInfo(v AnalyticsMerchantGroupRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"merchant_group"}`))
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsAnalyticsTeamMemberRecordInfo returns the union data inside the AnalyticsSpendingRecordInfo as a AnalyticsTeamMemberRecordInfo
+func (t AnalyticsSpendingRecordInfo) AsAnalyticsTeamMemberRecordInfo() (AnalyticsTeamMemberRecordInfo, error) {
+	var body AnalyticsTeamMemberRecordInfo
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAnalyticsTeamMemberRecordInfo overwrites any union data inside the AnalyticsSpendingRecordInfo as the provided AnalyticsTeamMemberRecordInfo
+func (t *AnalyticsSpendingRecordInfo) FromAnalyticsTeamMemberRecordInfo(v AnalyticsTeamMemberRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"team_member"}`))
+	t.union = b
+	return err
+}
+
+// MergeAnalyticsTeamMemberRecordInfo performs a merge with any union data inside the AnalyticsSpendingRecordInfo, using the provided AnalyticsTeamMemberRecordInfo
+func (t *AnalyticsSpendingRecordInfo) MergeAnalyticsTeamMemberRecordInfo(v AnalyticsTeamMemberRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"team_member"}`))
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsAnalyticsTransactionTypeRecordInfo returns the union data inside the AnalyticsSpendingRecordInfo as a AnalyticsTransactionTypeRecordInfo
+func (t AnalyticsSpendingRecordInfo) AsAnalyticsTransactionTypeRecordInfo() (AnalyticsTransactionTypeRecordInfo, error) {
+	var body AnalyticsTransactionTypeRecordInfo
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAnalyticsTransactionTypeRecordInfo overwrites any union data inside the AnalyticsSpendingRecordInfo as the provided AnalyticsTransactionTypeRecordInfo
+func (t *AnalyticsSpendingRecordInfo) FromAnalyticsTransactionTypeRecordInfo(v AnalyticsTransactionTypeRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"transaction_type"}`))
+	t.union = b
+	return err
+}
+
+// MergeAnalyticsTransactionTypeRecordInfo performs a merge with any union data inside the AnalyticsSpendingRecordInfo, using the provided AnalyticsTransactionTypeRecordInfo
+func (t *AnalyticsSpendingRecordInfo) MergeAnalyticsTransactionTypeRecordInfo(v AnalyticsTransactionTypeRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"transaction_type"}`))
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsAnalyticsCurrencyRecordInfo returns the union data inside the AnalyticsSpendingRecordInfo as a AnalyticsCurrencyRecordInfo
+func (t AnalyticsSpendingRecordInfo) AsAnalyticsCurrencyRecordInfo() (AnalyticsCurrencyRecordInfo, error) {
+	var body AnalyticsCurrencyRecordInfo
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAnalyticsCurrencyRecordInfo overwrites any union data inside the AnalyticsSpendingRecordInfo as the provided AnalyticsCurrencyRecordInfo
+func (t *AnalyticsSpendingRecordInfo) FromAnalyticsCurrencyRecordInfo(v AnalyticsCurrencyRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"currency"}`))
+	t.union = b
+	return err
+}
+
+// MergeAnalyticsCurrencyRecordInfo performs a merge with any union data inside the AnalyticsSpendingRecordInfo, using the provided AnalyticsCurrencyRecordInfo
+func (t *AnalyticsSpendingRecordInfo) MergeAnalyticsCurrencyRecordInfo(v AnalyticsCurrencyRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"currency"}`))
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsAnalyticsSpendProgramRecordInfo returns the union data inside the AnalyticsSpendingRecordInfo as a AnalyticsSpendProgramRecordInfo
+func (t AnalyticsSpendingRecordInfo) AsAnalyticsSpendProgramRecordInfo() (AnalyticsSpendProgramRecordInfo, error) {
+	var body AnalyticsSpendProgramRecordInfo
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAnalyticsSpendProgramRecordInfo overwrites any union data inside the AnalyticsSpendingRecordInfo as the provided AnalyticsSpendProgramRecordInfo
+func (t *AnalyticsSpendingRecordInfo) FromAnalyticsSpendProgramRecordInfo(v AnalyticsSpendProgramRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"spend_program"}`))
+	t.union = b
+	return err
+}
+
+// MergeAnalyticsSpendProgramRecordInfo performs a merge with any union data inside the AnalyticsSpendingRecordInfo, using the provided AnalyticsSpendProgramRecordInfo
+func (t *AnalyticsSpendingRecordInfo) MergeAnalyticsSpendProgramRecordInfo(v AnalyticsSpendProgramRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"spend_program"}`))
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t AnalyticsSpendingRecordInfo) Discriminator() (string, error) {
+	var discriminator struct {
+		Discriminator string `json:"type"`
+	}
+	err := json.Unmarshal(t.union, &discriminator)
+	return discriminator.Discriminator, err
+}
+
+func (t AnalyticsSpendingRecordInfo) ValueByDiscriminator() (interface{}, error) {
+	discriminator, err := t.Discriminator()
+	if err != nil {
+		return nil, err
+	}
+	switch discriminator {
+	case "currency":
+		return t.AsAnalyticsCurrencyRecordInfo()
+	case "merchant_category":
+		return t.AsAnalyticsMerchantCategoryRecordInfo()
+	case "merchant_country":
+		return t.AsAnalyticsMerchantCountryRecordInfo()
+	case "merchant_group":
+		return t.AsAnalyticsMerchantGroupRecordInfo()
+	case "spend_program":
+		return t.AsAnalyticsSpendProgramRecordInfo()
+	case "team_member":
+		return t.AsAnalyticsTeamMemberRecordInfo()
+	case "transaction_type":
+		return t.AsAnalyticsTransactionTypeRecordInfo()
+	default:
+		return nil, errors.New("unknown discriminator value: " + discriminator)
+	}
+}
+
+func (t AnalyticsSpendingRecordInfo) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *AnalyticsSpendingRecordInfo) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsAnalyticsAssetTypeRecordInfo returns the union data inside the AnalyticsTotalWealthAggregationRecord_RecordInfo as a AnalyticsAssetTypeRecordInfo
+func (t AnalyticsTotalWealthAggregationRecord_RecordInfo) AsAnalyticsAssetTypeRecordInfo() (AnalyticsAssetTypeRecordInfo, error) {
+	var body AnalyticsAssetTypeRecordInfo
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAnalyticsAssetTypeRecordInfo overwrites any union data inside the AnalyticsTotalWealthAggregationRecord_RecordInfo as the provided AnalyticsAssetTypeRecordInfo
+func (t *AnalyticsTotalWealthAggregationRecord_RecordInfo) FromAnalyticsAssetTypeRecordInfo(v AnalyticsAssetTypeRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"asset_type"}`))
+	t.union = b
+	return err
+}
+
+// MergeAnalyticsAssetTypeRecordInfo performs a merge with any union data inside the AnalyticsTotalWealthAggregationRecord_RecordInfo, using the provided AnalyticsAssetTypeRecordInfo
+func (t *AnalyticsTotalWealthAggregationRecord_RecordInfo) MergeAnalyticsAssetTypeRecordInfo(v AnalyticsAssetTypeRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"asset_type"}`))
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsAnalyticsAssetGroupRecordInfo returns the union data inside the AnalyticsTotalWealthAggregationRecord_RecordInfo as a AnalyticsAssetGroupRecordInfo
+func (t AnalyticsTotalWealthAggregationRecord_RecordInfo) AsAnalyticsAssetGroupRecordInfo() (AnalyticsAssetGroupRecordInfo, error) {
+	var body AnalyticsAssetGroupRecordInfo
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromAnalyticsAssetGroupRecordInfo overwrites any union data inside the AnalyticsTotalWealthAggregationRecord_RecordInfo as the provided AnalyticsAssetGroupRecordInfo
+func (t *AnalyticsTotalWealthAggregationRecord_RecordInfo) FromAnalyticsAssetGroupRecordInfo(v AnalyticsAssetGroupRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"asset_group"}`))
+	t.union = b
+	return err
+}
+
+// MergeAnalyticsAssetGroupRecordInfo performs a merge with any union data inside the AnalyticsTotalWealthAggregationRecord_RecordInfo, using the provided AnalyticsAssetGroupRecordInfo
+func (t *AnalyticsTotalWealthAggregationRecord_RecordInfo) MergeAnalyticsAssetGroupRecordInfo(v AnalyticsAssetGroupRecordInfo) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+	b, err = runtime.JSONMerge(b, []byte(`{"type":"asset_group"}`))
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t AnalyticsTotalWealthAggregationRecord_RecordInfo) Discriminator() (string, error) {
+	var discriminator struct {
+		Discriminator string `json:"type"`
+	}
+	err := json.Unmarshal(t.union, &discriminator)
+	return discriminator.Discriminator, err
+}
+
+func (t AnalyticsTotalWealthAggregationRecord_RecordInfo) ValueByDiscriminator() (interface{}, error) {
+	discriminator, err := t.Discriminator()
+	if err != nil {
+		return nil, err
+	}
+	switch discriminator {
+	case "asset_group":
+		return t.AsAnalyticsAssetGroupRecordInfo()
+	case "asset_type":
+		return t.AsAnalyticsAssetTypeRecordInfo()
+	default:
+		return nil, errors.New("unknown discriminator value: " + discriminator)
+	}
+}
+
+func (t AnalyticsTotalWealthAggregationRecord_RecordInfo) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *AnalyticsTotalWealthAggregationRecord_RecordInfo) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
 
 // AsSpendingPeriodSchema0 returns the union data inside the SpendingPeriodSchema as a SpendingPeriodSchema0
 func (t SpendingPeriodSchema) AsSpendingPeriodSchema0() (SpendingPeriodSchema0, error) {
@@ -6527,6 +8349,388 @@ type ClientInterface interface {
 	//
 	// Corresponds with GET /accounts/{account_id}/bank-details (the `GetAccountDetails` operationId).
 	GetAccountDetails(ctx context.Context, accountId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SearchCashflowWithBody Search cashflow reports
+	//
+	// Get business cashflow over the requested period as income and spending time series, together with the period totals.
+	//
+	// The results can be filtered by accounts.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /analytics/cashflow/search (the `SearchCashflow` operationId).
+	SearchCashflowWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SearchCashflow Search cashflow reports
+	//
+	// Get business cashflow over the requested period as income and spending time series, together with the period totals.
+	//
+	// The results can be filtered by accounts.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /analytics/cashflow/search (the `SearchCashflow` operationId).
+	SearchCashflow(ctx context.Context, body SearchCashflowJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SearchIncomeBreakdownWithBody Search income breakdown reports
+	//
+	// Get business income over the requested period grouped by transaction type or currency.
+	//
+	// Totals are converted to the business's base currency.
+	//
+	// The results can be filtered and are paginated. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /analytics/income/breakdown/search (the `SearchIncomeBreakdown` operationId).
+	SearchIncomeBreakdownWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SearchIncomeBreakdown Search income breakdown reports
+	//
+	// Get business income over the requested period grouped by transaction type or currency.
+	//
+	// Totals are converted to the business's base currency.
+	//
+	// The results can be filtered and are paginated. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /analytics/income/breakdown/search (the `SearchIncomeBreakdown` operationId).
+	SearchIncomeBreakdown(ctx context.Context, body SearchIncomeBreakdownJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SearchIncomeWithBody Search income reports
+	//
+	// Get business income as a time series over the requested period.
+	//
+	// The results can be filtered. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /analytics/income/search (the `SearchIncome` operationId).
+	SearchIncomeWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SearchIncome Search income reports
+	//
+	// Get business income as a time series over the requested period.
+	//
+	// The results can be filtered. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /analytics/income/search (the `SearchIncome` operationId).
+	SearchIncome(ctx context.Context, body SearchIncomeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SearchSpendingBreakdownWithBody Search spending breakdown reports
+	//
+	// Get business spending over the requested period grouped by a dimension of your choice: transaction type, merchant category, merchant country, merchant group, team member, currency, or spend program.
+	//
+	// Totals are in the business's base currency.
+	//
+	// The results can be filtered and are paginated. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /analytics/spending/breakdown/search (the `SearchSpendingBreakdown` operationId).
+	SearchSpendingBreakdownWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SearchSpendingBreakdown Search spending breakdown reports
+	//
+	// Get business spending over the requested period grouped by a dimension of your choice: transaction type, merchant category, merchant country, merchant group, team member, currency, or spend program.
+	//
+	// Totals are in the business's base currency.
+	//
+	// The results can be filtered and are paginated. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /analytics/spending/breakdown/search (the `SearchSpendingBreakdown` operationId).
+	SearchSpendingBreakdown(ctx context.Context, body SearchSpendingBreakdownJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SearchSpendingWithBody Search spending reports
+	//
+	// Get business spending as a time series over the requested period.
+	//
+	// The results can be filtered. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /analytics/spending/search (the `SearchSpending` operationId).
+	SearchSpendingWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SearchSpending Search spending reports
+	//
+	// Get business spending as a time series over the requested period.
+	//
+	// The results can be filtered. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /analytics/spending/search (the `SearchSpending` operationId).
+	SearchSpending(ctx context.Context, body SearchSpendingJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SearchTotalWealthBreakdownWithBody Search total wealth breakdown reports
+	//
+	// Get the total wealth of the business grouped by asset type (e.g. cash, savings deposits, savings money market funds, merchant, or crypto) or asset group (e.g. cash, treasury, or merchant).
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /analytics/total-wealth/breakdown/search (the `SearchTotalWealthBreakdown` operationId).
+	SearchTotalWealthBreakdownWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SearchTotalWealthBreakdown Search total wealth breakdown reports
+	//
+	// Get the total wealth of the business grouped by asset type (e.g. cash, savings deposits, savings money market funds, merchant, or crypto) or asset group (e.g. cash, treasury, or merchant).
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /analytics/total-wealth/breakdown/search (the `SearchTotalWealthBreakdown` operationId).
+	SearchTotalWealthBreakdown(ctx context.Context, body SearchTotalWealthBreakdownJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SearchTotalWealthWithBody Search total wealth reports
+	//
+	// Get the total wealth of the business as a time series over the requested period.
+	//
+	// The response always contains daily data points. Can be filtered by asset type.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes any type of body and a specified content type.
+	//
+	// Corresponds with POST /analytics/total-wealth/search (the `SearchTotalWealth` operationId).
+	SearchTotalWealthWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// SearchTotalWealth Search total wealth reports
+	//
+	// Get the total wealth of the business as a time series over the requested period.
+	//
+	// The response always contains daily data points. Can be filtered by asset type.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes a body of the `application/json` content type.
+	//
+	// Corresponds with POST /analytics/total-wealth/search (the `SearchTotalWealth` operationId).
+	SearchTotalWealth(ctx context.Context, body SearchTotalWealthJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetCardInvitations Retrieve a list of card invitations
 	//
@@ -10159,6 +12363,528 @@ func (c *Client) GetAccount(ctx context.Context, accountId openapi_types.UUID, r
 // Corresponds with GET /accounts/{account_id}/bank-details (the `GetAccountDetails` operationId).
 func (c *Client) GetAccountDetails(ctx context.Context, accountId openapi_types.UUID, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetAccountDetailsRequest(c.Server, accountId)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SearchCashflowWithBody Search cashflow reports
+//
+// Get business cashflow over the requested period as income and spending time series, together with the period totals.
+//
+// The results can be filtered by accounts.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /analytics/cashflow/search (the `SearchCashflow` operationId).
+func (c *Client) SearchCashflowWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSearchCashflowRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SearchCashflow Search cashflow reports
+//
+// Get business cashflow over the requested period as income and spending time series, together with the period totals.
+//
+// The results can be filtered by accounts.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /analytics/cashflow/search (the `SearchCashflow` operationId).
+func (c *Client) SearchCashflow(ctx context.Context, body SearchCashflowJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSearchCashflowRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SearchIncomeBreakdownWithBody Search income breakdown reports
+//
+// Get business income over the requested period grouped by transaction type or currency.
+//
+// Totals are converted to the business's base currency.
+//
+// The results can be filtered and are paginated. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /analytics/income/breakdown/search (the `SearchIncomeBreakdown` operationId).
+func (c *Client) SearchIncomeBreakdownWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSearchIncomeBreakdownRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SearchIncomeBreakdown Search income breakdown reports
+//
+// Get business income over the requested period grouped by transaction type or currency.
+//
+// Totals are converted to the business's base currency.
+//
+// The results can be filtered and are paginated. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /analytics/income/breakdown/search (the `SearchIncomeBreakdown` operationId).
+func (c *Client) SearchIncomeBreakdown(ctx context.Context, body SearchIncomeBreakdownJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSearchIncomeBreakdownRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SearchIncomeWithBody Search income reports
+//
+// Get business income as a time series over the requested period.
+//
+// The results can be filtered. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /analytics/income/search (the `SearchIncome` operationId).
+func (c *Client) SearchIncomeWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSearchIncomeRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SearchIncome Search income reports
+//
+// Get business income as a time series over the requested period.
+//
+// The results can be filtered. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /analytics/income/search (the `SearchIncome` operationId).
+func (c *Client) SearchIncome(ctx context.Context, body SearchIncomeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSearchIncomeRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SearchSpendingBreakdownWithBody Search spending breakdown reports
+//
+// Get business spending over the requested period grouped by a dimension of your choice: transaction type, merchant category, merchant country, merchant group, team member, currency, or spend program.
+//
+// Totals are in the business's base currency.
+//
+// The results can be filtered and are paginated. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /analytics/spending/breakdown/search (the `SearchSpendingBreakdown` operationId).
+func (c *Client) SearchSpendingBreakdownWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSearchSpendingBreakdownRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SearchSpendingBreakdown Search spending breakdown reports
+//
+// Get business spending over the requested period grouped by a dimension of your choice: transaction type, merchant category, merchant country, merchant group, team member, currency, or spend program.
+//
+// Totals are in the business's base currency.
+//
+// The results can be filtered and are paginated. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /analytics/spending/breakdown/search (the `SearchSpendingBreakdown` operationId).
+func (c *Client) SearchSpendingBreakdown(ctx context.Context, body SearchSpendingBreakdownJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSearchSpendingBreakdownRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SearchSpendingWithBody Search spending reports
+//
+// Get business spending as a time series over the requested period.
+//
+// The results can be filtered. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /analytics/spending/search (the `SearchSpending` operationId).
+func (c *Client) SearchSpendingWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSearchSpendingRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SearchSpending Search spending reports
+//
+// Get business spending as a time series over the requested period.
+//
+// The results can be filtered. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /analytics/spending/search (the `SearchSpending` operationId).
+func (c *Client) SearchSpending(ctx context.Context, body SearchSpendingJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSearchSpendingRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SearchTotalWealthBreakdownWithBody Search total wealth breakdown reports
+//
+// Get the total wealth of the business grouped by asset type (e.g. cash, savings deposits, savings money market funds, merchant, or crypto) or asset group (e.g. cash, treasury, or merchant).
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /analytics/total-wealth/breakdown/search (the `SearchTotalWealthBreakdown` operationId).
+func (c *Client) SearchTotalWealthBreakdownWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSearchTotalWealthBreakdownRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SearchTotalWealthBreakdown Search total wealth breakdown reports
+//
+// Get the total wealth of the business grouped by asset type (e.g. cash, savings deposits, savings money market funds, merchant, or crypto) or asset group (e.g. cash, treasury, or merchant).
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /analytics/total-wealth/breakdown/search (the `SearchTotalWealthBreakdown` operationId).
+func (c *Client) SearchTotalWealthBreakdown(ctx context.Context, body SearchTotalWealthBreakdownJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSearchTotalWealthBreakdownRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SearchTotalWealthWithBody Search total wealth reports
+//
+// Get the total wealth of the business as a time series over the requested period.
+//
+// The response always contains daily data points. Can be filtered by asset type.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes any type of body and a specified content type.
+//
+// Corresponds with POST /analytics/total-wealth/search (the `SearchTotalWealth` operationId).
+func (c *Client) SearchTotalWealthWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSearchTotalWealthRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// SearchTotalWealth Search total wealth reports
+//
+// Get the total wealth of the business as a time series over the requested period.
+//
+// The response always contains daily data points. Can be filtered by asset type.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes a body of the `application/json` content type.
+//
+// Corresponds with POST /analytics/total-wealth/search (the `SearchTotalWealth` operationId).
+func (c *Client) SearchTotalWealth(ctx context.Context, body SearchTotalWealthJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewSearchTotalWealthRequest(c.Server, body)
 	if err != nil {
 		return nil, err
 	}
@@ -15013,6 +17739,286 @@ func NewGetAccountDetailsRequest(server string, accountId openapi_types.UUID) (*
 	return req, nil
 }
 
+// NewSearchCashflowRequest calls the generic SearchCashflow builder with application/json body
+func NewSearchCashflowRequest(server string, body SearchCashflowJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewSearchCashflowRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewSearchCashflowRequestWithBody constructs an http.Request for the SearchCashflow method, with any body, and a specified content type
+func NewSearchCashflowRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/analytics/cashflow/search")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewSearchIncomeBreakdownRequest calls the generic SearchIncomeBreakdown builder with application/json body
+func NewSearchIncomeBreakdownRequest(server string, body SearchIncomeBreakdownJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewSearchIncomeBreakdownRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewSearchIncomeBreakdownRequestWithBody constructs an http.Request for the SearchIncomeBreakdown method, with any body, and a specified content type
+func NewSearchIncomeBreakdownRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/analytics/income/breakdown/search")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewSearchIncomeRequest calls the generic SearchIncome builder with application/json body
+func NewSearchIncomeRequest(server string, body SearchIncomeJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewSearchIncomeRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewSearchIncomeRequestWithBody constructs an http.Request for the SearchIncome method, with any body, and a specified content type
+func NewSearchIncomeRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/analytics/income/search")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewSearchSpendingBreakdownRequest calls the generic SearchSpendingBreakdown builder with application/json body
+func NewSearchSpendingBreakdownRequest(server string, body SearchSpendingBreakdownJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewSearchSpendingBreakdownRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewSearchSpendingBreakdownRequestWithBody constructs an http.Request for the SearchSpendingBreakdown method, with any body, and a specified content type
+func NewSearchSpendingBreakdownRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/analytics/spending/breakdown/search")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewSearchSpendingRequest calls the generic SearchSpending builder with application/json body
+func NewSearchSpendingRequest(server string, body SearchSpendingJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewSearchSpendingRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewSearchSpendingRequestWithBody constructs an http.Request for the SearchSpending method, with any body, and a specified content type
+func NewSearchSpendingRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/analytics/spending/search")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewSearchTotalWealthBreakdownRequest calls the generic SearchTotalWealthBreakdown builder with application/json body
+func NewSearchTotalWealthBreakdownRequest(server string, body SearchTotalWealthBreakdownJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewSearchTotalWealthBreakdownRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewSearchTotalWealthBreakdownRequestWithBody constructs an http.Request for the SearchTotalWealthBreakdown method, with any body, and a specified content type
+func NewSearchTotalWealthBreakdownRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/analytics/total-wealth/breakdown/search")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewSearchTotalWealthRequest calls the generic SearchTotalWealth builder with application/json body
+func NewSearchTotalWealthRequest(server string, body SearchTotalWealthJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewSearchTotalWealthRequestWithBody(server, "application/json", bodyReader)
+}
+
+// NewSearchTotalWealthRequestWithBody constructs an http.Request for the SearchTotalWealth method, with any body, and a specified content type
+func NewSearchTotalWealthRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/analytics/total-wealth/search")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
 // NewGetCardInvitationsRequest constructs an http.Request for the GetCardInvitations method
 func NewGetCardInvitationsRequest(server string, params *GetCardInvitationsParams) (*http.Request, error) {
 	var err error
@@ -19593,6 +22599,388 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /accounts/{account_id}/bank-details (the `GetAccountDetails` operationId).
 	GetAccountDetailsWithResponse(ctx context.Context, accountId openapi_types.UUID, reqEditors ...RequestEditorFn) (*GetAccountDetailsResponse, error)
 
+	// SearchCashflowWithBodyWithResponse Search cashflow reports
+	//
+	// Get business cashflow over the requested period as income and spending time series, together with the period totals.
+	//
+	// The results can be filtered by accounts.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /analytics/cashflow/search (the `SearchCashflow` operationId).
+	SearchCashflowWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SearchCashflowResponse, error)
+
+	// SearchCashflowWithResponse Search cashflow reports
+	//
+	// Get business cashflow over the requested period as income and spending time series, together with the period totals.
+	//
+	// The results can be filtered by accounts.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /analytics/cashflow/search (the `SearchCashflow` operationId).
+	SearchCashflowWithResponse(ctx context.Context, body SearchCashflowJSONRequestBody, reqEditors ...RequestEditorFn) (*SearchCashflowResponse, error)
+
+	// SearchIncomeBreakdownWithBodyWithResponse Search income breakdown reports
+	//
+	// Get business income over the requested period grouped by transaction type or currency.
+	//
+	// Totals are converted to the business's base currency.
+	//
+	// The results can be filtered and are paginated. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /analytics/income/breakdown/search (the `SearchIncomeBreakdown` operationId).
+	SearchIncomeBreakdownWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SearchIncomeBreakdownResponse, error)
+
+	// SearchIncomeBreakdownWithResponse Search income breakdown reports
+	//
+	// Get business income over the requested period grouped by transaction type or currency.
+	//
+	// Totals are converted to the business's base currency.
+	//
+	// The results can be filtered and are paginated. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /analytics/income/breakdown/search (the `SearchIncomeBreakdown` operationId).
+	SearchIncomeBreakdownWithResponse(ctx context.Context, body SearchIncomeBreakdownJSONRequestBody, reqEditors ...RequestEditorFn) (*SearchIncomeBreakdownResponse, error)
+
+	// SearchIncomeWithBodyWithResponse Search income reports
+	//
+	// Get business income as a time series over the requested period.
+	//
+	// The results can be filtered. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /analytics/income/search (the `SearchIncome` operationId).
+	SearchIncomeWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SearchIncomeResponse, error)
+
+	// SearchIncomeWithResponse Search income reports
+	//
+	// Get business income as a time series over the requested period.
+	//
+	// The results can be filtered. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /analytics/income/search (the `SearchIncome` operationId).
+	SearchIncomeWithResponse(ctx context.Context, body SearchIncomeJSONRequestBody, reqEditors ...RequestEditorFn) (*SearchIncomeResponse, error)
+
+	// SearchSpendingBreakdownWithBodyWithResponse Search spending breakdown reports
+	//
+	// Get business spending over the requested period grouped by a dimension of your choice: transaction type, merchant category, merchant country, merchant group, team member, currency, or spend program.
+	//
+	// Totals are in the business's base currency.
+	//
+	// The results can be filtered and are paginated. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /analytics/spending/breakdown/search (the `SearchSpendingBreakdown` operationId).
+	SearchSpendingBreakdownWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SearchSpendingBreakdownResponse, error)
+
+	// SearchSpendingBreakdownWithResponse Search spending breakdown reports
+	//
+	// Get business spending over the requested period grouped by a dimension of your choice: transaction type, merchant category, merchant country, merchant group, team member, currency, or spend program.
+	//
+	// Totals are in the business's base currency.
+	//
+	// The results can be filtered and are paginated. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /analytics/spending/breakdown/search (the `SearchSpendingBreakdown` operationId).
+	SearchSpendingBreakdownWithResponse(ctx context.Context, body SearchSpendingBreakdownJSONRequestBody, reqEditors ...RequestEditorFn) (*SearchSpendingBreakdownResponse, error)
+
+	// SearchSpendingWithBodyWithResponse Search spending reports
+	//
+	// Get business spending as a time series over the requested period.
+	//
+	// The results can be filtered. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /analytics/spending/search (the `SearchSpending` operationId).
+	SearchSpendingWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SearchSpendingResponse, error)
+
+	// SearchSpendingWithResponse Search spending reports
+	//
+	// Get business spending as a time series over the requested period.
+	//
+	// The results can be filtered. See the request body for the full list of filters.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /analytics/spending/search (the `SearchSpending` operationId).
+	SearchSpendingWithResponse(ctx context.Context, body SearchSpendingJSONRequestBody, reqEditors ...RequestEditorFn) (*SearchSpendingResponse, error)
+
+	// SearchTotalWealthBreakdownWithBodyWithResponse Search total wealth breakdown reports
+	//
+	// Get the total wealth of the business grouped by asset type (e.g. cash, savings deposits, savings money market funds, merchant, or crypto) or asset group (e.g. cash, treasury, or merchant).
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /analytics/total-wealth/breakdown/search (the `SearchTotalWealthBreakdown` operationId).
+	SearchTotalWealthBreakdownWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SearchTotalWealthBreakdownResponse, error)
+
+	// SearchTotalWealthBreakdownWithResponse Search total wealth breakdown reports
+	//
+	// Get the total wealth of the business grouped by asset type (e.g. cash, savings deposits, savings money market funds, merchant, or crypto) or asset group (e.g. cash, treasury, or merchant).
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /analytics/total-wealth/breakdown/search (the `SearchTotalWealthBreakdown` operationId).
+	SearchTotalWealthBreakdownWithResponse(ctx context.Context, body SearchTotalWealthBreakdownJSONRequestBody, reqEditors ...RequestEditorFn) (*SearchTotalWealthBreakdownResponse, error)
+
+	// SearchTotalWealthWithBodyWithResponse Search total wealth reports
+	//
+	// Get the total wealth of the business as a time series over the requested period.
+	//
+	// The response always contains daily data points. Can be filtered by asset type.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /analytics/total-wealth/search (the `SearchTotalWealth` operationId).
+	SearchTotalWealthWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SearchTotalWealthResponse, error)
+
+	// SearchTotalWealthWithResponse Search total wealth reports
+	//
+	// Get the total wealth of the business as a time series over the requested period.
+	//
+	// The response always contains daily data points. Can be filtered by asset type.
+	//
+	// :::info
+	// The Analytics endpoints are read-only.
+	// The search requests are safe to retry and do not require an `Idempotency-Key`.
+	// :::
+	//
+	// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+	//
+	// ### Required API key permissions
+	// To call this endpoint, your API key must have the following permissions (scopes):
+	//
+	// | Product | Resource | Permission | Mapped scope |
+	// |---------|----------|-------------|--------------|
+	// | **Analytics** | Analytics | Read | `analytics:read` |
+	//
+	// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+	//
+	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with POST /analytics/total-wealth/search (the `SearchTotalWealth` operationId).
+	SearchTotalWealthWithResponse(ctx context.Context, body SearchTotalWealthJSONRequestBody, reqEditors ...RequestEditorFn) (*SearchTotalWealthResponse, error)
+
 	// GetCardInvitationsWithResponse Retrieve a list of card invitations
 	//
 	// Get the list of all card invitations in your organisation.
@@ -23022,6 +26410,32 @@ func (r ValidateAccountNameResponse2) ContentType() string {
 	return ""
 }
 
+// GetAccountingCategoriesResponse401Headers the declared response headers of an HTTP 401 response for GetAccountingCategories
+type GetAccountingCategoriesResponse401Headers struct {
+	RequestId *string
+}
+
+// GetAccountingCategoriesResponse403Headers the declared response headers of an HTTP 403 response for GetAccountingCategories
+type GetAccountingCategoriesResponse403Headers struct {
+	RequestId *string
+}
+
+// GetAccountingCategoriesResponse429Headers the declared response headers of an HTTP 429 response for GetAccountingCategories
+type GetAccountingCategoriesResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// GetAccountingCategoriesResponse500Headers the declared response headers of an HTTP 500 response for GetAccountingCategories
+type GetAccountingCategoriesResponse500Headers struct {
+	RequestId *string
+}
+
+// GetAccountingCategoriesResponse503Headers the declared response headers of an HTTP 503 response for GetAccountingCategories
+type GetAccountingCategoriesResponse503Headers struct {
+	RequestId *string
+}
+
 type GetAccountingCategoriesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -23056,6 +26470,16 @@ type GetAccountingCategoriesResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *GetAccountingCategoriesResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *GetAccountingCategoriesResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *GetAccountingCategoriesResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *GetAccountingCategoriesResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *GetAccountingCategoriesResponse503Headers
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
@@ -23142,6 +26566,32 @@ func (r GetAccountingCategoriesResponse) ContentType() string {
 	return ""
 }
 
+// CreateAccountingCategoryResponse401Headers the declared response headers of an HTTP 401 response for CreateAccountingCategory
+type CreateAccountingCategoryResponse401Headers struct {
+	RequestId *string
+}
+
+// CreateAccountingCategoryResponse403Headers the declared response headers of an HTTP 403 response for CreateAccountingCategory
+type CreateAccountingCategoryResponse403Headers struct {
+	RequestId *string
+}
+
+// CreateAccountingCategoryResponse429Headers the declared response headers of an HTTP 429 response for CreateAccountingCategory
+type CreateAccountingCategoryResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// CreateAccountingCategoryResponse500Headers the declared response headers of an HTTP 500 response for CreateAccountingCategory
+type CreateAccountingCategoryResponse500Headers struct {
+	RequestId *string
+}
+
+// CreateAccountingCategoryResponse503Headers the declared response headers of an HTTP 503 response for CreateAccountingCategory
+type CreateAccountingCategoryResponse503Headers struct {
+	RequestId *string
+}
+
 type CreateAccountingCategoryResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -23165,6 +26615,16 @@ type CreateAccountingCategoryResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *CreateAccountingCategoryResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *CreateAccountingCategoryResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *CreateAccountingCategoryResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *CreateAccountingCategoryResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *CreateAccountingCategoryResponse503Headers
 }
 
 // GetJSON201 returns the response for an HTTP 201 `application/json` response
@@ -23246,6 +26706,32 @@ func (r CreateAccountingCategoryResponse) ContentType() string {
 	return ""
 }
 
+// DeleteAccountingCategoryResponse401Headers the declared response headers of an HTTP 401 response for DeleteAccountingCategory
+type DeleteAccountingCategoryResponse401Headers struct {
+	RequestId *string
+}
+
+// DeleteAccountingCategoryResponse403Headers the declared response headers of an HTTP 403 response for DeleteAccountingCategory
+type DeleteAccountingCategoryResponse403Headers struct {
+	RequestId *string
+}
+
+// DeleteAccountingCategoryResponse429Headers the declared response headers of an HTTP 429 response for DeleteAccountingCategory
+type DeleteAccountingCategoryResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// DeleteAccountingCategoryResponse500Headers the declared response headers of an HTTP 500 response for DeleteAccountingCategory
+type DeleteAccountingCategoryResponse500Headers struct {
+	RequestId *string
+}
+
+// DeleteAccountingCategoryResponse503Headers the declared response headers of an HTTP 503 response for DeleteAccountingCategory
+type DeleteAccountingCategoryResponse503Headers struct {
+	RequestId *string
+}
+
 type DeleteAccountingCategoryResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -23267,6 +26753,16 @@ type DeleteAccountingCategoryResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *DeleteAccountingCategoryResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *DeleteAccountingCategoryResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *DeleteAccountingCategoryResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *DeleteAccountingCategoryResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *DeleteAccountingCategoryResponse503Headers
 }
 
 // GetJSON400 returns the response for an HTTP 400 `application/json` response
@@ -23343,6 +26839,32 @@ func (r DeleteAccountingCategoryResponse) ContentType() string {
 	return ""
 }
 
+// GetAccountingCategoryResponse401Headers the declared response headers of an HTTP 401 response for GetAccountingCategory
+type GetAccountingCategoryResponse401Headers struct {
+	RequestId *string
+}
+
+// GetAccountingCategoryResponse403Headers the declared response headers of an HTTP 403 response for GetAccountingCategory
+type GetAccountingCategoryResponse403Headers struct {
+	RequestId *string
+}
+
+// GetAccountingCategoryResponse429Headers the declared response headers of an HTTP 429 response for GetAccountingCategory
+type GetAccountingCategoryResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// GetAccountingCategoryResponse500Headers the declared response headers of an HTTP 500 response for GetAccountingCategory
+type GetAccountingCategoryResponse500Headers struct {
+	RequestId *string
+}
+
+// GetAccountingCategoryResponse503Headers the declared response headers of an HTTP 503 response for GetAccountingCategory
+type GetAccountingCategoryResponse503Headers struct {
+	RequestId *string
+}
+
 type GetAccountingCategoryResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -23364,6 +26886,16 @@ type GetAccountingCategoryResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *GetAccountingCategoryResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *GetAccountingCategoryResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *GetAccountingCategoryResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *GetAccountingCategoryResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *GetAccountingCategoryResponse503Headers
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
@@ -23440,6 +26972,32 @@ func (r GetAccountingCategoryResponse) ContentType() string {
 	return ""
 }
 
+// UpdateAccountingCategoryResponse401Headers the declared response headers of an HTTP 401 response for UpdateAccountingCategory
+type UpdateAccountingCategoryResponse401Headers struct {
+	RequestId *string
+}
+
+// UpdateAccountingCategoryResponse403Headers the declared response headers of an HTTP 403 response for UpdateAccountingCategory
+type UpdateAccountingCategoryResponse403Headers struct {
+	RequestId *string
+}
+
+// UpdateAccountingCategoryResponse429Headers the declared response headers of an HTTP 429 response for UpdateAccountingCategory
+type UpdateAccountingCategoryResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// UpdateAccountingCategoryResponse500Headers the declared response headers of an HTTP 500 response for UpdateAccountingCategory
+type UpdateAccountingCategoryResponse500Headers struct {
+	RequestId *string
+}
+
+// UpdateAccountingCategoryResponse503Headers the declared response headers of an HTTP 503 response for UpdateAccountingCategory
+type UpdateAccountingCategoryResponse503Headers struct {
+	RequestId *string
+}
+
 type UpdateAccountingCategoryResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -23463,6 +27021,16 @@ type UpdateAccountingCategoryResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *UpdateAccountingCategoryResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *UpdateAccountingCategoryResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *UpdateAccountingCategoryResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *UpdateAccountingCategoryResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *UpdateAccountingCategoryResponse503Headers
 }
 
 // GetJSON400 returns the response for an HTTP 400 `application/json` response
@@ -23682,6 +27250,888 @@ func (r GetAccountDetailsResponse) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r GetAccountDetailsResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+// SearchCashflowResponse200Headers the declared response headers of an HTTP 200 response for SearchCashflow
+type SearchCashflowResponse200Headers struct {
+	RequestId *string
+}
+
+// SearchCashflowResponse400Headers the declared response headers of an HTTP 400 response for SearchCashflow
+type SearchCashflowResponse400Headers struct {
+	RequestId *string
+}
+
+// SearchCashflowResponse401Headers the declared response headers of an HTTP 401 response for SearchCashflow
+type SearchCashflowResponse401Headers struct {
+	RequestId *string
+}
+
+// SearchCashflowResponse403Headers the declared response headers of an HTTP 403 response for SearchCashflow
+type SearchCashflowResponse403Headers struct {
+	RequestId *string
+}
+
+// SearchCashflowResponse422Headers the declared response headers of an HTTP 422 response for SearchCashflow
+type SearchCashflowResponse422Headers struct {
+	RequestId *string
+}
+
+// SearchCashflowResponse429Headers the declared response headers of an HTTP 429 response for SearchCashflow
+type SearchCashflowResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+type SearchCashflowResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *AnalyticsCashflowResponse
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *AnalyticsBadRequest
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Unauthorized
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *ForbiddenAnalytics
+	// JSON422 the response for an HTTP 422 `application/json` response
+	JSON422 *AnalyticsNotEnabled
+	// JSON429 the response for an HTTP 429 `application/json` response
+	JSON429 *AnalyticsRateLimited
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *ErrorWithId
+	// Headers200 the parsed response headers for an HTTP 200 response
+	Headers200 *SearchCashflowResponse200Headers
+	// Headers400 the parsed response headers for an HTTP 400 response
+	Headers400 *SearchCashflowResponse400Headers
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *SearchCashflowResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *SearchCashflowResponse403Headers
+	// Headers422 the parsed response headers for an HTTP 422 response
+	Headers422 *SearchCashflowResponse422Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *SearchCashflowResponse429Headers
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r SearchCashflowResponse) GetJSON200() *AnalyticsCashflowResponse {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r SearchCashflowResponse) GetJSON400() *AnalyticsBadRequest {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r SearchCashflowResponse) GetJSON401() *Unauthorized {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r SearchCashflowResponse) GetJSON403() *ForbiddenAnalytics {
+	return r.JSON403
+}
+
+// GetJSON422 returns the response for an HTTP 422 `application/json` response
+func (r SearchCashflowResponse) GetJSON422() *AnalyticsNotEnabled {
+	return r.JSON422
+}
+
+// GetJSON429 returns the response for an HTTP 429 `application/json` response
+func (r SearchCashflowResponse) GetJSON429() *AnalyticsRateLimited {
+	return r.JSON429
+}
+
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r SearchCashflowResponse) GetJSONDefault() *ErrorWithId {
+	return r.JSONDefault
+}
+
+// GetBody returns the raw response body bytes
+func (r SearchCashflowResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r SearchCashflowResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r SearchCashflowResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r SearchCashflowResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+// SearchIncomeBreakdownResponse200Headers the declared response headers of an HTTP 200 response for SearchIncomeBreakdown
+type SearchIncomeBreakdownResponse200Headers struct {
+	RequestId *string
+}
+
+// SearchIncomeBreakdownResponse400Headers the declared response headers of an HTTP 400 response for SearchIncomeBreakdown
+type SearchIncomeBreakdownResponse400Headers struct {
+	RequestId *string
+}
+
+// SearchIncomeBreakdownResponse401Headers the declared response headers of an HTTP 401 response for SearchIncomeBreakdown
+type SearchIncomeBreakdownResponse401Headers struct {
+	RequestId *string
+}
+
+// SearchIncomeBreakdownResponse403Headers the declared response headers of an HTTP 403 response for SearchIncomeBreakdown
+type SearchIncomeBreakdownResponse403Headers struct {
+	RequestId *string
+}
+
+// SearchIncomeBreakdownResponse422Headers the declared response headers of an HTTP 422 response for SearchIncomeBreakdown
+type SearchIncomeBreakdownResponse422Headers struct {
+	RequestId *string
+}
+
+// SearchIncomeBreakdownResponse429Headers the declared response headers of an HTTP 429 response for SearchIncomeBreakdown
+type SearchIncomeBreakdownResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+type SearchIncomeBreakdownResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *AnalyticsIncomeBreakdownResponse
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *AnalyticsBadRequest
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Unauthorized
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *ForbiddenAnalytics
+	// JSON422 the response for an HTTP 422 `application/json` response
+	JSON422 *AnalyticsNotEnabled
+	// JSON429 the response for an HTTP 429 `application/json` response
+	JSON429 *AnalyticsRateLimited
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *ErrorWithId
+	// Headers200 the parsed response headers for an HTTP 200 response
+	Headers200 *SearchIncomeBreakdownResponse200Headers
+	// Headers400 the parsed response headers for an HTTP 400 response
+	Headers400 *SearchIncomeBreakdownResponse400Headers
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *SearchIncomeBreakdownResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *SearchIncomeBreakdownResponse403Headers
+	// Headers422 the parsed response headers for an HTTP 422 response
+	Headers422 *SearchIncomeBreakdownResponse422Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *SearchIncomeBreakdownResponse429Headers
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r SearchIncomeBreakdownResponse) GetJSON200() *AnalyticsIncomeBreakdownResponse {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r SearchIncomeBreakdownResponse) GetJSON400() *AnalyticsBadRequest {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r SearchIncomeBreakdownResponse) GetJSON401() *Unauthorized {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r SearchIncomeBreakdownResponse) GetJSON403() *ForbiddenAnalytics {
+	return r.JSON403
+}
+
+// GetJSON422 returns the response for an HTTP 422 `application/json` response
+func (r SearchIncomeBreakdownResponse) GetJSON422() *AnalyticsNotEnabled {
+	return r.JSON422
+}
+
+// GetJSON429 returns the response for an HTTP 429 `application/json` response
+func (r SearchIncomeBreakdownResponse) GetJSON429() *AnalyticsRateLimited {
+	return r.JSON429
+}
+
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r SearchIncomeBreakdownResponse) GetJSONDefault() *ErrorWithId {
+	return r.JSONDefault
+}
+
+// GetBody returns the raw response body bytes
+func (r SearchIncomeBreakdownResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r SearchIncomeBreakdownResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r SearchIncomeBreakdownResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r SearchIncomeBreakdownResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+// SearchIncomeResponse200Headers the declared response headers of an HTTP 200 response for SearchIncome
+type SearchIncomeResponse200Headers struct {
+	RequestId *string
+}
+
+// SearchIncomeResponse400Headers the declared response headers of an HTTP 400 response for SearchIncome
+type SearchIncomeResponse400Headers struct {
+	RequestId *string
+}
+
+// SearchIncomeResponse401Headers the declared response headers of an HTTP 401 response for SearchIncome
+type SearchIncomeResponse401Headers struct {
+	RequestId *string
+}
+
+// SearchIncomeResponse403Headers the declared response headers of an HTTP 403 response for SearchIncome
+type SearchIncomeResponse403Headers struct {
+	RequestId *string
+}
+
+// SearchIncomeResponse422Headers the declared response headers of an HTTP 422 response for SearchIncome
+type SearchIncomeResponse422Headers struct {
+	RequestId *string
+}
+
+// SearchIncomeResponse429Headers the declared response headers of an HTTP 429 response for SearchIncome
+type SearchIncomeResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+type SearchIncomeResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *AnalyticsIncomeSearchResponse
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *AnalyticsBadRequest
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Unauthorized
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *ForbiddenAnalytics
+	// JSON422 the response for an HTTP 422 `application/json` response
+	JSON422 *AnalyticsNotEnabled
+	// JSON429 the response for an HTTP 429 `application/json` response
+	JSON429 *AnalyticsRateLimited
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *ErrorWithId
+	// Headers200 the parsed response headers for an HTTP 200 response
+	Headers200 *SearchIncomeResponse200Headers
+	// Headers400 the parsed response headers for an HTTP 400 response
+	Headers400 *SearchIncomeResponse400Headers
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *SearchIncomeResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *SearchIncomeResponse403Headers
+	// Headers422 the parsed response headers for an HTTP 422 response
+	Headers422 *SearchIncomeResponse422Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *SearchIncomeResponse429Headers
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r SearchIncomeResponse) GetJSON200() *AnalyticsIncomeSearchResponse {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r SearchIncomeResponse) GetJSON400() *AnalyticsBadRequest {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r SearchIncomeResponse) GetJSON401() *Unauthorized {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r SearchIncomeResponse) GetJSON403() *ForbiddenAnalytics {
+	return r.JSON403
+}
+
+// GetJSON422 returns the response for an HTTP 422 `application/json` response
+func (r SearchIncomeResponse) GetJSON422() *AnalyticsNotEnabled {
+	return r.JSON422
+}
+
+// GetJSON429 returns the response for an HTTP 429 `application/json` response
+func (r SearchIncomeResponse) GetJSON429() *AnalyticsRateLimited {
+	return r.JSON429
+}
+
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r SearchIncomeResponse) GetJSONDefault() *ErrorWithId {
+	return r.JSONDefault
+}
+
+// GetBody returns the raw response body bytes
+func (r SearchIncomeResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r SearchIncomeResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r SearchIncomeResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r SearchIncomeResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+// SearchSpendingBreakdownResponse200Headers the declared response headers of an HTTP 200 response for SearchSpendingBreakdown
+type SearchSpendingBreakdownResponse200Headers struct {
+	RequestId *string
+}
+
+// SearchSpendingBreakdownResponse400Headers the declared response headers of an HTTP 400 response for SearchSpendingBreakdown
+type SearchSpendingBreakdownResponse400Headers struct {
+	RequestId *string
+}
+
+// SearchSpendingBreakdownResponse401Headers the declared response headers of an HTTP 401 response for SearchSpendingBreakdown
+type SearchSpendingBreakdownResponse401Headers struct {
+	RequestId *string
+}
+
+// SearchSpendingBreakdownResponse403Headers the declared response headers of an HTTP 403 response for SearchSpendingBreakdown
+type SearchSpendingBreakdownResponse403Headers struct {
+	RequestId *string
+}
+
+// SearchSpendingBreakdownResponse422Headers the declared response headers of an HTTP 422 response for SearchSpendingBreakdown
+type SearchSpendingBreakdownResponse422Headers struct {
+	RequestId *string
+}
+
+// SearchSpendingBreakdownResponse429Headers the declared response headers of an HTTP 429 response for SearchSpendingBreakdown
+type SearchSpendingBreakdownResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+type SearchSpendingBreakdownResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *AnalyticsSpendingBreakdownResponse
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *AnalyticsBadRequest
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Unauthorized
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *ForbiddenAnalytics
+	// JSON422 the response for an HTTP 422 `application/json` response
+	JSON422 *AnalyticsNotEnabled
+	// JSON429 the response for an HTTP 429 `application/json` response
+	JSON429 *AnalyticsRateLimited
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *ErrorWithId
+	// Headers200 the parsed response headers for an HTTP 200 response
+	Headers200 *SearchSpendingBreakdownResponse200Headers
+	// Headers400 the parsed response headers for an HTTP 400 response
+	Headers400 *SearchSpendingBreakdownResponse400Headers
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *SearchSpendingBreakdownResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *SearchSpendingBreakdownResponse403Headers
+	// Headers422 the parsed response headers for an HTTP 422 response
+	Headers422 *SearchSpendingBreakdownResponse422Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *SearchSpendingBreakdownResponse429Headers
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r SearchSpendingBreakdownResponse) GetJSON200() *AnalyticsSpendingBreakdownResponse {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r SearchSpendingBreakdownResponse) GetJSON400() *AnalyticsBadRequest {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r SearchSpendingBreakdownResponse) GetJSON401() *Unauthorized {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r SearchSpendingBreakdownResponse) GetJSON403() *ForbiddenAnalytics {
+	return r.JSON403
+}
+
+// GetJSON422 returns the response for an HTTP 422 `application/json` response
+func (r SearchSpendingBreakdownResponse) GetJSON422() *AnalyticsNotEnabled {
+	return r.JSON422
+}
+
+// GetJSON429 returns the response for an HTTP 429 `application/json` response
+func (r SearchSpendingBreakdownResponse) GetJSON429() *AnalyticsRateLimited {
+	return r.JSON429
+}
+
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r SearchSpendingBreakdownResponse) GetJSONDefault() *ErrorWithId {
+	return r.JSONDefault
+}
+
+// GetBody returns the raw response body bytes
+func (r SearchSpendingBreakdownResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r SearchSpendingBreakdownResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r SearchSpendingBreakdownResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r SearchSpendingBreakdownResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+// SearchSpendingResponse200Headers the declared response headers of an HTTP 200 response for SearchSpending
+type SearchSpendingResponse200Headers struct {
+	RequestId *string
+}
+
+// SearchSpendingResponse400Headers the declared response headers of an HTTP 400 response for SearchSpending
+type SearchSpendingResponse400Headers struct {
+	RequestId *string
+}
+
+// SearchSpendingResponse401Headers the declared response headers of an HTTP 401 response for SearchSpending
+type SearchSpendingResponse401Headers struct {
+	RequestId *string
+}
+
+// SearchSpendingResponse403Headers the declared response headers of an HTTP 403 response for SearchSpending
+type SearchSpendingResponse403Headers struct {
+	RequestId *string
+}
+
+// SearchSpendingResponse422Headers the declared response headers of an HTTP 422 response for SearchSpending
+type SearchSpendingResponse422Headers struct {
+	RequestId *string
+}
+
+// SearchSpendingResponse429Headers the declared response headers of an HTTP 429 response for SearchSpending
+type SearchSpendingResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+type SearchSpendingResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *AnalyticsSpendingSearchResponse
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *AnalyticsBadRequest
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Unauthorized
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *ForbiddenAnalytics
+	// JSON422 the response for an HTTP 422 `application/json` response
+	JSON422 *AnalyticsNotEnabled
+	// JSON429 the response for an HTTP 429 `application/json` response
+	JSON429 *AnalyticsRateLimited
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *ErrorWithId
+	// Headers200 the parsed response headers for an HTTP 200 response
+	Headers200 *SearchSpendingResponse200Headers
+	// Headers400 the parsed response headers for an HTTP 400 response
+	Headers400 *SearchSpendingResponse400Headers
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *SearchSpendingResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *SearchSpendingResponse403Headers
+	// Headers422 the parsed response headers for an HTTP 422 response
+	Headers422 *SearchSpendingResponse422Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *SearchSpendingResponse429Headers
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r SearchSpendingResponse) GetJSON200() *AnalyticsSpendingSearchResponse {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r SearchSpendingResponse) GetJSON400() *AnalyticsBadRequest {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r SearchSpendingResponse) GetJSON401() *Unauthorized {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r SearchSpendingResponse) GetJSON403() *ForbiddenAnalytics {
+	return r.JSON403
+}
+
+// GetJSON422 returns the response for an HTTP 422 `application/json` response
+func (r SearchSpendingResponse) GetJSON422() *AnalyticsNotEnabled {
+	return r.JSON422
+}
+
+// GetJSON429 returns the response for an HTTP 429 `application/json` response
+func (r SearchSpendingResponse) GetJSON429() *AnalyticsRateLimited {
+	return r.JSON429
+}
+
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r SearchSpendingResponse) GetJSONDefault() *ErrorWithId {
+	return r.JSONDefault
+}
+
+// GetBody returns the raw response body bytes
+func (r SearchSpendingResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r SearchSpendingResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r SearchSpendingResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r SearchSpendingResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+// SearchTotalWealthBreakdownResponse200Headers the declared response headers of an HTTP 200 response for SearchTotalWealthBreakdown
+type SearchTotalWealthBreakdownResponse200Headers struct {
+	RequestId *string
+}
+
+// SearchTotalWealthBreakdownResponse400Headers the declared response headers of an HTTP 400 response for SearchTotalWealthBreakdown
+type SearchTotalWealthBreakdownResponse400Headers struct {
+	RequestId *string
+}
+
+// SearchTotalWealthBreakdownResponse401Headers the declared response headers of an HTTP 401 response for SearchTotalWealthBreakdown
+type SearchTotalWealthBreakdownResponse401Headers struct {
+	RequestId *string
+}
+
+// SearchTotalWealthBreakdownResponse403Headers the declared response headers of an HTTP 403 response for SearchTotalWealthBreakdown
+type SearchTotalWealthBreakdownResponse403Headers struct {
+	RequestId *string
+}
+
+// SearchTotalWealthBreakdownResponse422Headers the declared response headers of an HTTP 422 response for SearchTotalWealthBreakdown
+type SearchTotalWealthBreakdownResponse422Headers struct {
+	RequestId *string
+}
+
+// SearchTotalWealthBreakdownResponse429Headers the declared response headers of an HTTP 429 response for SearchTotalWealthBreakdown
+type SearchTotalWealthBreakdownResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+type SearchTotalWealthBreakdownResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *AnalyticsTotalWealthBreakdownResponse
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *AnalyticsBadRequest
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Unauthorized
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *ForbiddenAnalytics
+	// JSON422 the response for an HTTP 422 `application/json` response
+	JSON422 *AnalyticsNotEnabled
+	// JSON429 the response for an HTTP 429 `application/json` response
+	JSON429 *AnalyticsRateLimited
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *ErrorWithId
+	// Headers200 the parsed response headers for an HTTP 200 response
+	Headers200 *SearchTotalWealthBreakdownResponse200Headers
+	// Headers400 the parsed response headers for an HTTP 400 response
+	Headers400 *SearchTotalWealthBreakdownResponse400Headers
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *SearchTotalWealthBreakdownResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *SearchTotalWealthBreakdownResponse403Headers
+	// Headers422 the parsed response headers for an HTTP 422 response
+	Headers422 *SearchTotalWealthBreakdownResponse422Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *SearchTotalWealthBreakdownResponse429Headers
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r SearchTotalWealthBreakdownResponse) GetJSON200() *AnalyticsTotalWealthBreakdownResponse {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r SearchTotalWealthBreakdownResponse) GetJSON400() *AnalyticsBadRequest {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r SearchTotalWealthBreakdownResponse) GetJSON401() *Unauthorized {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r SearchTotalWealthBreakdownResponse) GetJSON403() *ForbiddenAnalytics {
+	return r.JSON403
+}
+
+// GetJSON422 returns the response for an HTTP 422 `application/json` response
+func (r SearchTotalWealthBreakdownResponse) GetJSON422() *AnalyticsNotEnabled {
+	return r.JSON422
+}
+
+// GetJSON429 returns the response for an HTTP 429 `application/json` response
+func (r SearchTotalWealthBreakdownResponse) GetJSON429() *AnalyticsRateLimited {
+	return r.JSON429
+}
+
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r SearchTotalWealthBreakdownResponse) GetJSONDefault() *ErrorWithId {
+	return r.JSONDefault
+}
+
+// GetBody returns the raw response body bytes
+func (r SearchTotalWealthBreakdownResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r SearchTotalWealthBreakdownResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r SearchTotalWealthBreakdownResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r SearchTotalWealthBreakdownResponse) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+// SearchTotalWealthResponse200Headers the declared response headers of an HTTP 200 response for SearchTotalWealth
+type SearchTotalWealthResponse200Headers struct {
+	RequestId *string
+}
+
+// SearchTotalWealthResponse400Headers the declared response headers of an HTTP 400 response for SearchTotalWealth
+type SearchTotalWealthResponse400Headers struct {
+	RequestId *string
+}
+
+// SearchTotalWealthResponse401Headers the declared response headers of an HTTP 401 response for SearchTotalWealth
+type SearchTotalWealthResponse401Headers struct {
+	RequestId *string
+}
+
+// SearchTotalWealthResponse403Headers the declared response headers of an HTTP 403 response for SearchTotalWealth
+type SearchTotalWealthResponse403Headers struct {
+	RequestId *string
+}
+
+// SearchTotalWealthResponse422Headers the declared response headers of an HTTP 422 response for SearchTotalWealth
+type SearchTotalWealthResponse422Headers struct {
+	RequestId *string
+}
+
+// SearchTotalWealthResponse429Headers the declared response headers of an HTTP 429 response for SearchTotalWealth
+type SearchTotalWealthResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+type SearchTotalWealthResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *AnalyticsTotalWealthSearchResponse
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *AnalyticsBadRequest
+	// JSON401 the response for an HTTP 401 `application/json` response
+	JSON401 *Unauthorized
+	// JSON403 the response for an HTTP 403 `application/json` response
+	JSON403 *ForbiddenAnalytics
+	// JSON422 the response for an HTTP 422 `application/json` response
+	JSON422 *AnalyticsNotEnabled
+	// JSON429 the response for an HTTP 429 `application/json` response
+	JSON429 *AnalyticsRateLimited
+	// JSONDefault the response for an HTTP default `application/json` response
+	JSONDefault *ErrorWithId
+	// Headers200 the parsed response headers for an HTTP 200 response
+	Headers200 *SearchTotalWealthResponse200Headers
+	// Headers400 the parsed response headers for an HTTP 400 response
+	Headers400 *SearchTotalWealthResponse400Headers
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *SearchTotalWealthResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *SearchTotalWealthResponse403Headers
+	// Headers422 the parsed response headers for an HTTP 422 response
+	Headers422 *SearchTotalWealthResponse422Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *SearchTotalWealthResponse429Headers
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r SearchTotalWealthResponse) GetJSON200() *AnalyticsTotalWealthSearchResponse {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r SearchTotalWealthResponse) GetJSON400() *AnalyticsBadRequest {
+	return r.JSON400
+}
+
+// GetJSON401 returns the response for an HTTP 401 `application/json` response
+func (r SearchTotalWealthResponse) GetJSON401() *Unauthorized {
+	return r.JSON401
+}
+
+// GetJSON403 returns the response for an HTTP 403 `application/json` response
+func (r SearchTotalWealthResponse) GetJSON403() *ForbiddenAnalytics {
+	return r.JSON403
+}
+
+// GetJSON422 returns the response for an HTTP 422 `application/json` response
+func (r SearchTotalWealthResponse) GetJSON422() *AnalyticsNotEnabled {
+	return r.JSON422
+}
+
+// GetJSON429 returns the response for an HTTP 429 `application/json` response
+func (r SearchTotalWealthResponse) GetJSON429() *AnalyticsRateLimited {
+	return r.JSON429
+}
+
+// GetJSONDefault returns the response for an HTTP default `application/json` response
+func (r SearchTotalWealthResponse) GetJSONDefault() *ErrorWithId {
+	return r.JSONDefault
+}
+
+// GetBody returns the raw response body bytes
+func (r SearchTotalWealthResponse) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r SearchTotalWealthResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r SearchTotalWealthResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r SearchTotalWealthResponse) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -25215,6 +29665,16 @@ func (r GetCounterpartyResponse) ContentType() string {
 	return ""
 }
 
+// GetDepartmentsResponse401Headers the declared response headers of an HTTP 401 response for GetDepartments
+type GetDepartmentsResponse401Headers struct {
+	RequestId *string
+}
+
+// GetDepartmentsResponse403Headers the declared response headers of an HTTP 403 response for GetDepartments
+type GetDepartmentsResponse403Headers struct {
+	RequestId *string
+}
+
 type GetDepartmentsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -25235,6 +29695,10 @@ type GetDepartmentsResponse struct {
 	JSON403 *Forbidden
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *GetDepartmentsResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *GetDepartmentsResponse403Headers
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
@@ -25298,6 +29762,16 @@ func (r GetDepartmentsResponse) ContentType() string {
 	return ""
 }
 
+// CreateDepartmentResponse401Headers the declared response headers of an HTTP 401 response for CreateDepartment
+type CreateDepartmentResponse401Headers struct {
+	RequestId *string
+}
+
+// CreateDepartmentResponse403Headers the declared response headers of an HTTP 403 response for CreateDepartment
+type CreateDepartmentResponse403Headers struct {
+	RequestId *string
+}
+
 type CreateDepartmentResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -25316,6 +29790,10 @@ type CreateDepartmentResponse struct {
 	JSON409 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *CreateDepartmentResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *CreateDepartmentResponse403Headers
 }
 
 // GetJSON201 returns the response for an HTTP 201 `application/json` response
@@ -25380,6 +29858,16 @@ func (r CreateDepartmentResponse) ContentType() string {
 	return ""
 }
 
+// DeleteDepartmentResponse401Headers the declared response headers of an HTTP 401 response for DeleteDepartment
+type DeleteDepartmentResponse401Headers struct {
+	RequestId *string
+}
+
+// DeleteDepartmentResponse403Headers the declared response headers of an HTTP 403 response for DeleteDepartment
+type DeleteDepartmentResponse403Headers struct {
+	RequestId *string
+}
+
 type DeleteDepartmentResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -25391,6 +29879,10 @@ type DeleteDepartmentResponse struct {
 	JSON404 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *DeleteDepartmentResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *DeleteDepartmentResponse403Headers
 }
 
 // GetJSON401 returns the response for an HTTP 401 `application/json` response
@@ -25442,6 +29934,16 @@ func (r DeleteDepartmentResponse) ContentType() string {
 	return ""
 }
 
+// GetDepartmentResponse401Headers the declared response headers of an HTTP 401 response for GetDepartment
+type GetDepartmentResponse401Headers struct {
+	RequestId *string
+}
+
+// GetDepartmentResponse403Headers the declared response headers of an HTTP 403 response for GetDepartment
+type GetDepartmentResponse403Headers struct {
+	RequestId *string
+}
+
 type GetDepartmentResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -25455,6 +29957,10 @@ type GetDepartmentResponse struct {
 	JSON404 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *GetDepartmentResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *GetDepartmentResponse403Headers
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
@@ -25511,6 +30017,16 @@ func (r GetDepartmentResponse) ContentType() string {
 	return ""
 }
 
+// UpdateDepartmentResponse401Headers the declared response headers of an HTTP 401 response for UpdateDepartment
+type UpdateDepartmentResponse401Headers struct {
+	RequestId *string
+}
+
+// UpdateDepartmentResponse403Headers the declared response headers of an HTTP 403 response for UpdateDepartment
+type UpdateDepartmentResponse403Headers struct {
+	RequestId *string
+}
+
 type UpdateDepartmentResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -25526,6 +30042,10 @@ type UpdateDepartmentResponse struct {
 	JSON409 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *UpdateDepartmentResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *UpdateDepartmentResponse403Headers
 }
 
 // GetJSON400 returns the response for an HTTP 400 `application/json` response
@@ -25904,6 +30424,32 @@ func (r GetExpenseReceiptResponse) ContentType() string {
 	return ""
 }
 
+// GetLabelGroupsResponse401Headers the declared response headers of an HTTP 401 response for GetLabelGroups
+type GetLabelGroupsResponse401Headers struct {
+	RequestId *string
+}
+
+// GetLabelGroupsResponse403Headers the declared response headers of an HTTP 403 response for GetLabelGroups
+type GetLabelGroupsResponse403Headers struct {
+	RequestId *string
+}
+
+// GetLabelGroupsResponse429Headers the declared response headers of an HTTP 429 response for GetLabelGroups
+type GetLabelGroupsResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// GetLabelGroupsResponse500Headers the declared response headers of an HTTP 500 response for GetLabelGroups
+type GetLabelGroupsResponse500Headers struct {
+	RequestId *string
+}
+
+// GetLabelGroupsResponse503Headers the declared response headers of an HTTP 503 response for GetLabelGroups
+type GetLabelGroupsResponse503Headers struct {
+	RequestId *string
+}
+
 type GetLabelGroupsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -25938,6 +30484,16 @@ type GetLabelGroupsResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *GetLabelGroupsResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *GetLabelGroupsResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *GetLabelGroupsResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *GetLabelGroupsResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *GetLabelGroupsResponse503Headers
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
@@ -26024,6 +30580,32 @@ func (r GetLabelGroupsResponse) ContentType() string {
 	return ""
 }
 
+// CreateLabelGroupResponse401Headers the declared response headers of an HTTP 401 response for CreateLabelGroup
+type CreateLabelGroupResponse401Headers struct {
+	RequestId *string
+}
+
+// CreateLabelGroupResponse403Headers the declared response headers of an HTTP 403 response for CreateLabelGroup
+type CreateLabelGroupResponse403Headers struct {
+	RequestId *string
+}
+
+// CreateLabelGroupResponse429Headers the declared response headers of an HTTP 429 response for CreateLabelGroup
+type CreateLabelGroupResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// CreateLabelGroupResponse500Headers the declared response headers of an HTTP 500 response for CreateLabelGroup
+type CreateLabelGroupResponse500Headers struct {
+	RequestId *string
+}
+
+// CreateLabelGroupResponse503Headers the declared response headers of an HTTP 503 response for CreateLabelGroup
+type CreateLabelGroupResponse503Headers struct {
+	RequestId *string
+}
+
 type CreateLabelGroupResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -26047,6 +30629,16 @@ type CreateLabelGroupResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *CreateLabelGroupResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *CreateLabelGroupResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *CreateLabelGroupResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *CreateLabelGroupResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *CreateLabelGroupResponse503Headers
 }
 
 // GetJSON201 returns the response for an HTTP 201 `application/json` response
@@ -26128,6 +30720,32 @@ func (r CreateLabelGroupResponse) ContentType() string {
 	return ""
 }
 
+// DeleteLabelGroupResponse401Headers the declared response headers of an HTTP 401 response for DeleteLabelGroup
+type DeleteLabelGroupResponse401Headers struct {
+	RequestId *string
+}
+
+// DeleteLabelGroupResponse403Headers the declared response headers of an HTTP 403 response for DeleteLabelGroup
+type DeleteLabelGroupResponse403Headers struct {
+	RequestId *string
+}
+
+// DeleteLabelGroupResponse429Headers the declared response headers of an HTTP 429 response for DeleteLabelGroup
+type DeleteLabelGroupResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// DeleteLabelGroupResponse500Headers the declared response headers of an HTTP 500 response for DeleteLabelGroup
+type DeleteLabelGroupResponse500Headers struct {
+	RequestId *string
+}
+
+// DeleteLabelGroupResponse503Headers the declared response headers of an HTTP 503 response for DeleteLabelGroup
+type DeleteLabelGroupResponse503Headers struct {
+	RequestId *string
+}
+
 type DeleteLabelGroupResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -26149,6 +30767,16 @@ type DeleteLabelGroupResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *DeleteLabelGroupResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *DeleteLabelGroupResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *DeleteLabelGroupResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *DeleteLabelGroupResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *DeleteLabelGroupResponse503Headers
 }
 
 // GetJSON400 returns the response for an HTTP 400 `application/json` response
@@ -26225,6 +30853,32 @@ func (r DeleteLabelGroupResponse) ContentType() string {
 	return ""
 }
 
+// GetLabelGroupResponse401Headers the declared response headers of an HTTP 401 response for GetLabelGroup
+type GetLabelGroupResponse401Headers struct {
+	RequestId *string
+}
+
+// GetLabelGroupResponse403Headers the declared response headers of an HTTP 403 response for GetLabelGroup
+type GetLabelGroupResponse403Headers struct {
+	RequestId *string
+}
+
+// GetLabelGroupResponse429Headers the declared response headers of an HTTP 429 response for GetLabelGroup
+type GetLabelGroupResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// GetLabelGroupResponse500Headers the declared response headers of an HTTP 500 response for GetLabelGroup
+type GetLabelGroupResponse500Headers struct {
+	RequestId *string
+}
+
+// GetLabelGroupResponse503Headers the declared response headers of an HTTP 503 response for GetLabelGroup
+type GetLabelGroupResponse503Headers struct {
+	RequestId *string
+}
+
 type GetLabelGroupResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -26246,6 +30900,16 @@ type GetLabelGroupResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *GetLabelGroupResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *GetLabelGroupResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *GetLabelGroupResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *GetLabelGroupResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *GetLabelGroupResponse503Headers
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
@@ -26322,6 +30986,32 @@ func (r GetLabelGroupResponse) ContentType() string {
 	return ""
 }
 
+// UpdateLabelGroupResponse401Headers the declared response headers of an HTTP 401 response for UpdateLabelGroup
+type UpdateLabelGroupResponse401Headers struct {
+	RequestId *string
+}
+
+// UpdateLabelGroupResponse403Headers the declared response headers of an HTTP 403 response for UpdateLabelGroup
+type UpdateLabelGroupResponse403Headers struct {
+	RequestId *string
+}
+
+// UpdateLabelGroupResponse429Headers the declared response headers of an HTTP 429 response for UpdateLabelGroup
+type UpdateLabelGroupResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// UpdateLabelGroupResponse500Headers the declared response headers of an HTTP 500 response for UpdateLabelGroup
+type UpdateLabelGroupResponse500Headers struct {
+	RequestId *string
+}
+
+// UpdateLabelGroupResponse503Headers the declared response headers of an HTTP 503 response for UpdateLabelGroup
+type UpdateLabelGroupResponse503Headers struct {
+	RequestId *string
+}
+
 type UpdateLabelGroupResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -26345,6 +31035,16 @@ type UpdateLabelGroupResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *UpdateLabelGroupResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *UpdateLabelGroupResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *UpdateLabelGroupResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *UpdateLabelGroupResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *UpdateLabelGroupResponse503Headers
 }
 
 // GetJSON400 returns the response for an HTTP 400 `application/json` response
@@ -26426,6 +31126,32 @@ func (r UpdateLabelGroupResponse) ContentType() string {
 	return ""
 }
 
+// GetLabelsResponse401Headers the declared response headers of an HTTP 401 response for GetLabels
+type GetLabelsResponse401Headers struct {
+	RequestId *string
+}
+
+// GetLabelsResponse403Headers the declared response headers of an HTTP 403 response for GetLabels
+type GetLabelsResponse403Headers struct {
+	RequestId *string
+}
+
+// GetLabelsResponse429Headers the declared response headers of an HTTP 429 response for GetLabels
+type GetLabelsResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// GetLabelsResponse500Headers the declared response headers of an HTTP 500 response for GetLabels
+type GetLabelsResponse500Headers struct {
+	RequestId *string
+}
+
+// GetLabelsResponse503Headers the declared response headers of an HTTP 503 response for GetLabels
+type GetLabelsResponse503Headers struct {
+	RequestId *string
+}
+
 type GetLabelsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -26460,6 +31186,16 @@ type GetLabelsResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *GetLabelsResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *GetLabelsResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *GetLabelsResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *GetLabelsResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *GetLabelsResponse503Headers
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
@@ -26546,6 +31282,32 @@ func (r GetLabelsResponse) ContentType() string {
 	return ""
 }
 
+// CreateLabelResponse401Headers the declared response headers of an HTTP 401 response for CreateLabel
+type CreateLabelResponse401Headers struct {
+	RequestId *string
+}
+
+// CreateLabelResponse403Headers the declared response headers of an HTTP 403 response for CreateLabel
+type CreateLabelResponse403Headers struct {
+	RequestId *string
+}
+
+// CreateLabelResponse429Headers the declared response headers of an HTTP 429 response for CreateLabel
+type CreateLabelResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// CreateLabelResponse500Headers the declared response headers of an HTTP 500 response for CreateLabel
+type CreateLabelResponse500Headers struct {
+	RequestId *string
+}
+
+// CreateLabelResponse503Headers the declared response headers of an HTTP 503 response for CreateLabel
+type CreateLabelResponse503Headers struct {
+	RequestId *string
+}
+
 type CreateLabelResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -26569,6 +31331,16 @@ type CreateLabelResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *CreateLabelResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *CreateLabelResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *CreateLabelResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *CreateLabelResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *CreateLabelResponse503Headers
 }
 
 // GetJSON201 returns the response for an HTTP 201 `application/json` response
@@ -26650,6 +31422,32 @@ func (r CreateLabelResponse) ContentType() string {
 	return ""
 }
 
+// DeleteLabelResponse401Headers the declared response headers of an HTTP 401 response for DeleteLabel
+type DeleteLabelResponse401Headers struct {
+	RequestId *string
+}
+
+// DeleteLabelResponse403Headers the declared response headers of an HTTP 403 response for DeleteLabel
+type DeleteLabelResponse403Headers struct {
+	RequestId *string
+}
+
+// DeleteLabelResponse429Headers the declared response headers of an HTTP 429 response for DeleteLabel
+type DeleteLabelResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// DeleteLabelResponse500Headers the declared response headers of an HTTP 500 response for DeleteLabel
+type DeleteLabelResponse500Headers struct {
+	RequestId *string
+}
+
+// DeleteLabelResponse503Headers the declared response headers of an HTTP 503 response for DeleteLabel
+type DeleteLabelResponse503Headers struct {
+	RequestId *string
+}
+
 type DeleteLabelResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -26671,6 +31469,16 @@ type DeleteLabelResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *DeleteLabelResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *DeleteLabelResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *DeleteLabelResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *DeleteLabelResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *DeleteLabelResponse503Headers
 }
 
 // GetJSON400 returns the response for an HTTP 400 `application/json` response
@@ -26747,6 +31555,32 @@ func (r DeleteLabelResponse) ContentType() string {
 	return ""
 }
 
+// UpdateLabelResponse401Headers the declared response headers of an HTTP 401 response for UpdateLabel
+type UpdateLabelResponse401Headers struct {
+	RequestId *string
+}
+
+// UpdateLabelResponse403Headers the declared response headers of an HTTP 403 response for UpdateLabel
+type UpdateLabelResponse403Headers struct {
+	RequestId *string
+}
+
+// UpdateLabelResponse429Headers the declared response headers of an HTTP 429 response for UpdateLabel
+type UpdateLabelResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// UpdateLabelResponse500Headers the declared response headers of an HTTP 500 response for UpdateLabel
+type UpdateLabelResponse500Headers struct {
+	RequestId *string
+}
+
+// UpdateLabelResponse503Headers the declared response headers of an HTTP 503 response for UpdateLabel
+type UpdateLabelResponse503Headers struct {
+	RequestId *string
+}
+
 type UpdateLabelResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -26770,6 +31604,16 @@ type UpdateLabelResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *UpdateLabelResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *UpdateLabelResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *UpdateLabelResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *UpdateLabelResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *UpdateLabelResponse503Headers
 }
 
 // GetJSON400 returns the response for an HTTP 400 `application/json` response
@@ -27745,6 +32589,16 @@ func (r GetRateResponse) ContentType() string {
 	return ""
 }
 
+// GetRolesResponse401Headers the declared response headers of an HTTP 401 response for GetRoles
+type GetRolesResponse401Headers struct {
+	RequestId *string
+}
+
+// GetRolesResponse403Headers the declared response headers of an HTTP 403 response for GetRoles
+type GetRolesResponse403Headers struct {
+	RequestId *string
+}
+
 type GetRolesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -27758,6 +32612,10 @@ type GetRolesResponse struct {
 	JSON403 *Forbidden
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *GetRolesResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *GetRolesResponse403Headers
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
@@ -27966,6 +32824,32 @@ func (r SimulateTransferStateUpdateResponse) ContentType() string {
 	return ""
 }
 
+// GetTaxRatesResponse401Headers the declared response headers of an HTTP 401 response for GetTaxRates
+type GetTaxRatesResponse401Headers struct {
+	RequestId *string
+}
+
+// GetTaxRatesResponse403Headers the declared response headers of an HTTP 403 response for GetTaxRates
+type GetTaxRatesResponse403Headers struct {
+	RequestId *string
+}
+
+// GetTaxRatesResponse429Headers the declared response headers of an HTTP 429 response for GetTaxRates
+type GetTaxRatesResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// GetTaxRatesResponse500Headers the declared response headers of an HTTP 500 response for GetTaxRates
+type GetTaxRatesResponse500Headers struct {
+	RequestId *string
+}
+
+// GetTaxRatesResponse503Headers the declared response headers of an HTTP 503 response for GetTaxRates
+type GetTaxRatesResponse503Headers struct {
+	RequestId *string
+}
+
 type GetTaxRatesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -27998,6 +32882,16 @@ type GetTaxRatesResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *GetTaxRatesResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *GetTaxRatesResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *GetTaxRatesResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *GetTaxRatesResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *GetTaxRatesResponse503Headers
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
@@ -28082,6 +32976,32 @@ func (r GetTaxRatesResponse) ContentType() string {
 	return ""
 }
 
+// CreateTaxRateResponse401Headers the declared response headers of an HTTP 401 response for CreateTaxRate
+type CreateTaxRateResponse401Headers struct {
+	RequestId *string
+}
+
+// CreateTaxRateResponse403Headers the declared response headers of an HTTP 403 response for CreateTaxRate
+type CreateTaxRateResponse403Headers struct {
+	RequestId *string
+}
+
+// CreateTaxRateResponse429Headers the declared response headers of an HTTP 429 response for CreateTaxRate
+type CreateTaxRateResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// CreateTaxRateResponse500Headers the declared response headers of an HTTP 500 response for CreateTaxRate
+type CreateTaxRateResponse500Headers struct {
+	RequestId *string
+}
+
+// CreateTaxRateResponse503Headers the declared response headers of an HTTP 503 response for CreateTaxRate
+type CreateTaxRateResponse503Headers struct {
+	RequestId *string
+}
+
 type CreateTaxRateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -28105,6 +33025,16 @@ type CreateTaxRateResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *CreateTaxRateResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *CreateTaxRateResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *CreateTaxRateResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *CreateTaxRateResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *CreateTaxRateResponse503Headers
 }
 
 // GetJSON201 returns the response for an HTTP 201 `application/json` response
@@ -28186,6 +33116,32 @@ func (r CreateTaxRateResponse) ContentType() string {
 	return ""
 }
 
+// DeleteTaxRateResponse401Headers the declared response headers of an HTTP 401 response for DeleteTaxRate
+type DeleteTaxRateResponse401Headers struct {
+	RequestId *string
+}
+
+// DeleteTaxRateResponse403Headers the declared response headers of an HTTP 403 response for DeleteTaxRate
+type DeleteTaxRateResponse403Headers struct {
+	RequestId *string
+}
+
+// DeleteTaxRateResponse429Headers the declared response headers of an HTTP 429 response for DeleteTaxRate
+type DeleteTaxRateResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// DeleteTaxRateResponse500Headers the declared response headers of an HTTP 500 response for DeleteTaxRate
+type DeleteTaxRateResponse500Headers struct {
+	RequestId *string
+}
+
+// DeleteTaxRateResponse503Headers the declared response headers of an HTTP 503 response for DeleteTaxRate
+type DeleteTaxRateResponse503Headers struct {
+	RequestId *string
+}
+
 type DeleteTaxRateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -28207,6 +33163,16 @@ type DeleteTaxRateResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *DeleteTaxRateResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *DeleteTaxRateResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *DeleteTaxRateResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *DeleteTaxRateResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *DeleteTaxRateResponse503Headers
 }
 
 // GetJSON400 returns the response for an HTTP 400 `application/json` response
@@ -28283,6 +33249,32 @@ func (r DeleteTaxRateResponse) ContentType() string {
 	return ""
 }
 
+// GetTaxRateResponse401Headers the declared response headers of an HTTP 401 response for GetTaxRate
+type GetTaxRateResponse401Headers struct {
+	RequestId *string
+}
+
+// GetTaxRateResponse403Headers the declared response headers of an HTTP 403 response for GetTaxRate
+type GetTaxRateResponse403Headers struct {
+	RequestId *string
+}
+
+// GetTaxRateResponse429Headers the declared response headers of an HTTP 429 response for GetTaxRate
+type GetTaxRateResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// GetTaxRateResponse500Headers the declared response headers of an HTTP 500 response for GetTaxRate
+type GetTaxRateResponse500Headers struct {
+	RequestId *string
+}
+
+// GetTaxRateResponse503Headers the declared response headers of an HTTP 503 response for GetTaxRate
+type GetTaxRateResponse503Headers struct {
+	RequestId *string
+}
+
 type GetTaxRateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -28304,6 +33296,16 @@ type GetTaxRateResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *GetTaxRateResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *GetTaxRateResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *GetTaxRateResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *GetTaxRateResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *GetTaxRateResponse503Headers
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
@@ -28380,6 +33382,32 @@ func (r GetTaxRateResponse) ContentType() string {
 	return ""
 }
 
+// UpdateTaxRateResponse401Headers the declared response headers of an HTTP 401 response for UpdateTaxRate
+type UpdateTaxRateResponse401Headers struct {
+	RequestId *string
+}
+
+// UpdateTaxRateResponse403Headers the declared response headers of an HTTP 403 response for UpdateTaxRate
+type UpdateTaxRateResponse403Headers struct {
+	RequestId *string
+}
+
+// UpdateTaxRateResponse429Headers the declared response headers of an HTTP 429 response for UpdateTaxRate
+type UpdateTaxRateResponse429Headers struct {
+	RequestId  *string
+	RetryAfter *int
+}
+
+// UpdateTaxRateResponse500Headers the declared response headers of an HTTP 500 response for UpdateTaxRate
+type UpdateTaxRateResponse500Headers struct {
+	RequestId *string
+}
+
+// UpdateTaxRateResponse503Headers the declared response headers of an HTTP 503 response for UpdateTaxRate
+type UpdateTaxRateResponse503Headers struct {
+	RequestId *string
+}
+
 type UpdateTaxRateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -28403,6 +33431,16 @@ type UpdateTaxRateResponse struct {
 	JSON503 *ServiceUnavailable
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *UpdateTaxRateResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *UpdateTaxRateResponse403Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *UpdateTaxRateResponse429Headers
+	// Headers500 the parsed response headers for an HTTP 500 response
+	Headers500 *UpdateTaxRateResponse500Headers
+	// Headers503 the parsed response headers for an HTTP 503 response
+	Headers503 *UpdateTaxRateResponse503Headers
 }
 
 // GetJSON400 returns the response for an HTTP 400 `application/json` response
@@ -28484,6 +33522,16 @@ func (r UpdateTaxRateResponse) ContentType() string {
 	return ""
 }
 
+// GetTeamMembersResponse401Headers the declared response headers of an HTTP 401 response for GetTeamMembers
+type GetTeamMembersResponse401Headers struct {
+	RequestId *string
+}
+
+// GetTeamMembersResponse403Headers the declared response headers of an HTTP 403 response for GetTeamMembers
+type GetTeamMembersResponse403Headers struct {
+	RequestId *string
+}
+
 type GetTeamMembersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -28497,6 +33545,10 @@ type GetTeamMembersResponse struct {
 	JSON403 *Forbidden
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *GetTeamMembersResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *GetTeamMembersResponse403Headers
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
@@ -28553,6 +33605,16 @@ func (r GetTeamMembersResponse) ContentType() string {
 	return ""
 }
 
+// InviteTeamMemberResponse401Headers the declared response headers of an HTTP 401 response for InviteTeamMember
+type InviteTeamMemberResponse401Headers struct {
+	RequestId *string
+}
+
+// InviteTeamMemberResponse403Headers the declared response headers of an HTTP 403 response for InviteTeamMember
+type InviteTeamMemberResponse403Headers struct {
+	RequestId *string
+}
+
 type InviteTeamMemberResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -28583,6 +33645,10 @@ type InviteTeamMemberResponse struct {
 	JSON422 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *InviteTeamMemberResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *InviteTeamMemberResponse403Headers
 }
 
 // GetJSON201 returns the response for an HTTP 201 `application/json` response
@@ -28659,6 +33725,16 @@ func (r InviteTeamMemberResponse) ContentType() string {
 	return ""
 }
 
+// DeleteTeamMemberResponse401Headers the declared response headers of an HTTP 401 response for DeleteTeamMember
+type DeleteTeamMemberResponse401Headers struct {
+	RequestId *string
+}
+
+// DeleteTeamMemberResponse403Headers the declared response headers of an HTTP 403 response for DeleteTeamMember
+type DeleteTeamMemberResponse403Headers struct {
+	RequestId *string
+}
+
 type DeleteTeamMemberResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -28672,6 +33748,10 @@ type DeleteTeamMemberResponse struct {
 	JSON422 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *DeleteTeamMemberResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *DeleteTeamMemberResponse403Headers
 }
 
 // GetJSON401 returns the response for an HTTP 401 `application/json` response
@@ -28728,6 +33808,16 @@ func (r DeleteTeamMemberResponse) ContentType() string {
 	return ""
 }
 
+// GetTeamMemberByIdResponse401Headers the declared response headers of an HTTP 401 response for GetTeamMemberById
+type GetTeamMemberByIdResponse401Headers struct {
+	RequestId *string
+}
+
+// GetTeamMemberByIdResponse403Headers the declared response headers of an HTTP 403 response for GetTeamMemberById
+type GetTeamMemberByIdResponse403Headers struct {
+	RequestId *string
+}
+
 type GetTeamMemberByIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -28743,6 +33833,10 @@ type GetTeamMemberByIdResponse struct {
 	JSON404 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *GetTeamMemberByIdResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *GetTeamMemberByIdResponse403Headers
 }
 
 // GetJSON200 returns the response for an HTTP 200 `application/json` response
@@ -28804,6 +33898,16 @@ func (r GetTeamMemberByIdResponse) ContentType() string {
 	return ""
 }
 
+// UnassignDepartmentResponse401Headers the declared response headers of an HTTP 401 response for UnassignDepartment
+type UnassignDepartmentResponse401Headers struct {
+	RequestId *string
+}
+
+// UnassignDepartmentResponse403Headers the declared response headers of an HTTP 403 response for UnassignDepartment
+type UnassignDepartmentResponse403Headers struct {
+	RequestId *string
+}
+
 type UnassignDepartmentResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -28815,6 +33919,10 @@ type UnassignDepartmentResponse struct {
 	JSON404 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *UnassignDepartmentResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *UnassignDepartmentResponse403Headers
 }
 
 // GetJSON401 returns the response for an HTTP 401 `application/json` response
@@ -28866,6 +33974,16 @@ func (r UnassignDepartmentResponse) ContentType() string {
 	return ""
 }
 
+// AssignDepartmentResponse401Headers the declared response headers of an HTTP 401 response for AssignDepartment
+type AssignDepartmentResponse401Headers struct {
+	RequestId *string
+}
+
+// AssignDepartmentResponse403Headers the declared response headers of an HTTP 403 response for AssignDepartment
+type AssignDepartmentResponse403Headers struct {
+	RequestId *string
+}
+
 type AssignDepartmentResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -28879,6 +33997,10 @@ type AssignDepartmentResponse struct {
 	JSON404 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *AssignDepartmentResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *AssignDepartmentResponse403Headers
 }
 
 // GetJSON400 returns the response for an HTTP 400 `application/json` response
@@ -28935,6 +34057,16 @@ func (r AssignDepartmentResponse) ContentType() string {
 	return ""
 }
 
+// UnassignManagerResponse401Headers the declared response headers of an HTTP 401 response for UnassignManager
+type UnassignManagerResponse401Headers struct {
+	RequestId *string
+}
+
+// UnassignManagerResponse403Headers the declared response headers of an HTTP 403 response for UnassignManager
+type UnassignManagerResponse403Headers struct {
+	RequestId *string
+}
+
 type UnassignManagerResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -28946,6 +34078,10 @@ type UnassignManagerResponse struct {
 	JSON404 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *UnassignManagerResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *UnassignManagerResponse403Headers
 }
 
 // GetJSON401 returns the response for an HTTP 401 `application/json` response
@@ -28997,6 +34133,16 @@ func (r UnassignManagerResponse) ContentType() string {
 	return ""
 }
 
+// AssignManagerResponse401Headers the declared response headers of an HTTP 401 response for AssignManager
+type AssignManagerResponse401Headers struct {
+	RequestId *string
+}
+
+// AssignManagerResponse403Headers the declared response headers of an HTTP 403 response for AssignManager
+type AssignManagerResponse403Headers struct {
+	RequestId *string
+}
+
 type AssignManagerResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -29010,6 +34156,10 @@ type AssignManagerResponse struct {
 	JSON404 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *AssignManagerResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *AssignManagerResponse403Headers
 }
 
 // GetJSON400 returns the response for an HTTP 400 `application/json` response
@@ -29066,6 +34216,16 @@ func (r AssignManagerResponse) ContentType() string {
 	return ""
 }
 
+// UpdateTeamMemberRoleResponse401Headers the declared response headers of an HTTP 401 response for UpdateTeamMemberRole
+type UpdateTeamMemberRoleResponse401Headers struct {
+	RequestId *string
+}
+
+// UpdateTeamMemberRoleResponse403Headers the declared response headers of an HTTP 403 response for UpdateTeamMemberRole
+type UpdateTeamMemberRoleResponse403Headers struct {
+	RequestId *string
+}
+
 type UpdateTeamMemberRoleResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -29081,6 +34241,10 @@ type UpdateTeamMemberRoleResponse struct {
 	JSON422 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *UpdateTeamMemberRoleResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *UpdateTeamMemberRoleResponse403Headers
 }
 
 // GetJSON400 returns the response for an HTTP 400 `application/json` response
@@ -29142,6 +34306,16 @@ func (r UpdateTeamMemberRoleResponse) ContentType() string {
 	return ""
 }
 
+// SuspendTeamMemberResponse401Headers the declared response headers of an HTTP 401 response for SuspendTeamMember
+type SuspendTeamMemberResponse401Headers struct {
+	RequestId *string
+}
+
+// SuspendTeamMemberResponse403Headers the declared response headers of an HTTP 403 response for SuspendTeamMember
+type SuspendTeamMemberResponse403Headers struct {
+	RequestId *string
+}
+
 type SuspendTeamMemberResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -29155,6 +34329,10 @@ type SuspendTeamMemberResponse struct {
 	JSON422 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *SuspendTeamMemberResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *SuspendTeamMemberResponse403Headers
 }
 
 // GetJSON401 returns the response for an HTTP 401 `application/json` response
@@ -29211,6 +34389,16 @@ func (r SuspendTeamMemberResponse) ContentType() string {
 	return ""
 }
 
+// UnsuspendTeamMemberResponse401Headers the declared response headers of an HTTP 401 response for UnsuspendTeamMember
+type UnsuspendTeamMemberResponse401Headers struct {
+	RequestId *string
+}
+
+// UnsuspendTeamMemberResponse403Headers the declared response headers of an HTTP 403 response for UnsuspendTeamMember
+type UnsuspendTeamMemberResponse403Headers struct {
+	RequestId *string
+}
+
 type UnsuspendTeamMemberResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -29224,6 +34412,10 @@ type UnsuspendTeamMemberResponse struct {
 	JSON422 *ErrorWithId
 	// JSONDefault the response for an HTTP default `application/json` response
 	JSONDefault *ErrorWithId
+	// Headers401 the parsed response headers for an HTTP 401 response
+	Headers401 *UnsuspendTeamMemberResponse401Headers
+	// Headers403 the parsed response headers for an HTTP 403 response
+	Headers403 *UnsuspendTeamMemberResponse403Headers
 }
 
 // GetJSON401 returns the response for an HTTP 401 `application/json` response
@@ -30396,6 +35588,472 @@ func (c *ClientWithResponses) GetAccountDetailsWithResponse(ctx context.Context,
 		return nil, err
 	}
 	return ParseGetAccountDetailsResponse(rsp)
+}
+
+// SearchCashflowWithBodyWithResponse Search cashflow reports
+//
+// Get business cashflow over the requested period as income and spending time series, together with the period totals.
+//
+// The results can be filtered by accounts.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /analytics/cashflow/search (the `SearchCashflow` operationId).
+func (c *ClientWithResponses) SearchCashflowWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SearchCashflowResponse, error) {
+	rsp, err := c.SearchCashflowWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSearchCashflowResponse(rsp)
+}
+
+// SearchCashflowWithResponse Search cashflow reports
+//
+// Get business cashflow over the requested period as income and spending time series, together with the period totals.
+//
+// The results can be filtered by accounts.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /analytics/cashflow/search (the `SearchCashflow` operationId).
+func (c *ClientWithResponses) SearchCashflowWithResponse(ctx context.Context, body SearchCashflowJSONRequestBody, reqEditors ...RequestEditorFn) (*SearchCashflowResponse, error) {
+	rsp, err := c.SearchCashflow(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSearchCashflowResponse(rsp)
+}
+
+// SearchIncomeBreakdownWithBodyWithResponse Search income breakdown reports
+//
+// Get business income over the requested period grouped by transaction type or currency.
+//
+// Totals are converted to the business's base currency.
+//
+// The results can be filtered and are paginated. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /analytics/income/breakdown/search (the `SearchIncomeBreakdown` operationId).
+func (c *ClientWithResponses) SearchIncomeBreakdownWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SearchIncomeBreakdownResponse, error) {
+	rsp, err := c.SearchIncomeBreakdownWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSearchIncomeBreakdownResponse(rsp)
+}
+
+// SearchIncomeBreakdownWithResponse Search income breakdown reports
+//
+// Get business income over the requested period grouped by transaction type or currency.
+//
+// Totals are converted to the business's base currency.
+//
+// The results can be filtered and are paginated. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /analytics/income/breakdown/search (the `SearchIncomeBreakdown` operationId).
+func (c *ClientWithResponses) SearchIncomeBreakdownWithResponse(ctx context.Context, body SearchIncomeBreakdownJSONRequestBody, reqEditors ...RequestEditorFn) (*SearchIncomeBreakdownResponse, error) {
+	rsp, err := c.SearchIncomeBreakdown(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSearchIncomeBreakdownResponse(rsp)
+}
+
+// SearchIncomeWithBodyWithResponse Search income reports
+//
+// Get business income as a time series over the requested period.
+//
+// The results can be filtered. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /analytics/income/search (the `SearchIncome` operationId).
+func (c *ClientWithResponses) SearchIncomeWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SearchIncomeResponse, error) {
+	rsp, err := c.SearchIncomeWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSearchIncomeResponse(rsp)
+}
+
+// SearchIncomeWithResponse Search income reports
+//
+// Get business income as a time series over the requested period.
+//
+// The results can be filtered. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /analytics/income/search (the `SearchIncome` operationId).
+func (c *ClientWithResponses) SearchIncomeWithResponse(ctx context.Context, body SearchIncomeJSONRequestBody, reqEditors ...RequestEditorFn) (*SearchIncomeResponse, error) {
+	rsp, err := c.SearchIncome(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSearchIncomeResponse(rsp)
+}
+
+// SearchSpendingBreakdownWithBodyWithResponse Search spending breakdown reports
+//
+// Get business spending over the requested period grouped by a dimension of your choice: transaction type, merchant category, merchant country, merchant group, team member, currency, or spend program.
+//
+// Totals are in the business's base currency.
+//
+// The results can be filtered and are paginated. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /analytics/spending/breakdown/search (the `SearchSpendingBreakdown` operationId).
+func (c *ClientWithResponses) SearchSpendingBreakdownWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SearchSpendingBreakdownResponse, error) {
+	rsp, err := c.SearchSpendingBreakdownWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSearchSpendingBreakdownResponse(rsp)
+}
+
+// SearchSpendingBreakdownWithResponse Search spending breakdown reports
+//
+// Get business spending over the requested period grouped by a dimension of your choice: transaction type, merchant category, merchant country, merchant group, team member, currency, or spend program.
+//
+// Totals are in the business's base currency.
+//
+// The results can be filtered and are paginated. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /analytics/spending/breakdown/search (the `SearchSpendingBreakdown` operationId).
+func (c *ClientWithResponses) SearchSpendingBreakdownWithResponse(ctx context.Context, body SearchSpendingBreakdownJSONRequestBody, reqEditors ...RequestEditorFn) (*SearchSpendingBreakdownResponse, error) {
+	rsp, err := c.SearchSpendingBreakdown(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSearchSpendingBreakdownResponse(rsp)
+}
+
+// SearchSpendingWithBodyWithResponse Search spending reports
+//
+// Get business spending as a time series over the requested period.
+//
+// The results can be filtered. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /analytics/spending/search (the `SearchSpending` operationId).
+func (c *ClientWithResponses) SearchSpendingWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SearchSpendingResponse, error) {
+	rsp, err := c.SearchSpendingWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSearchSpendingResponse(rsp)
+}
+
+// SearchSpendingWithResponse Search spending reports
+//
+// Get business spending as a time series over the requested period.
+//
+// The results can be filtered. See the request body for the full list of filters.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /analytics/spending/search (the `SearchSpending` operationId).
+func (c *ClientWithResponses) SearchSpendingWithResponse(ctx context.Context, body SearchSpendingJSONRequestBody, reqEditors ...RequestEditorFn) (*SearchSpendingResponse, error) {
+	rsp, err := c.SearchSpending(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSearchSpendingResponse(rsp)
+}
+
+// SearchTotalWealthBreakdownWithBodyWithResponse Search total wealth breakdown reports
+//
+// Get the total wealth of the business grouped by asset type (e.g. cash, savings deposits, savings money market funds, merchant, or crypto) or asset group (e.g. cash, treasury, or merchant).
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /analytics/total-wealth/breakdown/search (the `SearchTotalWealthBreakdown` operationId).
+func (c *ClientWithResponses) SearchTotalWealthBreakdownWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SearchTotalWealthBreakdownResponse, error) {
+	rsp, err := c.SearchTotalWealthBreakdownWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSearchTotalWealthBreakdownResponse(rsp)
+}
+
+// SearchTotalWealthBreakdownWithResponse Search total wealth breakdown reports
+//
+// Get the total wealth of the business grouped by asset type (e.g. cash, savings deposits, savings money market funds, merchant, or crypto) or asset group (e.g. cash, treasury, or merchant).
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /analytics/total-wealth/breakdown/search (the `SearchTotalWealthBreakdown` operationId).
+func (c *ClientWithResponses) SearchTotalWealthBreakdownWithResponse(ctx context.Context, body SearchTotalWealthBreakdownJSONRequestBody, reqEditors ...RequestEditorFn) (*SearchTotalWealthBreakdownResponse, error) {
+	rsp, err := c.SearchTotalWealthBreakdown(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSearchTotalWealthBreakdownResponse(rsp)
+}
+
+// SearchTotalWealthWithBodyWithResponse Search total wealth reports
+//
+// Get the total wealth of the business as a time series over the requested period.
+//
+// The response always contains daily data points. Can be filtered by asset type.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /analytics/total-wealth/search (the `SearchTotalWealth` operationId).
+func (c *ClientWithResponses) SearchTotalWealthWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*SearchTotalWealthResponse, error) {
+	rsp, err := c.SearchTotalWealthWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSearchTotalWealthResponse(rsp)
+}
+
+// SearchTotalWealthWithResponse Search total wealth reports
+//
+// Get the total wealth of the business as a time series over the requested period.
+//
+// The response always contains daily data points. Can be filtered by asset type.
+//
+// :::info
+// The Analytics endpoints are read-only.
+// The search requests are safe to retry and do not require an `Idempotency-Key`.
+// :::
+//
+// For more information, see the guide: [Analytics](https://developer.revolut.com/docs/guides/manage-accounts/analytics).
+//
+// ### Required API key permissions
+// To call this endpoint, your API key must have the following permissions (scopes):
+//
+// | Product | Resource | Permission | Mapped scope |
+// |---------|----------|-------------|--------------|
+// | **Analytics** | Analytics | Read | `analytics:read` |
+//
+// For more information, see: [Authentication](https://developer.revolut.com/docs/api/business#authentication).
+//
+// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
+//
+// Corresponds with POST /analytics/total-wealth/search (the `SearchTotalWealth` operationId).
+func (c *ClientWithResponses) SearchTotalWealthWithResponse(ctx context.Context, body SearchTotalWealthJSONRequestBody, reqEditors ...RequestEditorFn) (*SearchTotalWealthResponse, error) {
+	rsp, err := c.SearchTotalWealth(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseSearchTotalWealthResponse(rsp)
 }
 
 // GetCardInvitationsWithResponse Retrieve a list of card invitations
@@ -34655,6 +40313,66 @@ func ParseGetAccountingCategoriesResponse(rsp *http.Response) (*GetAccountingCat
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers GetAccountingCategoriesResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers GetAccountingCategoriesResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers GetAccountingCategoriesResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers GetAccountingCategoriesResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers GetAccountingCategoriesResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
+	}
+
 	return response, nil
 }
 
@@ -34744,6 +40462,66 @@ func ParseCreateAccountingCategoryResponse(rsp *http.Response) (*CreateAccountin
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers CreateAccountingCategoryResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers CreateAccountingCategoryResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers CreateAccountingCategoryResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers CreateAccountingCategoryResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers CreateAccountingCategoryResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
+	}
+
 	return response, nil
 }
 
@@ -34829,6 +40607,66 @@ func ParseDeleteAccountingCategoryResponse(rsp *http.Response) (*DeleteAccountin
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers DeleteAccountingCategoryResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers DeleteAccountingCategoryResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers DeleteAccountingCategoryResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers DeleteAccountingCategoryResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers DeleteAccountingCategoryResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
+	}
+
 	return response, nil
 }
 
@@ -34909,6 +40747,66 @@ func ParseGetAccountingCategoryResponse(rsp *http.Response) (*GetAccountingCateg
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers GetAccountingCategoryResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers GetAccountingCategoryResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers GetAccountingCategoryResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers GetAccountingCategoryResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers GetAccountingCategoryResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
 	}
 
 	return response, nil
@@ -35001,6 +40899,66 @@ func ParseUpdateAccountingCategoryResponse(rsp *http.Response) (*UpdateAccountin
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers UpdateAccountingCategoryResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers UpdateAccountingCategoryResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers UpdateAccountingCategoryResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers UpdateAccountingCategoryResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers UpdateAccountingCategoryResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
 	}
 
 	return response, nil
@@ -35100,6 +41058,972 @@ func ParseGetAccountDetailsResponse(rsp *http.Response) (*GetAccountDetailsRespo
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	return response, nil
+}
+
+// ParseSearchCashflowResponse parses an HTTP response from a SearchCashflowWithResponse call
+func ParseSearchCashflowResponse(rsp *http.Response) (*SearchCashflowResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &SearchCashflowResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest AnalyticsCashflowResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest AnalyticsBadRequest
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Unauthorized
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenAnalytics
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest AnalyticsNotEnabled
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest AnalyticsRateLimited
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest ErrorWithId
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
+
+	}
+
+	switch {
+	case rsp.StatusCode == 200:
+		var headers SearchCashflowResponse200Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers200 = &headers
+	case rsp.StatusCode == 400:
+		var headers SearchCashflowResponse400Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers400 = &headers
+	case rsp.StatusCode == 401:
+		var headers SearchCashflowResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers SearchCashflowResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 422:
+		var headers SearchCashflowResponse422Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers422 = &headers
+	case rsp.StatusCode == 429:
+		var headers SearchCashflowResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	}
+
+	return response, nil
+}
+
+// ParseSearchIncomeBreakdownResponse parses an HTTP response from a SearchIncomeBreakdownWithResponse call
+func ParseSearchIncomeBreakdownResponse(rsp *http.Response) (*SearchIncomeBreakdownResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &SearchIncomeBreakdownResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest AnalyticsIncomeBreakdownResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest AnalyticsBadRequest
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Unauthorized
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenAnalytics
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest AnalyticsNotEnabled
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest AnalyticsRateLimited
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest ErrorWithId
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
+
+	}
+
+	switch {
+	case rsp.StatusCode == 200:
+		var headers SearchIncomeBreakdownResponse200Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers200 = &headers
+	case rsp.StatusCode == 400:
+		var headers SearchIncomeBreakdownResponse400Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers400 = &headers
+	case rsp.StatusCode == 401:
+		var headers SearchIncomeBreakdownResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers SearchIncomeBreakdownResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 422:
+		var headers SearchIncomeBreakdownResponse422Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers422 = &headers
+	case rsp.StatusCode == 429:
+		var headers SearchIncomeBreakdownResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	}
+
+	return response, nil
+}
+
+// ParseSearchIncomeResponse parses an HTTP response from a SearchIncomeWithResponse call
+func ParseSearchIncomeResponse(rsp *http.Response) (*SearchIncomeResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &SearchIncomeResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest AnalyticsIncomeSearchResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest AnalyticsBadRequest
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Unauthorized
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenAnalytics
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest AnalyticsNotEnabled
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest AnalyticsRateLimited
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest ErrorWithId
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
+
+	}
+
+	switch {
+	case rsp.StatusCode == 200:
+		var headers SearchIncomeResponse200Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers200 = &headers
+	case rsp.StatusCode == 400:
+		var headers SearchIncomeResponse400Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers400 = &headers
+	case rsp.StatusCode == 401:
+		var headers SearchIncomeResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers SearchIncomeResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 422:
+		var headers SearchIncomeResponse422Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers422 = &headers
+	case rsp.StatusCode == 429:
+		var headers SearchIncomeResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	}
+
+	return response, nil
+}
+
+// ParseSearchSpendingBreakdownResponse parses an HTTP response from a SearchSpendingBreakdownWithResponse call
+func ParseSearchSpendingBreakdownResponse(rsp *http.Response) (*SearchSpendingBreakdownResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &SearchSpendingBreakdownResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest AnalyticsSpendingBreakdownResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest AnalyticsBadRequest
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Unauthorized
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenAnalytics
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest AnalyticsNotEnabled
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest AnalyticsRateLimited
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest ErrorWithId
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
+
+	}
+
+	switch {
+	case rsp.StatusCode == 200:
+		var headers SearchSpendingBreakdownResponse200Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers200 = &headers
+	case rsp.StatusCode == 400:
+		var headers SearchSpendingBreakdownResponse400Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers400 = &headers
+	case rsp.StatusCode == 401:
+		var headers SearchSpendingBreakdownResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers SearchSpendingBreakdownResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 422:
+		var headers SearchSpendingBreakdownResponse422Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers422 = &headers
+	case rsp.StatusCode == 429:
+		var headers SearchSpendingBreakdownResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	}
+
+	return response, nil
+}
+
+// ParseSearchSpendingResponse parses an HTTP response from a SearchSpendingWithResponse call
+func ParseSearchSpendingResponse(rsp *http.Response) (*SearchSpendingResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &SearchSpendingResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest AnalyticsSpendingSearchResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest AnalyticsBadRequest
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Unauthorized
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenAnalytics
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest AnalyticsNotEnabled
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest AnalyticsRateLimited
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest ErrorWithId
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
+
+	}
+
+	switch {
+	case rsp.StatusCode == 200:
+		var headers SearchSpendingResponse200Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers200 = &headers
+	case rsp.StatusCode == 400:
+		var headers SearchSpendingResponse400Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers400 = &headers
+	case rsp.StatusCode == 401:
+		var headers SearchSpendingResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers SearchSpendingResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 422:
+		var headers SearchSpendingResponse422Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers422 = &headers
+	case rsp.StatusCode == 429:
+		var headers SearchSpendingResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	}
+
+	return response, nil
+}
+
+// ParseSearchTotalWealthBreakdownResponse parses an HTTP response from a SearchTotalWealthBreakdownWithResponse call
+func ParseSearchTotalWealthBreakdownResponse(rsp *http.Response) (*SearchTotalWealthBreakdownResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &SearchTotalWealthBreakdownResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest AnalyticsTotalWealthBreakdownResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest AnalyticsBadRequest
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Unauthorized
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenAnalytics
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest AnalyticsNotEnabled
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest AnalyticsRateLimited
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest ErrorWithId
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
+
+	}
+
+	switch {
+	case rsp.StatusCode == 200:
+		var headers SearchTotalWealthBreakdownResponse200Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers200 = &headers
+	case rsp.StatusCode == 400:
+		var headers SearchTotalWealthBreakdownResponse400Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers400 = &headers
+	case rsp.StatusCode == 401:
+		var headers SearchTotalWealthBreakdownResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers SearchTotalWealthBreakdownResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 422:
+		var headers SearchTotalWealthBreakdownResponse422Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers422 = &headers
+	case rsp.StatusCode == 429:
+		var headers SearchTotalWealthBreakdownResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	}
+
+	return response, nil
+}
+
+// ParseSearchTotalWealthResponse parses an HTTP response from a SearchTotalWealthWithResponse call
+func ParseSearchTotalWealthResponse(rsp *http.Response) (*SearchTotalWealthResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &SearchTotalWealthResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest AnalyticsTotalWealthSearchResponse
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest AnalyticsBadRequest
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Unauthorized
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest ForbiddenAnalytics
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest AnalyticsNotEnabled
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest AnalyticsRateLimited
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && true:
+		var dest ErrorWithId
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSONDefault = &dest
+
+	}
+
+	switch {
+	case rsp.StatusCode == 200:
+		var headers SearchTotalWealthResponse200Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers200 = &headers
+	case rsp.StatusCode == 400:
+		var headers SearchTotalWealthResponse400Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers400 = &headers
+	case rsp.StatusCode == 401:
+		var headers SearchTotalWealthResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers SearchTotalWealthResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 422:
+		var headers SearchTotalWealthResponse422Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers422 = &headers
+	case rsp.StatusCode == 429:
+		var headers SearchTotalWealthResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
 	}
 
 	return response, nil
@@ -36345,6 +43269,29 @@ func ParseGetDepartmentsResponse(rsp *http.Response) (*GetDepartmentsResponse, e
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers GetDepartmentsResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers GetDepartmentsResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	}
+
 	return response, nil
 }
 
@@ -36409,6 +43356,29 @@ func ParseCreateDepartmentResponse(rsp *http.Response) (*CreateDepartmentRespons
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers CreateDepartmentResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers CreateDepartmentResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	}
+
 	return response, nil
 }
 
@@ -36457,6 +43427,29 @@ func ParseDeleteDepartmentResponse(rsp *http.Response) (*DeleteDepartmentRespons
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers DeleteDepartmentResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers DeleteDepartmentResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
 	}
 
 	return response, nil
@@ -36511,6 +43504,29 @@ func ParseGetDepartmentResponse(rsp *http.Response) (*GetDepartmentResponse, err
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers GetDepartmentResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers GetDepartmentResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
 	}
 
 	return response, nil
@@ -36575,6 +43591,29 @@ func ParseUpdateDepartmentResponse(rsp *http.Response) (*UpdateDepartmentRespons
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers UpdateDepartmentResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers UpdateDepartmentResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
 	}
 
 	return response, nil
@@ -36909,6 +43948,66 @@ func ParseGetLabelGroupsResponse(rsp *http.Response) (*GetLabelGroupsResponse, e
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers GetLabelGroupsResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers GetLabelGroupsResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers GetLabelGroupsResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers GetLabelGroupsResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers GetLabelGroupsResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
+	}
+
 	return response, nil
 }
 
@@ -36998,6 +44097,66 @@ func ParseCreateLabelGroupResponse(rsp *http.Response) (*CreateLabelGroupRespons
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers CreateLabelGroupResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers CreateLabelGroupResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers CreateLabelGroupResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers CreateLabelGroupResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers CreateLabelGroupResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
+	}
+
 	return response, nil
 }
 
@@ -37083,6 +44242,66 @@ func ParseDeleteLabelGroupResponse(rsp *http.Response) (*DeleteLabelGroupRespons
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers DeleteLabelGroupResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers DeleteLabelGroupResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers DeleteLabelGroupResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers DeleteLabelGroupResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers DeleteLabelGroupResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
+	}
+
 	return response, nil
 }
 
@@ -37163,6 +44382,66 @@ func ParseGetLabelGroupResponse(rsp *http.Response) (*GetLabelGroupResponse, err
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers GetLabelGroupResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers GetLabelGroupResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers GetLabelGroupResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers GetLabelGroupResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers GetLabelGroupResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
 	}
 
 	return response, nil
@@ -37257,6 +44536,66 @@ func ParseUpdateLabelGroupResponse(rsp *http.Response) (*UpdateLabelGroupRespons
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers UpdateLabelGroupResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers UpdateLabelGroupResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers UpdateLabelGroupResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers UpdateLabelGroupResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers UpdateLabelGroupResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
+	}
+
 	return response, nil
 }
 
@@ -37345,6 +44684,66 @@ func ParseGetLabelsResponse(rsp *http.Response) (*GetLabelsResponse, error) {
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers GetLabelsResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers GetLabelsResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers GetLabelsResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers GetLabelsResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers GetLabelsResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
 	}
 
 	return response, nil
@@ -37436,6 +44835,66 @@ func ParseCreateLabelResponse(rsp *http.Response) (*CreateLabelResponse, error) 
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers CreateLabelResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers CreateLabelResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers CreateLabelResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers CreateLabelResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers CreateLabelResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
+	}
+
 	return response, nil
 }
 
@@ -37519,6 +44978,66 @@ func ParseDeleteLabelResponse(rsp *http.Response) (*DeleteLabelResponse, error) 
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers DeleteLabelResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers DeleteLabelResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers DeleteLabelResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers DeleteLabelResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers DeleteLabelResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
 	}
 
 	return response, nil
@@ -37611,6 +45130,66 @@ func ParseUpdateLabelResponse(rsp *http.Response) (*UpdateLabelResponse, error) 
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers UpdateLabelResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers UpdateLabelResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers UpdateLabelResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers UpdateLabelResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers UpdateLabelResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
 	}
 
 	return response, nil
@@ -38339,6 +45918,29 @@ func ParseGetRolesResponse(rsp *http.Response) (*GetRolesResponse, error) {
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers GetRolesResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers GetRolesResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	}
+
 	return response, nil
 }
 
@@ -38521,6 +46123,66 @@ func ParseGetTaxRatesResponse(rsp *http.Response) (*GetTaxRatesResponse, error) 
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers GetTaxRatesResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers GetTaxRatesResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers GetTaxRatesResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers GetTaxRatesResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers GetTaxRatesResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
+	}
+
 	return response, nil
 }
 
@@ -38610,6 +46272,66 @@ func ParseCreateTaxRateResponse(rsp *http.Response) (*CreateTaxRateResponse, err
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers CreateTaxRateResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers CreateTaxRateResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers CreateTaxRateResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers CreateTaxRateResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers CreateTaxRateResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
+	}
+
 	return response, nil
 }
 
@@ -38695,6 +46417,66 @@ func ParseDeleteTaxRateResponse(rsp *http.Response) (*DeleteTaxRateResponse, err
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers DeleteTaxRateResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers DeleteTaxRateResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers DeleteTaxRateResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers DeleteTaxRateResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers DeleteTaxRateResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
+	}
+
 	return response, nil
 }
 
@@ -38775,6 +46557,66 @@ func ParseGetTaxRateResponse(rsp *http.Response) (*GetTaxRateResponse, error) {
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers GetTaxRateResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers GetTaxRateResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers GetTaxRateResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers GetTaxRateResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers GetTaxRateResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
 	}
 
 	return response, nil
@@ -38869,6 +46711,66 @@ func ParseUpdateTaxRateResponse(rsp *http.Response) (*UpdateTaxRateResponse, err
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers UpdateTaxRateResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers UpdateTaxRateResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	case rsp.StatusCode == 429:
+		var headers UpdateTaxRateResponse429Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		response.Headers429 = &headers
+	case rsp.StatusCode == 500:
+		var headers UpdateTaxRateResponse500Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers500 = &headers
+	case rsp.StatusCode == 503:
+		var headers UpdateTaxRateResponse503Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers503 = &headers
+	}
+
 	return response, nil
 }
 
@@ -38921,6 +46823,29 @@ func ParseGetTeamMembersResponse(rsp *http.Response) (*GetTeamMembersResponse, e
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers GetTeamMembersResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers GetTeamMembersResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
 	}
 
 	return response, nil
@@ -38999,6 +46924,29 @@ func ParseInviteTeamMemberResponse(rsp *http.Response) (*InviteTeamMemberRespons
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers InviteTeamMemberResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers InviteTeamMemberResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	}
+
 	return response, nil
 }
 
@@ -39054,6 +47002,29 @@ func ParseDeleteTeamMemberResponse(rsp *http.Response) (*DeleteTeamMemberRespons
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers DeleteTeamMemberResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers DeleteTeamMemberResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
 	}
 
 	return response, nil
@@ -39117,6 +47088,29 @@ func ParseGetTeamMemberByIdResponse(rsp *http.Response) (*GetTeamMemberByIdRespo
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers GetTeamMemberByIdResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers GetTeamMemberByIdResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	}
+
 	return response, nil
 }
 
@@ -39165,6 +47159,29 @@ func ParseUnassignDepartmentResponse(rsp *http.Response) (*UnassignDepartmentRes
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers UnassignDepartmentResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers UnassignDepartmentResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
 	}
 
 	return response, nil
@@ -39224,6 +47241,29 @@ func ParseAssignDepartmentResponse(rsp *http.Response) (*AssignDepartmentRespons
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers AssignDepartmentResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers AssignDepartmentResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	}
+
 	return response, nil
 }
 
@@ -39272,6 +47312,29 @@ func ParseUnassignManagerResponse(rsp *http.Response) (*UnassignManagerResponse,
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers UnassignManagerResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers UnassignManagerResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
 	}
 
 	return response, nil
@@ -39329,6 +47392,29 @@ func ParseAssignManagerResponse(rsp *http.Response) (*AssignManagerResponse, err
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers AssignManagerResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers AssignManagerResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
 	}
 
 	return response, nil
@@ -39395,6 +47481,29 @@ func ParseUpdateTeamMemberRoleResponse(rsp *http.Response) (*UpdateTeamMemberRol
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers UpdateTeamMemberRoleResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers UpdateTeamMemberRoleResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	}
+
 	return response, nil
 }
 
@@ -39452,6 +47561,29 @@ func ParseSuspendTeamMemberResponse(rsp *http.Response) (*SuspendTeamMemberRespo
 
 	}
 
+	switch {
+	case rsp.StatusCode == 401:
+		var headers SuspendTeamMemberResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers SuspendTeamMemberResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
+	}
+
 	return response, nil
 }
 
@@ -39507,6 +47639,29 @@ func ParseUnsuspendTeamMemberResponse(rsp *http.Response) (*UnsuspendTeamMemberR
 		}
 		response.JSONDefault = &dest
 
+	}
+
+	switch {
+	case rsp.StatusCode == 401:
+		var headers UnsuspendTeamMemberResponse401Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers401 = &headers
+	case rsp.StatusCode == 403:
+		var headers UnsuspendTeamMemberResponse403Headers
+		if values := rsp.Header.Values("Request-Id"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "Request-Id", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RequestId = &value
+		}
+		response.Headers403 = &headers
 	}
 
 	return response, nil

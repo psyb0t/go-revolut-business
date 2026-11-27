@@ -2,6 +2,13 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.4.0, 2026-11-27
+
+- Add the Revolut Analytics endpoints. `Client` and `ClientWithResponses` gain `SearchCashflow`, `SearchIncome`, `SearchIncomeBreakdown`, `SearchSpending`, `SearchSpendingBreakdown`, `SearchTotalWealth` and `SearchTotalWealthBreakdown`. Each has a `WithBody` variant, and the `WithResponse` forms are `SearchCashflowWithResponse`, `SearchCashflowWithBodyWithResponse` and the matching names for the other operations.
+- Add the request and response types for these calls, such as `AnalyticsCashflowSearchRequest`, `AnalyticsCashflowResponse`, `AnalyticsIncomeSearchRequest`, `AnalyticsIncomeBreakdownSearchRequest`, `AnalyticsSpendingBreakdownSearchRequest` and `AnalyticsMoney`, plus the `Analytics...` enums with their `Valid` methods (for example `AnalyticsAggregationCycle` and `AnalyticsAssetGroup`).
+- Add the 14 new methods to `ClientInterface` and `ClientWithResponsesInterface`. Code that implements or mocks these interfaces must add the methods to keep compiling.
+- No existing exported identifiers were removed or changed.
+
 ## v0.3.0, 2026-11-24
 
 - Add `GetCardsParams.CreatedAfter`, an optional `*time.Time` sent as the `created_after` query parameter on `GetCards`.
